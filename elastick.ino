@@ -1,39 +1,118 @@
 #include <Arduino.h>
 #include <BleGamepad.h>
 
+const bool paddlesAreAnalog = false;
+
+const int PIN_UP        = 16;
+const int PIN_DOWN      = 4;
+const int PIN_LEFT      = 13;
+const int PIN_RIGHT     = 12;
+const int PIN_PADDLE_B  = 14;
+const int PIN_BUTTON_1  = 17;
+const int PIN_PADDLE_A  = 27;
+
 BleGamepad bleGamepad;
 
-void setup()
-{
-    Serial.begin(115200);
-    Serial.println("Starting BLE work!");
-    bleGamepad.begin();
-    // The default bleGamepad.begin() above enables 16 buttons, all axes, one hat, and no simulation controls or special buttons
+int axisX = 0;
+int axisY = 0;
+bool buttonPressed = false;
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Starting BLE work!");
+
+  BleGamepadConfiguration config;
+  config.setAutoReport(true);
+  config.setControllerType(CONTROLLER_TYPE_JOYSTICK); // or CONTROLLER_TYPE_GAMEPAD
+  config.setButtonCount(3);         // 3 buttons
+  config.setIncludeXAxis(true);     // X-Axis
+  config.setIncludeYAxis(true);     // Y-Axis
+  config.setIncludeZAxis(false);
+  config.setIncludeRxAxis(false);
+  config.setIncludeRyAxis(false);
+  config.setIncludeRzAxis(false);
+  config.setIncludeSlider1(false);
+  config.setIncludeSlider2(false);
+  config.setHatSwitchCount(0);
+  config.setAxesMin(0);
+  config.setAxesMax(32767);
+  bleGamepad.begin(&config);
+
+  pinMode(PIN_UP,     INPUT_PULLUP);
+  pinMode(PIN_DOWN,   INPUT_PULLUP);
+  pinMode(PIN_LEFT,   INPUT_PULLUP);
+  pinMode(PIN_RIGHT,  INPUT_PULLUP);
+
+  
+  pinMode(PIN_BUTTON_1, INPUT_PULLUP);
+
+  if (paddlesAreAnalog) {
+    // nothing here yet
+  } else {
+    pinMode(PIN_PADDLE_A, INPUT_PULLUP);
+    pinMode(PIN_PADDLE_B, INPUT_PULLUP);
+  }
 }
 
-void loop()
-{
-    if (bleGamepad.isConnected())
-    {
-        Serial.println("Press buttons 5, 16 and start. Move all enabled axes to max. Set DPAD (hat 1) to down right.");
-        bleGamepad.press(BUTTON_5);
-        bleGamepad.press(BUTTON_16);
-        bleGamepad.pressStart();
-        bleGamepad.setAxes(32767, 32767, 32767, 32767, 32767, 32767, 32767, 32767);       //(X, Y, Z, RX, RY, RZ)
-        //bleGamepad.setHIDAxes(32767, 32767, 32767, 32767, 32767, 32767, 32767, 32767);  //(X, Y, Z, RZ, RX, RY)
-        bleGamepad.setHat1(HAT_DOWN_RIGHT);
-        // All axes, sliders, hats etc can also be set independently. See the IndividualAxes.ino example
-        delay(500);
+void loop() {
 
-        Serial.println("Release button 5 and start. Move all axes to min. Set DPAD (hat 1) to centred.");
-        bleGamepad.release(BUTTON_5);
-        bleGamepad.releaseStart();
-        bleGamepad.setHat1(HAT_CENTERED);
-        bleGamepad.setAxes(0, 0, 0, 0, 0, 0, 0, 0);           //(X, Y, Z, RX, RY, RZ)
-        //bleGamepad.setHIDAxes(0, 0, 0, 0, 0, 0, 0, 0);      //(X, Y, Z, RZ, RX, RY)
-        delay(500);
+  int16_t up    = digitalRead(PIN_UP)    == LOW ? -16384 : 0;
+  int16_t down  = digitalRead(PIN_DOWN)  == LOW ? 32767 : 16384;
+  int16_t left  = digitalRead(PIN_LEFT)  == LOW ? -16384 : 0;
+  int16_t right = digitalRead(PIN_RIGHT) == LOW ? 32767 : 16384;
+
+  axisX = right + left;
+  axisY = down + up;
+
+  bool btn1 = (digitalRead(PIN_BUTTON_1) == LOW);
+
+  int16_t paddleX = 0;
+  int16_t paddleY = 0;
+
+  if (paddlesAreAnalog) {
+    // Analog [0-4095] → [0-32767]
+    paddleX = map(analogRead(PIN_PADDLE_A), 0, 4095, 0, 32767);
+    paddleY = map(analogRead(PIN_PADDLE_B), 0, 4095, 0, 32767);
+  } else {
+    // Digital
+    paddleX = (digitalRead(PIN_PADDLE_A) == LOW) ? 32767 : 0;
+    paddleY = (digitalRead(PIN_PADDLE_B) == LOW) ? 32767 : 0;
+  }
+
+  // Send to BLE
+  if (bleGamepad.isConnected()) {
+    bleGamepad.setLeftTrigger(paddleX);
+    bleGamepad.setRightTrigger(paddleY);
+    bleGamepad.setX(axisX);
+    bleGamepad.setY(axisY);
+    if (btn1) {
+      bleGamepad.press(BUTTON_1);
     } else {
-      Serial.println("Not connected yet.");
-      delay(3000);
+      bleGamepad.release(BUTTON_1);
     }
+  } else {
+    Serial.print("up: ");
+    Serial.print(up);
+    Serial.print(", down: ");
+    Serial.print(down);
+    Serial.print(", left: ");
+    Serial.print(left);
+    Serial.print(", right: ");
+    Serial.println(right);
+
+    Serial.print("Paddle X: ");
+    Serial.print(paddleX);
+    Serial.print(", Paddle Y: ");
+    Serial.println(paddleY);
+
+    Serial.print("axisX: ");
+    Serial.print(axisX);
+    Serial.print(", axisY: ");
+    Serial.println(axisY);
+    
+    delay(1000);
+  }
+
+
+  delay(20);
 }
