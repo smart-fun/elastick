@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <BleGamepad.h>
+#include "pad_mapping.h"
 
 const bool paddlesAreAnalog = true;
 
@@ -12,6 +13,7 @@ const int PIN_BUTTON_1  = 17;
 const int PIN_PADDLE_A  = 27;
 
 BleGamepad bleGamepad("Atari 2600", "Elastick", 100);
+const PadMappings * padMappings = &atari2600_paddle;
 
 int axisX = 0;
 int axisY = 0;
