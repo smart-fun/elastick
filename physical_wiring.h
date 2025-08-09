@@ -3,7 +3,7 @@
 struct EspPin {
   uint8_t plugPin;
   uint8_t gpio;
-  bool supportsAnalog;
+  bool supportsAnalog;  // TODO: check if really iuseful
 };
 
 struct PadConnector {

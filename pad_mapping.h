@@ -23,11 +23,76 @@ struct PadMapping {
     uint8_t plugPin;
 };
 
-struct PadMappings {
+class PadMappings {
     const char* name;
     const PadConnector* connector;
     PadMapping* mapping;
     uint8_t inputCount;
+
+public:
+  PadMappings(const char* name, const PadConnector* connector, PadMapping* mapping, uint8_t inputCount) {
+    this->name = name;
+    this->connector = connector;
+    this->mapping = mapping;
+    this->inputCount = inputCount;
+  }
+  ~PadMappings() {
+  }
+
+  PadMapping* getMapping() {
+    return mapping;
+  }
+
+  uint8_t getInputCount() {
+    return inputCount;
+  }
+
+  uint8_t getNumButtons() {
+    uint8_t result = 0;
+    for(int i=0; i<inputCount; ++i) {
+      PadButton padButton = mapping[i].padButton;
+       if (padButton == PadButton::PADBT_BUTTON_1 || padButton == PadButton::PADBT_BUTTON_2 || padButton == PadButton::PADBT_BUTTON_3) {
+         ++result;
+       }
+    }
+    return result;
+  }
+
+  uint8_t getGpio(uint8_t mappingIndex) {
+    PadMapping padMapping = mapping[mappingIndex];
+    uint8_t plugPin = padMapping.plugPin;
+    const EspPin* pins = connector->pins ;
+    uint8_t numPins = connector->pinCount;
+    for(uint8_t i=0; i<numPins; ++i) {
+      EspPin pin = pins[i];
+      if (pin.plugPin == plugPin) {
+        return pin.gpio;
+      }
+    }
+    return 0;
+  }
+
+  
+  uint8_t hasXAxis() {
+    for(int i=0; i<inputCount; ++i) {
+      PadButton padButton = mapping[i].padButton;
+       if (padButton == PadButton::PADBT_LEFT || padButton == PadButton::PADBT_ANALOG_X_AXIS) {
+         return true;
+       }
+    }
+    return false;
+  }
+
+  uint8_t hasYAxis() {
+    for(int i=0; i<inputCount; ++i) {
+      PadButton padButton = mapping[i].padButton;
+       if (padButton == PadButton::PADBT_UP || padButton == PadButton::PADBT_ANALOG_Y_AXIS) {
+         return true;
+       }
+    }
+    return false;
+  }
+    
 };
 
 
@@ -46,10 +111,10 @@ static PadMapping atari2600_paddle_mapping[] = {
     { PadButton::PADBT_BUTTON_2,      AxisMode::AXIS_DIGITAL, 3 }
 };
 
-static const PadMappings atari2600_joystick = {
+static PadMappings * atari2600_joystick = new PadMappings(
     "Atari 2600 Joystick", &CONNECTOR_DSUB9, atari2600_joystick_mapping, sizeof(atari2600_joystick_mapping)/sizeof(atari2600_joystick_mapping[0])
-};
+);
 
-static const PadMappings atari2600_paddle = {
+static PadMappings * atari2600_paddle = new PadMappings(
     "Atari 2600 Paddle", &CONNECTOR_DSUB9, atari2600_paddle_mapping, sizeof(atari2600_paddle_mapping)/sizeof(atari2600_paddle_mapping[0])
-};
+);
