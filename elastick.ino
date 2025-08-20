@@ -5,8 +5,8 @@
 const uint16_t MAX_PAD_VALUE = 32767;
 
 BleGamepad bleGamepad("Atari 2600", "Elastick", 100);
-PadMappings * padMappings = atari2600_joystick;
-//PadMappings * padMappings = atari2600_paddle;
+//PadMappings * padMappings = atari2600_joystick;
+PadMappings * padMappings = atari2600_paddle;
 
 void setup() {
   Serial.begin(115200);

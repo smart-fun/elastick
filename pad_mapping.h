@@ -101,7 +101,8 @@ static PadMapping atari2600_joystick_mapping[] = {
     { PadButton::PADBT_DOWN,     AxisMode::AXIS_DIGITAL, 2 },
     { PadButton::PADBT_LEFT,     AxisMode::AXIS_DIGITAL, 3 },
     { PadButton::PADBT_RIGHT,    AxisMode::AXIS_DIGITAL, 4 },
-    { PadButton::PADBT_BUTTON_1, AxisMode::AXIS_DIGITAL, 6 }
+    { PadButton::PADBT_BUTTON_1, AxisMode::AXIS_DIGITAL, 6 },
+    { PadButton::PADBT_BUTTON_2, AxisMode::AXIS_DIGITAL, 9 }  // test 2nd button for mame detection
 };
 
 static PadMapping atari2600_paddle_mapping[] = {
