@@ -6,7 +6,7 @@ Pinout diagrams are limited to the signals supported by the Elastick adapter: pr
 
 ## Amstrad CPC Joystick
 
-![](din-6-small.png)
+![](de-9-small.png)
 
 1. Up
 
@@ -25,8 +25,6 @@ Pinout diagrams are limited to the signals supported by the Elastick adapter: pr
 8. GND
 
 9. -
-
-
 
 ## Apple 2 Joystick
 
@@ -52,8 +50,6 @@ This joystick uses 150 KΩ variable resistors connected to VCC for the analog ax
 
 9. -
 
-
-
 ## Atari 2600 Joystick
 
 ![](de-9-small.png)
@@ -75,8 +71,6 @@ This joystick uses 150 KΩ variable resistors connected to VCC for the analog ax
 8. GND
 
 9. -
-
-
 
 ## Atari 2600 Paddles
 
@@ -102,8 +96,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 9. Paddle 2 (analog)
 
-
-
 ## Atari ST / Commodore 64 / Amiga Joystick
 
 ![](de-9-small.png)
@@ -125,8 +117,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 8. GND
 
 9. Button 2
-
-
 
 ## IBM PC Joystick
 
@@ -161,8 +151,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 14. -
 
 15. -
-
-
 
 ## Tandy Coco Deluxe Joystick
 
