@@ -6,7 +6,10 @@ Pinout diagrams are limited to the signals supported by the Elastick adapter: pr
 
 ## Amstrad CPC Joystick
 
+**DE-9 connector**
 ![](de-9-small.png)
+
+
 
 1. Up
 
@@ -30,7 +33,9 @@ Pinout diagrams are limited to the signals supported by the Elastick adapter: pr
 
 This joystick uses 150 KΩ variable resistors connected to VCC for the analog axis.
 
-![](de-9-small.png)
+DE-9 connector | Apple Joystick A2M2002
+:-------------:|:---------------------:
+![](de-9-small.png) | ![](apple_2_joystick_small.jpg)
 
 1. Button 1
 
@@ -52,7 +57,10 @@ This joystick uses 150 KΩ variable resistors connected to VCC for the analog ax
 
 ## Atari 2600 Joystick
 
-![](de-9-small.png)
+DE-9 connector | Atari CX-10 Joystick
+:-------------:|:-------------------:
+![](de-9-small.png) | ![](atari_2600_joystick_small.jpg)
+
 
 1. Up
 
@@ -76,7 +84,9 @@ This joystick uses 150 KΩ variable resistors connected to VCC for the analog ax
 
 The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
-![](de-9-small.png)
+DE-9 connector | Atari CX-30 Paddles
+:-------------:|:------------------:
+![](de-9-small.png) | ![](atari_2600_paddles_small.jpg)
 
 1. -
 
@@ -98,7 +108,9 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 ## Atari ST / Commodore 64 / Amiga Joystick
 
-![](de-9-small.png)
+DE-9 connector | Competition Pro
+:-------------:|:--------------:
+![](de-9-small.png) | ![](amiga_joystick_small.jpg)
 
 1. Up
 
@@ -120,7 +132,9 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 ## IBM PC Joystick
 
-![](da-15-small.png)
+DA-15 connector | CH Products FlightStick
+:--------------:|:-----------------------
+![](da-15-small.png) | ![](pc2_joystick_small.jpg)
 
 1. VCC (+5V)
 
@@ -152,9 +166,11 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 15. -
 
-## Tandy Coco Deluxe Joystick
+## Tandy Color 'CoCo' Computer Joystick
 
-![](din-6-small.png)
+DIN-6 connector | Tandy Deluxe Joystick
+:--------------:|:--------------------:
+![](din-6-small.png) | ![](coco_deluxe_joystick_small.jpg)
 
 1. X-Axis (analog)
 
