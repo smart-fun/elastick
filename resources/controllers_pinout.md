@@ -7,8 +7,8 @@ Pinout diagrams are limited to the signals supported by the Elastick adapter: pr
 
 ## Amstrad CPC Joystick
 
-| DE-9 connector      | Amsoft JY-2 |
-|:-------------------:|:-----------:|
+| DE-9 connector      | Amsoft JY-2                     |
+|:-------------------:|:-------------------------------:|
 | ![](de-9-small.png) | ![](amstrad_joystick_small.jpg) |
 
 1. Up
@@ -169,6 +169,56 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 14. -
 
 15. -
+
+
+## MSX Joystick
+
+| DE-9 connector      | Sanyo MJY-002               |
+|:-------------------:|:---------------------------:|
+| ![](de-9-small.png) | ![](msx_joystick_small.jpg) |
+
+1. Up
+
+2. Down
+
+3. Left
+
+4. Right
+
+5. VCC (+5V)
+
+6. Button 1
+
+7. Button 2
+
+8. -
+
+9. GND
+
+
+## Sega Master System Joystick
+
+| DE-9 connector      | Sega Control Stick           |
+|:-------------------:|:----------------------------:|
+| ![](de-9-small.png) | ![](sega_joystick_small.jpg) |
+
+1. Up
+
+2. Down
+
+3. Left
+
+4. Right
+
+5. VCC (+5V)
+
+6. Button 1
+
+7. Button 2
+
+8. GND
+
+9. -
 
 
 ## Tandy Color 'CoCo' Computer Joystick
