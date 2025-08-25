@@ -1,15 +1,27 @@
 #include <Arduino.h>
 #include <BleGamepad.h>
 #include "pad_mapping.h"
+#include "es_gpio.h"
+#include "es_display_manager.h"
+#include "es_input_button.h"
 
 const uint16_t MAX_PAD_VALUE = 32767;
 
-BleGamepad bleGamepad("Atari 2600", "Elastick", 100);
+BleGamepad bleGamepad("IBM test", "Elastick", 100);
 //PadMappings * padMappings = atari2600_joystick;
-PadMappings * padMappings = atari2600_paddle;
+//PadMappings * padMappings = atari2600_paddle;
+PadMappings * padMappings = ibm_pc_joystick;
+DisplayManager displayManager(ES_GPIO::ES_GPIO_SCL, ES_GPIO::ES_GPIO_SDA);
+InputButtons inputButtons;
 
 void setup() {
   Serial.begin(115200);
+
+  displayManager.init();
+  displayManager.showWelcome();
+
+
+
   Serial.println("Starting BLE work!");
 
   BleGamepadConfiguration config;
@@ -29,6 +41,7 @@ void setup() {
   config.setAxesMax(MAX_PAD_VALUE);
   bleGamepad.begin(&config);
 
+
   PadMapping* mapping = padMappings->getMapping();
   uint8_t inputCount = padMappings->getInputCount();
   for(uint8_t i=0; i<inputCount; ++i) {
@@ -42,16 +55,35 @@ void setup() {
       pinMode(gpio, INPUT_PULLDOWN);
       Serial.print(gpio);
       Serial.println(" -> AXIS_ANALOG");
+    } else if (padMapping.axisMode == AxisMode::POWER) {
+      Serial.print(gpio);
+      Serial.println(" -> POWER");
+      pinMode(gpio, OUTPUT);
+      if (padMapping.padButton == PadButton::PADBT_GND) {
+        digitalWrite(gpio, LOW);
+      } else if (padMapping.padButton == PadButton::PADBT_VCC) {
+        digitalWrite(gpio, HIGH);
+      }
     }
   }
 }
 
 void loop() {
 
+  inputButtons.update();
+  if (inputButtons.wasPressed(InputButtonName::Next)) {
+    displayManager.showWelcome();
+  } else if (inputButtons.wasPressed(InputButtonName::Validate)) {
+    displayManager.showControllerList();
+  }
+
+
   bool useDigitalXAxis = false;
   bool useDigitalYAxis = false;
   int16_t xAxis = 0;
   int16_t yAxis = 0;
+
+  int16_t logValue = 0;
 
   PadMapping* mapping = padMappings->getMapping();
   uint8_t inputCount = padMappings->getInputCount();
@@ -107,8 +139,9 @@ void loop() {
           }
         break;
       }
-    } else {
+    } else if (padMapping.axisMode == AxisMode::AXIS_ANALOG) {
       rawValue = analogRead(gpio);
+      logValue = rawValue;
       float finalX = rawValue;
       if (finalX < 100) {
         finalX = 100;
@@ -131,20 +164,18 @@ void loop() {
     
   }
 
-  if (useDigitalXAxis) {
-    bleGamepad.setX(xAxis);
-  }
-  if (useDigitalYAxis) {
-    bleGamepad.setY(yAxis);
-  }
-
-
   // Send to BLE
   if (bleGamepad.isConnected()) {
+    if (useDigitalXAxis) {
+      bleGamepad.setX(xAxis);
+    }
+    if (useDigitalYAxis) {
+      bleGamepad.setY(yAxis);
+    }
+    delay(10);
   } else {
-    delay(1000);
+    delay(10);
   }
-
 
   delay(20);
 }

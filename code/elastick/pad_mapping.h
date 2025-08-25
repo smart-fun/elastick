@@ -12,10 +12,12 @@ enum class PadButton {
     PADBT_BUTTON_2,
     PADBT_BUTTON_3,
     PADBT_ANALOG_X_AXIS,
-    PADBT_ANALOG_Y_AXIS
+    PADBT_ANALOG_Y_AXIS,
+    PADBT_VCC,
+    PADBT_GND
 };
 
-enum class AxisMode { AXIS_DIGITAL, AXIS_ANALOG };
+enum class AxisMode { AXIS_DIGITAL, AXIS_ANALOG, POWER };
 
 struct PadMapping {
     PadButton padButton;
@@ -102,6 +104,8 @@ static PadMapping atari2600_joystick_mapping[] = {
     { PadButton::PADBT_LEFT,     AxisMode::AXIS_DIGITAL, 3 },
     { PadButton::PADBT_RIGHT,    AxisMode::AXIS_DIGITAL, 4 },
     { PadButton::PADBT_BUTTON_1, AxisMode::AXIS_DIGITAL, 6 },
+//    { PadButton::PADBT_VCC,           AxisMode::POWER, 7 },
+    { PadButton::PADBT_GND,      AxisMode::POWER, 8 },
     { PadButton::PADBT_BUTTON_2, AxisMode::AXIS_DIGITAL, 9 }  // test 2nd button for mame detection
 };
 
@@ -109,7 +113,18 @@ static PadMapping atari2600_paddle_mapping[] = {
     { PadButton::PADBT_ANALOG_X_AXIS, AxisMode::AXIS_ANALOG, 5 },
     { PadButton::PADBT_ANALOG_Y_AXIS, AxisMode::AXIS_ANALOG, 9 },
     { PadButton::PADBT_BUTTON_1,      AxisMode::AXIS_DIGITAL, 4 },
-    { PadButton::PADBT_BUTTON_2,      AxisMode::AXIS_DIGITAL, 3 }
+    { PadButton::PADBT_BUTTON_2,      AxisMode::AXIS_DIGITAL, 3 },
+    { PadButton::PADBT_VCC,           AxisMode::POWER, 7 },
+    { PadButton::PADBT_GND,           AxisMode::POWER, 8 }
+};
+
+static PadMapping ibm_pc_mapping[] = {
+    { PadButton::PADBT_ANALOG_X_AXIS, AxisMode::AXIS_ANALOG, 5 },
+    { PadButton::PADBT_ANALOG_Y_AXIS, AxisMode::AXIS_ANALOG, 9 },
+    { PadButton::PADBT_BUTTON_1,      AxisMode::AXIS_DIGITAL, 4 },
+    { PadButton::PADBT_BUTTON_2,      AxisMode::AXIS_DIGITAL, 3 },
+    { PadButton::PADBT_VCC,           AxisMode::POWER, 7 },
+    { PadButton::PADBT_GND,           AxisMode::POWER, 8 }
 };
 
 static PadMappings * atari2600_joystick = new PadMappings(
@@ -118,4 +133,8 @@ static PadMappings * atari2600_joystick = new PadMappings(
 
 static PadMappings * atari2600_paddle = new PadMappings(
     "Atari 2600 Paddle", &CONNECTOR_DSUB9, atari2600_paddle_mapping, sizeof(atari2600_paddle_mapping)/sizeof(atari2600_paddle_mapping[0])
+);
+
+static PadMappings * ibm_pc_joystick = new PadMappings(
+    "IBM PC Joystick", &CONNECTOR_DSUB9, ibm_pc_mapping, sizeof(ibm_pc_mapping)/sizeof(ibm_pc_mapping[0])
 );

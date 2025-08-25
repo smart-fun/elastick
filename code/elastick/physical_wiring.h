@@ -21,8 +21,8 @@ static const EspPin dsub9_pins[] = {
     { 4, 12, false },
     { 5, 14, true  },
     { 6, 17, false },
-    // 7 is VCC
-    // 8 is Ground
+    { 7, 25, false },
+    { 8, 26, false },
     { 9, 27, true  }
 };
 

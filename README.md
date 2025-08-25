@@ -14,8 +14,14 @@ This URL must be added to the "Additional Boards Manager URLs" (in Files / Prefe
 
 Some dependencies must be added:
 
-- ESP32-BLE-Gamepad
-- NimBLE-Arduino
+- ESP32-BLE-Gamepad (with NimBLE-Arduino dependency)
+- Adafruit SSD1306
+- U8g2 by Oliver (for screen)
+
+## Hardware
+
+- Lolin D32 (ESP32)
+- OLED 0,96" SSD1306 I2C 128X64 pixels
 
 ## Lolin-D32 Pinout
 
