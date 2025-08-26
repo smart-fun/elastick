@@ -11,11 +11,12 @@ enum class InputButtonName {
 
 class InputButtons {
 public:
-  InputButtons();
+  static InputButtons& getInstance(); // singleton
   void update();
   bool wasPressed(InputButtonName buttonName);
 
 private:
+  InputButtons();
   class ButtonInfo {
   public:
     ButtonInfo(uint8_t gpio);

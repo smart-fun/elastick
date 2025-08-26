@@ -1,20 +1,16 @@
 #pragma once
 #include <U8g2lib.h>
+#include "es_gpio.h"
 
 // Handles all display-related operations, including rendering menus, messages, and controller feedback on the OLED screen.
 
 class DisplayManager {
 public:
-    DisplayManager(uint8_t sclPin, uint8_t sdaPin);
+    static DisplayManager& getInstance();
     void init();
     void showWelcome();
-    void showControllerList();
-//    void showMenu(const char* options[], int selected);
-//    void showMessage(const char* text);
-//    void showTestScreen(const ControllerState& state);
-//    void update();
+    void showControllerList(int currentIndex);
 private:
-    U8G2_SSD1306_128X64_NONAME_F_HW_I2C lcd;
-    uint8_t scl;
-    uint8_t sda;
+    DisplayManager();
+    U8G2_SSD1306_128X64_NONAME_F_HW_I2C lcd = U8G2_SSD1306_128X64_NONAME_F_HW_I2C(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ ES_GPIO_SCL, /* data=*/ ES_GPIO_SDA);
 };

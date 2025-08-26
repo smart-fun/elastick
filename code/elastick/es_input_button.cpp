@@ -3,6 +3,11 @@
 
 #define PRESS_HYSTERESIS (50)
 
+InputButtons& InputButtons::getInstance() {
+    static InputButtons instance;
+    return instance;
+}
+
 InputButtons::InputButtons()
     : nextButton(ES_GPIO::ES_GPIO_BUTTON_NEXT),
       validateButton(ES_GPIO::ES_GPIO_BUTTON_VALIDATE) {}

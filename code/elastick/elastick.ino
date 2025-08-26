@@ -2,8 +2,9 @@
 #include <BleGamepad.h>
 #include "pad_mapping.h"
 #include "es_gpio.h"
-#include "es_display_manager.h"
-#include "es_input_button.h"
+//#include "es_display_manager.h"
+//#include "es_input_button.h"
+#include "es_menu_controller.h"
 
 const uint16_t MAX_PAD_VALUE = 32767;
 
@@ -11,14 +12,14 @@ BleGamepad bleGamepad("IBM test", "Elastick", 100);
 //PadMappings * padMappings = atari2600_joystick;
 //PadMappings * padMappings = atari2600_paddle;
 PadMappings * padMappings = ibm_pc_joystick;
-DisplayManager displayManager(ES_GPIO::ES_GPIO_SCL, ES_GPIO::ES_GPIO_SDA);
-InputButtons inputButtons;
+//DisplayManager displayManager(ES_GPIO::ES_GPIO_SCL, ES_GPIO::ES_GPIO_SDA);
+//InputButtons inputButtons;
 
 void setup() {
   Serial.begin(115200);
 
-  displayManager.init();
-  displayManager.showWelcome();
+//  displayManager.init();
+//  displayManager.showWelcome();
 
 
 
@@ -66,16 +67,24 @@ void setup() {
       }
     }
   }
+
+  MenuController::getInstance().init();
+  MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+  //DisplayManager::getInstance().showControllerList(0);
+
+
 }
 
 void loop() {
 
-  inputButtons.update();
-  if (inputButtons.wasPressed(InputButtonName::Next)) {
-    displayManager.showWelcome();
-  } else if (inputButtons.wasPressed(InputButtonName::Validate)) {
-    displayManager.showControllerList();
-  }
+  MenuController::getInstance().update();
+
+  // inputButtons.update();
+  // if (inputButtons.wasPressed(InputButtonName::Next)) {
+  //   displayManager.showWelcome();
+  // } else if (inputButtons.wasPressed(InputButtonName::Validate)) {
+  //   displayManager.showControllerList(0);
+  // }
 
 
   bool useDigitalXAxis = false;
