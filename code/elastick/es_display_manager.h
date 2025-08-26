@@ -13,4 +13,6 @@ public:
 private:
     DisplayManager();
     U8G2_SSD1306_128X64_NONAME_F_HW_I2C lcd = U8G2_SSD1306_128X64_NONAME_F_HW_I2C(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ ES_GPIO_SCL, /* data=*/ ES_GPIO_SDA);
+    void printCenterX(const char * text, int y);
+    void printCenterXY(const char * text);
 };

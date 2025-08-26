@@ -10,6 +10,10 @@ void ControllerListMenu::show() {
     DisplayManager::getInstance().showControllerList(selectedIndex);
 }
 
+void ControllerListMenu::update() {
+    // nothing to do so far
+}
+
 void ControllerListMenu::onNext() {
     selectedIndex = (selectedIndex + 1) % GameControllers::getInstance().getCount();
     show();

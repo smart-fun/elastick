@@ -1,6 +1,7 @@
 #pragma once
 #include "es_base_menu.h"
 
+class WelcomeMenu;
 class ControllerListMenu;
 
 class MenuController {
@@ -21,6 +22,6 @@ private:
     BaseMenu* currentMenu = nullptr;
 
     // Menu Instances
-    // WelcomeMenu * welcomeMenu = nullptr;
+    WelcomeMenu * welcomeMenu = nullptr;
     ControllerListMenu * controllerListMenu = nullptr;
 };

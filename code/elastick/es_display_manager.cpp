@@ -20,9 +20,9 @@ void DisplayManager::init() {
 void DisplayManager::showWelcome() {
   lcd.clearBuffer();
   lcd.setFont(u8g2_font_DigitalDisco_te);
-  lcd.drawStr(0,10,"ELASTICK ADAPTER");
+  printCenterX("ELASTICK ADAPTER", 10);
   lcd.setFont(u8g2_font_ncenB08_tr);
-  lcd.drawStr(0,24,"WELCOME");
+  printCenterXY("Version 0.2");
   lcd.sendBuffer();
 }
 
@@ -48,3 +48,16 @@ void DisplayManager::showControllerList(int currentIndex) {
   lcd.sendBuffer();
 }
 
+void DisplayManager::printCenterX(const char * text, int y) {
+  u8g2_uint_t screenWidth = lcd.getDisplayWidth();
+  u8g2_uint_t textWidth = lcd.getStrWidth(text);
+  u8g2_uint_t x = (screenWidth - textWidth) / 2;
+  lcd.drawStr(x, y, text);
+}
+
+void DisplayManager::printCenterXY(const char * text) {
+  u8g2_uint_t screenHeight = lcd.getDisplayHeight();
+  u8g2_uint_t textHeight = lcd.getMaxCharHeight();
+  u8g2_uint_t y = (screenHeight + textHeight) / 2;
+  printCenterX(text, y);
+}
