@@ -20,8 +20,8 @@ static const DsubPin dsub9_pins[] = {
   { 5, 14 },
   { 6, 17 },
   { 7, 25 },
- { 8, 26 }
-  // { 9, 27 }
+ //{ 8, 26 }
+   { 9, 27 }
 };
 
 int nbpins = 8;
@@ -35,8 +35,8 @@ void setup() {
     pinMode(dsub9_pins[i].gpio, INPUT_PULLUP);
   }
 
-  pinMode(27, OUTPUT);
-  digitalWrite(27, LOW);    // Fournit GND
+  pinMode(26, OUTPUT);
+  digitalWrite(26, LOW);    // Fournit GND
 
 }
 

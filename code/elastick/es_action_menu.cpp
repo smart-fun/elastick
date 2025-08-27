@@ -10,8 +10,8 @@ ActionMenu::ActionMenu() {
 void ActionMenu::show() {
     GameController* selected = GameControllers::getInstance().getSelectedController();
     if (actionState == ActionState::DetectController) {
-        DisplayManager::getInstance().showDetecting(selected);
         selected->initDetection();
+        DisplayManager::getInstance().showDetecting(selected);
         delay(500);
     } else {
         DisplayManager::getInstance().showActions(selected, actionIndex);
@@ -24,6 +24,8 @@ void ActionMenu::update() {
         if (selected->isDetected()) {
             actionState = ActionState::DisplayMenu;
             show();
+        } else {
+            delay(1000);
         }
     }
 }

@@ -26,6 +26,16 @@ static const EspPin dsub9_pins[] = {
     { 9, 27, true  }
 };
 
+// TODO: move somewhere else
+static int getGpioFromPlugPin(uint8_t plugPin) {
+    for (const EspPin& pin : dsub9_pins) {
+        if (pin.plugPin == plugPin) {
+            return pin.gpio;
+        }
+    }
+    return -1; // Pin nou found
+}
+
 
 // DIN-6: all supported joysticks use the same mapping
 static const EspPin din6_pins[] = {
