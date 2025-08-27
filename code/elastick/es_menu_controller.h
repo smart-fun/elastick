@@ -3,12 +3,14 @@
 
 class WelcomeMenu;
 class ControllerListMenu;
+class ActionMenu;
 
 class MenuController {
 public:
     enum class MenuID {
         Welcome,
         ControllerList,
+        Action
     };
 
     static MenuController& getInstance();
@@ -24,4 +26,5 @@ private:
     // Menu Instances
     WelcomeMenu * welcomeMenu = nullptr;
     ControllerListMenu * controllerListMenu = nullptr;
+    ActionMenu * actionMenu = nullptr;
 };

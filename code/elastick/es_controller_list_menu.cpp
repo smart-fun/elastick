@@ -1,7 +1,7 @@
 #include "es_controller_list_menu.h"
 #include "es_display_manager.h"
 #include "es_game_controllers.h"
-//#include "es_menu_controller.h"
+#include "es_menu_controller.h"
 
 ControllerListMenu::ControllerListMenu() {
 }
@@ -21,6 +21,7 @@ void ControllerListMenu::onNext() {
 
 void ControllerListMenu::onValidate() {
     GameController* selected = GameControllers::getInstance().get(selectedIndex);
+    GameControllers::getInstance().setSelectedController(selected);
     //selected->init();
-    //MenuController::get().setCurrentMenu(MenuController::MenuID::TestMenu); // or CalibrationMenu
+    MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Action);
 }

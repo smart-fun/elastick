@@ -6,5 +6,6 @@ public:
     AtariPaddleGameController();
     void init() override;
     void update() override;
+    bool isAnalog() const override { return true; };
 };
 

@@ -25,3 +25,10 @@ GameController* GameControllers::get(int index) {
     return controllers[index];
 }
 
+void GameControllers::setSelectedController(GameController * controller) {
+    selectedController = controller;
+}
+
+GameController * GameControllers::getSelectedController() {
+    return selectedController;
+}

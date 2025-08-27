@@ -4,6 +4,7 @@
 #include "es_display_manager.h"
 #include "es_welcome_menu.h"
 #include "es_controller_list_menu.h"
+#include "es_action_menu.h"
 
 MenuController& MenuController::getInstance() {
     static MenuController instance;
@@ -13,6 +14,7 @@ MenuController& MenuController::getInstance() {
 MenuController::MenuController() {
   welcomeMenu = new WelcomeMenu();
   controllerListMenu = new ControllerListMenu();
+  actionMenu = new ActionMenu();
 }
 
 void MenuController::init() {
@@ -27,6 +29,10 @@ void MenuController::setCurrentMenu(MenuID id) {
             break;
         case MenuID::ControllerList:
             currentMenu = controllerListMenu;
+            currentMenu->show();
+            break;
+        case MenuID::Action:
+            currentMenu = actionMenu;
             currentMenu->show();
             break;
     }
