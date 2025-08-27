@@ -12,6 +12,7 @@ public:
     void init();
     void showWelcome();
     void showControllerList(int currentIndex);
+    void showDetecting(GameController * controller);
     void showActions(GameController * controller, int actionIndex);
 private:
     DisplayManager();

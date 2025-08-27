@@ -3,6 +3,10 @@
 
 class ActionMenu : public BaseMenu {
 public:
+    enum class ActionState {
+        DetectController,
+        DisplayMenu,
+    };
     ActionMenu();
     void show() override;
     void update() override;
@@ -11,5 +15,5 @@ public:
 
 private:
     int actionIndex = 0;
+    ActionState actionState = ActionState::DetectController;
 };
-

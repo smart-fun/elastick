@@ -48,6 +48,15 @@ void DisplayManager::showControllerList(int currentIndex) {
   lcd.sendBuffer();
 }
 
+void DisplayManager::showDetecting(GameController * controller) {
+  lcd.clearBuffer();
+  lcd.setFont(u8g2_font_DigitalDisco_te);
+  printCenterX(controller->getName(), 10);
+  lcd.setFont(u8g2_font_ncenB08_tr);
+  printCenterXY("detecting...");
+  lcd.sendBuffer();
+}
+
 void DisplayManager::showActions(GameController * controller, int actionIndex) {
   lcd.clearBuffer();
   lcd.setFont(u8g2_font_DigitalDisco_te);
@@ -56,7 +65,6 @@ void DisplayManager::showActions(GameController * controller, int actionIndex) {
   // printCenterXY("Version 0.2");
   lcd.sendBuffer();
 }
-
 
 void DisplayManager::printCenterX(const char * text, int y) {
   u8g2_uint_t screenWidth = lcd.getDisplayWidth();
