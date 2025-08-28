@@ -9,7 +9,7 @@ void Apple2GameController::init() {
 void Apple2GameController::update() {
 }
 
-void Apple2GameController::initDetection() {
+bool Apple2GameController::initDetection() {
     detectionRules.clear();
     detectionRules.push_back({1, INPUT_PULLUP, HIGH});
     detectionRules.push_back({2, INPUT_PULLUP, HIGH});
@@ -20,6 +20,6 @@ void Apple2GameController::initDetection() {
     detectionRules.push_back({7, INPUT_PULLUP, HIGH});
     detectionRules.push_back({8, OUTPUT, LOW});         // GND
     detectionRules.push_back({9, INPUT_PULLUP, HIGH});
-    GameController::initDetection();
+    return GameController::initDetection();
 }
 

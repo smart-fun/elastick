@@ -8,13 +8,14 @@ const char* GameController::getName() const {
     return name;
 }
 
-void GameController::initDetection() {
+bool GameController::initDetection() {
     for (const Detection& rule : detectionRules) {
         int gpio = getGpioFromPlugPin(rule.db9Pin);
         if (gpio >= 0) {
             pinMode(gpio, rule.mode);
         }
     }
+    return true;
 }
 
 bool GameController::isDetected() {

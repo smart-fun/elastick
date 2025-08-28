@@ -2,6 +2,7 @@
 #include "es_display_manager.h"
 #include "es_game_controllers.h"
 #include "es_game_controller.h"
+#include "es_action_menu.h"
 
 DisplayManager& DisplayManager::getInstance() {
     static DisplayManager instance;
@@ -57,12 +58,24 @@ void DisplayManager::showDetecting(GameController * controller) {
   lcd.sendBuffer();
 }
 
-void DisplayManager::showActions(GameController * controller, int actionIndex) {
+void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex) {
   lcd.clearBuffer();
   lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX(controller->getName(), 10);
-  // lcd.setFont(u8g2_font_ncenB08_tr);
-  // printCenterXY("Version 0.2");
+  printCenterX(menuName, 10);
+  lcd.setFont(u8g2_font_ncenB08_tr);
+
+  int count = actionItems.size();
+  int x=12;
+  int y=24;
+  int index = actionIndex % count;
+  int yMax = lcd.getDisplayHeight() + 10;
+  lcd.drawStr(0, y, ">");
+  do {
+    lcd.drawStr(x, y, actionItems[index]->displayName);
+    y += 12;
+    index = (index + 1) % count;
+  } while (y < yMax);
+
   lcd.sendBuffer();
 }
 

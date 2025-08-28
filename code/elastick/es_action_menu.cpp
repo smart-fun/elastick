@@ -10,11 +10,22 @@ ActionMenu::ActionMenu() {
 void ActionMenu::show() {
     GameController* selected = GameControllers::getInstance().getSelectedController();
     if (actionState == ActionState::DetectController) {
-        selected->initDetection();
-        DisplayManager::getInstance().showDetecting(selected);
-        delay(500);
+        if (selected->initDetection()) {
+            DisplayManager::getInstance().showDetecting(selected);
+            delay(500);
+        } else {
+            actionState = ActionState::DisplayMenu;
+            show();
+        }
     } else {
-        DisplayManager::getInstance().showActions(selected, actionIndex);
+        actionItems.reserve(3);
+        actionItems.clear();
+        actionItems.push_back(new ActionItem{Action::PLAY, "PLAY"});
+        if (selected->isAnalog()) {
+            actionItems.push_back(new ActionItem{Action::CALIBRATE, "CALIBRATE"});
+        }
+        actionItems.push_back(new ActionItem{Action::TEST, "TEST"});
+        DisplayManager::getInstance().showActions(selected->getName(), actionItems, actionIndex);
     }
 }
 
@@ -31,10 +42,15 @@ void ActionMenu::update() {
 }
 
 void ActionMenu::onNext() {
-    //selectedIndex = (selectedIndex + 1) % GameControllers::getInstance().getCount();
-    //show();
+    actionIndex = (actionIndex + 1) % GameControllers::getInstance().getCount();
+    show();
 }
 
 void ActionMenu::onValidate() {
-    //MenuController::getInstance().setCurrentMenu(MenuController::MenuID::TestMenu); // or CalibrationMenu
+    ActionItem * item = actionItems[actionIndex];
+    Action action = item->action;
+    const char * name = item->displayName;
+    Serial.print(name);
+    Serial.println(" selected!");
+    //MenuController::getInstance().setCurrentMenu(MenuController::MenuID::TestMenu);
 }
