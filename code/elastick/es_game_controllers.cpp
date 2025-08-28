@@ -3,6 +3,7 @@
 #include "es_apple2_game_controller.h"
 #include "es_atari_paddle_game_controller.h"
 #include "es_ibm_game_controller.h"
+#include "es_atari_joystick_game_controller.h"
 
 GameControllers& GameControllers::getInstance() {
     static GameControllers instance;
@@ -11,6 +12,7 @@ GameControllers& GameControllers::getInstance() {
 
 GameControllers::GameControllers() {
     controllers.reserve(16);
+    controllers.push_back(new AtariJoystickController());
     controllers.push_back(new Apple2GameController());
     controllers.push_back(new AtariPaddleGameController());
     controllers.push_back(new IBMGameController());
