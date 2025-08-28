@@ -10,11 +10,10 @@ public:
     virtual bool isAnalog() const = 0;
     virtual bool initDetection();
     bool isDetected();
+    void logPinValues();
 protected:
     GameController(const char* controllerName);
     const char* name;
     std::vector<PinConfig> detectionRules;
     std::vector<PinConfig> playRules;
 };
-
-

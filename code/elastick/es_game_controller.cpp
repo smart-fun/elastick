@@ -58,3 +58,16 @@ bool GameController::isDetected() {
     }
     return result;
 }
+
+void GameController::logPinValues() {
+    for (const PinConfig& rule : playRules) {
+        int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
+        if (gpio >= 0) {
+            uint8_t value = digitalRead(gpio);
+            Serial.print("pin ");
+            Serial.print(rule.plugPin);
+            Serial.print(" : ");
+            Serial.println(value == HIGH ? "HIGH" : (value == LOW ? "LOW" : "UNKNOWN"));
+        }
+    }
+}

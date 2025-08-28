@@ -19,6 +19,7 @@ public:
     enum class ActionState {
         DetectController,
         DisplayMenu,
+        Play
     };
     ActionMenu();
     void show() override;

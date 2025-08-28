@@ -30,14 +30,32 @@ void ActionMenu::show() {
 }
 
 void ActionMenu::update() {
-    if (actionState == ActionState::DetectController) {
-        GameController* selected = GameControllers::getInstance().getSelectedController();
-        if (selected->isDetected()) {
-            actionState = ActionState::DisplayMenu;
-            show();
-        } else {
+
+    switch(actionState) {
+        case ActionState::DetectController:
+        {
+            GameController* selected = GameControllers::getInstance().getSelectedController();
+            if (selected->isDetected()) {
+                actionState = ActionState::DisplayMenu;
+                show();
+            } else {
+                delay(1000);
+            }
+        }
+        break;
+        case ActionState::DisplayMenu:
+        {
+
+        }
+        break;
+        case ActionState::Play:
+        {
+            GameController* selected = GameControllers::getInstance().getSelectedController();
+            Serial.println("**********");
+            selected->logPinValues();
             delay(1000);
         }
+        break;
     }
 }
 
@@ -52,5 +70,10 @@ void ActionMenu::onValidate() {
     const char * name = item->displayName;
     Serial.print(name);
     Serial.println(" selected!");
+    if (action == Action::PLAY) {
+        GameController* selected = GameControllers::getInstance().getSelectedController();
+        selected->init();
+        actionState = ActionState::Play;
+    }
     //MenuController::getInstance().setCurrentMenu(MenuController::MenuID::TestMenu);
 }
