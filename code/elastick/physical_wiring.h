@@ -1,5 +1,7 @@
 #pragma once
 
+// DEPRECATED
+
 struct EspPin {
   uint8_t plugPin;
   uint8_t gpio;
@@ -26,33 +28,4 @@ static const EspPin dsub9_pins[] = {
     { 9, 27, true  }
 };
 
-// TODO: move somewhere else
-static int getGpioFromPlugPin(uint8_t plugPin) {
-    for (const EspPin& pin : dsub9_pins) {
-        if (pin.plugPin == plugPin) {
-            return pin.gpio;
-        }
-    }
-    return -1; // Pin nou found
-}
-
-
-// DIN-6: all supported joysticks use the same mapping
-static const EspPin din6_pins[] = {
-    { 2, 16, false },   // button
-    { 4, 14, true  },   // x-axis
-    { 5, 27, true  }    // y-axis
-};
-
-// DA-15 only PC Game port supported
-static const EspPin da15_pins[] = {
-    { 1, 14, true  },   // x-axis
-    { 2, 27, true  },   // y-axis
-    { 6, 16, false },   // button 1
-    { 7, 13, false },   // button 2
-    { 13,12, false }    // button 3
-};
-
 static const PadConnector CONNECTOR_DSUB9   = { "DE-9", dsub9_pins, sizeof(dsub9_pins)/sizeof(dsub9_pins[0]) };
-static const PadConnector CONNECTOR_DIN6    = { "DIN-6", din6_pins, sizeof(din6_pins)/sizeof(din6_pins[0]) };
-static const PadConnector CONNECTOR_ASUB15  = { "DA-15", da15_pins, sizeof(da15_pins)/sizeof(da15_pins[0]) };

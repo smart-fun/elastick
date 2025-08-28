@@ -1,3 +1,6 @@
+
+// DEPRECATED
+
 #pragma once
 
 #include "physical_wiring.h"

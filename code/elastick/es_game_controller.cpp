@@ -1,5 +1,6 @@
 #include "es_game_controller.h"
-#include "physical_wiring.h"
+//#include "physical_wiring.h"
+//#include "es_mapping.h"
 
 GameController::GameController(const char* controllerName)
     : name(controllerName) {}
@@ -8,9 +9,21 @@ const char* GameController::getName() const {
     return name;
 }
 
+void GameController::init() {
+    for (const PinConfig& rule : playRules) {
+        int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
+        if (gpio >= 0) {
+            pinMode(gpio, rule.mode);
+            if (rule.value != UNUSED_VALUE) {
+                digitalWrite(gpio, rule.value);
+            }
+        }
+    }
+}
+
 bool GameController::initDetection() {
-    for (const Detection& rule : detectionRules) {
-        int gpio = getGpioFromPlugPin(rule.db9Pin);
+    for (const PinConfig& rule : detectionRules) {
+        int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
         if (gpio >= 0) {
             pinMode(gpio, rule.mode);
         }
@@ -21,13 +34,13 @@ bool GameController::initDetection() {
 bool GameController::isDetected() {
     bool result = true;
     Serial.println("**********");
-    for (const Detection& rule : detectionRules) {
+    for (const PinConfig& rule : detectionRules) {
         if (rule.mode == INPUT || rule.mode == INPUT_PULLUP) {
-            int gpio = getGpioFromPlugPin(rule.db9Pin);
+            int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
             if (gpio >= 0) {
                 int readValue = digitalRead(gpio);
                 Serial.print("pin ");
-                Serial.print(rule.db9Pin);
+                Serial.print(rule.plugPin);
                 Serial.print(" ");
                 Serial.print("gpio ");
                 Serial.print(gpio);
@@ -38,7 +51,7 @@ bool GameController::isDetected() {
                 }
             } else {
                 Serial.print("BAD RULE pin");
-                Serial.print(rule.db9Pin);
+                Serial.print(rule.plugPin);
                 result = false;   // BAD RULE
             }
         }
