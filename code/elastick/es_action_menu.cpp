@@ -59,20 +59,21 @@ void ActionMenu::update() {
         case ActionState::Test:
         {
             GameController* selected = GameControllers::getInstance().getSelectedController();
-            Serial.println("**********");
-            float x = selected->readAxis(0);
-            float y = selected->readAxis(1);
-            uint8_t b1 = selected->readButton(0);
-            uint8_t b2 = selected->readButton(1);
-            Serial.print("X=");
-            Serial.print(x);
-            Serial.print(", Y=");
-            Serial.print(y);
-            Serial.print(", B1=");
-            Serial.print(b1);
-            Serial.print(", B2=");
-            Serial.println(b2);
-            delay(500);
+            DisplayManager::getInstance().showTest(selected);
+            // Serial.println("**********");
+            // float x = selected->readAxis(0);
+            // float y = selected->readAxis(1);
+            // uint8_t b1 = selected->readButton(0);
+            // uint8_t b2 = selected->readButton(1);
+            // Serial.print("X=");
+            // Serial.print(x);
+            // Serial.print(", Y=");
+            // Serial.print(y);
+            // Serial.print(", B1=");
+            // Serial.print(b1);
+            // Serial.print(", B2=");
+            // Serial.println(b2);
+            // delay(500);
         }
         break;
     }

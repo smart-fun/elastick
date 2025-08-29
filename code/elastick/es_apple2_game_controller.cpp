@@ -46,7 +46,8 @@ bool Apple2GameController::initDetection() {
 float Apple2GameController::readAxis(uint8_t axisNumber) {
     uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
     unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
-    return 1.f - (duration/(float)chargeTimeout);
+    float result = (duration*2/(float)chargeTimeout) - 1.f;
+    return (axisNumber == 0) ? result : -result;
 }
 
 uint8_t Apple2GameController::readButton(uint8_t buttonNumber) {
