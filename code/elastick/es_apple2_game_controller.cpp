@@ -1,5 +1,12 @@
 #include "es_apple2_game_controller.h"
 
+#define button1Pin (4)
+#define button2Pin (3)
+#define xAxisPin (5)
+#define yAxisPin (9)
+
+#define chargeTimeout (1900)
+
 Apple2GameController::Apple2GameController()
     : GameController("Apple II") {}
 
@@ -34,5 +41,16 @@ bool Apple2GameController::initDetection() {
     detectionRules.push_back({8, OUTPUT, LOW});         // GND
     detectionRules.push_back({9, INPUT_PULLUP, HIGH});
     return GameController::initDetection();
+}
+
+float Apple2GameController::readAxis(uint8_t axisNumber) {
+    uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
+    unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
+    return 1.f - (duration/(float)chargeTimeout);
+}
+
+uint8_t Apple2GameController::readButton(uint8_t buttonNumber) {
+    uint8_t buttonPin = (buttonNumber == 0) ? button1Pin : button2Pin;
+    return (readPinValue(buttonPin) == HIGH) ? 1 : 0;
 }
 
