@@ -2,7 +2,8 @@
 #include "es_display_manager.h"
 #include "es_game_controllers.h"
 #include "es_game_controller.h"
-//#include "es_menu_controller.h"
+#include "es_menu_controller.h"
+//#include "es_test_menu.h"
 
 ActionMenu::ActionMenu() {
 }
@@ -56,10 +57,10 @@ void ActionMenu::update() {
             delay(1000);
         }
         break;
-        case ActionState::Test:
-        {
-            GameController* selected = GameControllers::getInstance().getSelectedController();
-            DisplayManager::getInstance().showTest(selected);
+        // case ActionState::Test:
+        // {
+        //     GameController* selected = GameControllers::getInstance().getSelectedController();
+        //     DisplayManager::getInstance().showTest(selected);
             // Serial.println("**********");
             // float x = selected->readAxis(0);
             // float y = selected->readAxis(1);
@@ -74,8 +75,8 @@ void ActionMenu::update() {
             // Serial.print(", B2=");
             // Serial.println(b2);
             // delay(500);
-        }
-        break;
+        // }
+        // break;
     }
 }
 
@@ -95,9 +96,8 @@ void ActionMenu::onValidate() {
         GameController* selected = GameControllers::getInstance().getSelectedController();
         selected->init();
     } else if (action == Action::TEST) {
-        actionState = ActionState::Test;
         GameController* selected = GameControllers::getInstance().getSelectedController();
         selected->init();
+        MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Test);
     }
-    //MenuController::getInstance().setCurrentMenu(MenuController::MenuID::TestMenu);
 }

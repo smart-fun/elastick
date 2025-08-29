@@ -5,6 +5,7 @@
 #include "es_welcome_menu.h"
 #include "es_controller_list_menu.h"
 #include "es_action_menu.h"
+#include "es_test_menu.h"
 
 MenuController& MenuController::getInstance() {
     static MenuController instance;
@@ -15,6 +16,7 @@ MenuController::MenuController() {
   welcomeMenu = new WelcomeMenu();
   controllerListMenu = new ControllerListMenu();
   actionMenu = new ActionMenu();
+  testMenu = new TestMenu();
 }
 
 void MenuController::init() {
@@ -33,6 +35,10 @@ void MenuController::setCurrentMenu(MenuID id) {
             break;
         case MenuID::Action:
             currentMenu = actionMenu;
+            currentMenu->show();
+            break;
+        case MenuID::Test:
+            currentMenu = testMenu;
             currentMenu->show();
             break;
     }
