@@ -56,6 +56,25 @@ void ActionMenu::update() {
             delay(1000);
         }
         break;
+        case ActionState::Test:
+        {
+            GameController* selected = GameControllers::getInstance().getSelectedController();
+            Serial.println("**********");
+            float x = selected->readAxis(0);
+            float y = selected->readAxis(1);
+            uint8_t b1 = selected->readButton(0);
+            uint8_t b2 = selected->readButton(1);
+            Serial.print("X=");
+            Serial.print(x);
+            Serial.print(", Y=");
+            Serial.print(y);
+            Serial.print(", B1=");
+            Serial.print(b1);
+            Serial.print(", B2=");
+            Serial.println(b2);
+            delay(500);
+        }
+        break;
     }
 }
 
@@ -71,9 +90,13 @@ void ActionMenu::onValidate() {
     Serial.print(name);
     Serial.println(" selected!");
     if (action == Action::PLAY) {
+        actionState = ActionState::Play;
         GameController* selected = GameControllers::getInstance().getSelectedController();
         selected->init();
-        actionState = ActionState::Play;
+    } else if (action == Action::TEST) {
+        actionState = ActionState::Test;
+        GameController* selected = GameControllers::getInstance().getSelectedController();
+        selected->init();
     }
     //MenuController::getInstance().setCurrentMenu(MenuController::MenuID::TestMenu);
 }

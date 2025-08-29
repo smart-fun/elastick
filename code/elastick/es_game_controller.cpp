@@ -71,3 +71,43 @@ void GameController::logPinValues() {
         }
     }
 }
+
+uint8_t GameController::readPinValue(uint8_t plugPin) {
+    int gpio = Mapping::getInstance().getGpioFromPlugPin(plugPin);
+    if (gpio >= 0) {
+        return digitalRead(gpio);
+    }
+    return UNUSED_VALUE;
+}
+
+unsigned long GameController::readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
+    int gpio = Mapping::getInstance().getGpioFromPlugPin(plugPin);
+    if (gpio >= 0) {
+        // discharge capacitor
+        pinMode(gpio, OUTPUT);
+        digitalWrite(gpio, LOW);
+        delay(5);
+        // measure capacitor charge duration
+        pinMode(gpio, INPUT);
+        unsigned long start = micros();
+        while (digitalRead(gpio) == LOW && micros() - start < timeoutMicros) {}
+        return micros() - start;
+    }
+    return 0;
+}
+
+unsigned long GameController::readDishargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
+    int gpio = Mapping::getInstance().getGpioFromPlugPin(plugPin);
+    if (gpio >= 0) {
+        // charge capacitor
+        pinMode(gpio, OUTPUT);
+        digitalWrite(gpio, HIGH);
+        delay(5);
+        // measure capacitor discharge duration
+        pinMode(gpio, INPUT);
+        unsigned long start = micros();
+        while (digitalRead(gpio) == HIGH && micros() - start < timeoutMicros) {}
+        return micros() - start;
+    }
+    return 0;
+}

@@ -46,6 +46,7 @@ void DisplayManager::showControllerList(int currentIndex) {
     y += 12;
     index = (index + 1) % nbControllers;
   } while (y < yMax);
+
   lcd.sendBuffer();
 }
 
