@@ -2,21 +2,14 @@
 #include "es_menu_controller.h"
 #include "es_input_button.h"
 #include "es_display_manager.h"
-#include "es_welcome_menu.h"
-#include "es_controller_list_menu.h"
-#include "es_action_menu.h"
-#include "es_test_menu.h"
 
 MenuController& MenuController::getInstance() {
     static MenuController instance;
     return instance;
 }
 
-MenuController::MenuController() {
-  welcomeMenu = new WelcomeMenu();
-  controllerListMenu = new ControllerListMenu();
-  actionMenu = new ActionMenu();
-  testMenu = new TestMenu();
+MenuController::MenuController(){
+    Serial.println("MenuController created");
 }
 
 void MenuController::init() {
@@ -26,21 +19,24 @@ void MenuController::init() {
 void MenuController::setCurrentMenu(MenuID id) {
     switch (id) {
         case MenuID::Welcome:
-            currentMenu = welcomeMenu;
-            currentMenu->show();
+            currentMenu = &welcomeMenu;
             break;
         case MenuID::ControllerList:
-            currentMenu = controllerListMenu;
-            currentMenu->show();
+            currentMenu = &controllerListMenu;
             break;
         case MenuID::Action:
-            currentMenu = actionMenu;
-            currentMenu->show();
+            currentMenu = &actionMenu;
             break;
         case MenuID::Test:
-            currentMenu = testMenu;
-            currentMenu->show();
+            currentMenu = &testMenu;
             break;
+        case MenuID::Play:
+            currentMenu = &playMenu;
+            break;
+    }
+    if (currentMenu) {
+        currentMenu->init();
+        currentMenu->show();
     }
 }
 

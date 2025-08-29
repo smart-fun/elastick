@@ -1,7 +1,9 @@
 #include "es_atari_paddle_game_controller.h"
 
 AtariPaddleGameController::AtariPaddleGameController()
-    : GameController("Atari VCS Paddles") {}
+    : GameController("Atari VCS Paddles") {
+    Serial.println("AtariPaddleGameController created");
+}
 
 void AtariPaddleGameController::init() {
     playRules.reserve(9);

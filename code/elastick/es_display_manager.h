@@ -14,8 +14,9 @@ public:
     void showWelcome();
     void showControllerList(int currentIndex);
     void showDetecting(GameController * controller);
-    void showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex);
+    void showActions(const char * menuName, std::vector<ActionItem> & actionItems, int actionIndex);
     void showTest(GameController * controller);
+    void showPlay(bool connected);
 private:
     DisplayManager();
     U8G2_SSD1306_128X64_NONAME_F_HW_I2C lcd = U8G2_SSD1306_128X64_NONAME_F_HW_I2C(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ ES_GPIO_SCL, /* data=*/ ES_GPIO_SDA);

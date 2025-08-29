@@ -1,7 +1,9 @@
 #pragma once
 #include <vector>
-
-class GameController;
+#include "es_apple2_game_controller.h"
+#include "es_atari_paddle_game_controller.h"
+#include "es_ibm_game_controller.h"
+#include "es_atari_joystick_game_controller.h"
 
 class GameControllers {
 public:
@@ -16,4 +18,9 @@ private:
     GameControllers& operator=(const GameControllers&) = delete;
     std::vector<GameController*> controllers;
     GameController * selectedController = nullptr;
+
+    AtariJoystickController atariJoystickController;
+    Apple2GameController apple2Controller;
+    AtariPaddleGameController atariPaddleController;
+    IBMGameController ibmController;
 };

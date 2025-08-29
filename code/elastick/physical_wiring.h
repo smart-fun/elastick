@@ -1,7 +1,7 @@
 #pragma once
 
 // DEPRECATED
-
+/*
 struct EspPin {
   uint8_t plugPin;
   uint8_t gpio;
@@ -29,3 +29,4 @@ static const EspPin dsub9_pins[] = {
 };
 
 static const PadConnector CONNECTOR_DSUB9   = { "DE-9", dsub9_pins, sizeof(dsub9_pins)/sizeof(dsub9_pins[0]) };
+*/

@@ -59,7 +59,7 @@ void DisplayManager::showDetecting(GameController * controller) {
   lcd.sendBuffer();
 }
 
-void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex) {
+void DisplayManager::showActions(const char * menuName, std::vector<ActionItem> & actionItems, int actionIndex) {
   lcd.clearBuffer();
   lcd.setFont(u8g2_font_DigitalDisco_te);
   printCenterX(menuName, 10);
@@ -72,7 +72,7 @@ void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*>
   int yMax = lcd.getDisplayHeight() + 10;
   lcd.drawStr(0, y, ">");
   do {
-    lcd.drawStr(x, y, actionItems[index]->displayName);
+    lcd.drawStr(x, y, actionItems[index].displayName);
     y += 12;
     index = (index + 1) % count;
   } while (y < yMax);
@@ -114,6 +114,24 @@ void DisplayManager::showTest(GameController * controller) {
     lcd.drawDisc(x, y, radius);
   } else {
     lcd.drawCircle(x, y, radius);
+  }
+
+  lcd.sendBuffer();
+}
+
+void DisplayManager::showPlay(bool connected) {
+  lcd.clearBuffer();
+  lcd.setFont(u8g2_font_DigitalDisco_te);
+  printCenterX("PLAYING", 10);
+  lcd.setFont(u8g2_font_ncenB08_tr);
+  lcd.drawStr(0, 24, ">");
+  lcd.drawStr(12, 24, "BACK");
+
+  uint8_t y = 48;
+  if (connected) {
+    printCenterX("BT Connected!", y);
+  } else {
+    printCenterX("Bluetooth connection...", y);
   }
 
   lcd.sendBuffer();

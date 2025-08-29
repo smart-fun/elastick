@@ -18,8 +18,7 @@ class ActionMenu : public BaseMenu {
 public:
     enum class ActionState {
         DetectController,
-        DisplayMenu,
-        Play
+        DisplayMenu
     };
     ActionMenu();
     void show() override;
@@ -30,7 +29,7 @@ public:
 private:
     int actionIndex = 0;
     ActionState actionState = ActionState::DetectController;
-    std::vector<ActionItem*> actionItems;
+    std::vector<ActionItem> actionItems;
 };
 
 

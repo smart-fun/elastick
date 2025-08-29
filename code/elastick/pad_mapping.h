@@ -2,7 +2,7 @@
 // DEPRECATED
 
 #pragma once
-
+/*
 #include "physical_wiring.h"
 
 enum class PadButton {
@@ -141,3 +141,4 @@ static PadMappings * atari2600_paddle = new PadMappings(
 static PadMappings * ibm_pc_joystick = new PadMappings(
     "IBM PC Joystick", &CONNECTOR_DSUB9, ibm_pc_mapping, sizeof(ibm_pc_mapping)/sizeof(ibm_pc_mapping[0])
 );
+*/

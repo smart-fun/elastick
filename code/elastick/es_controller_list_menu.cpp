@@ -4,6 +4,7 @@
 #include "es_menu_controller.h"
 
 ControllerListMenu::ControllerListMenu() {
+    Serial.println("ControllerListMenu created");
 }
 
 void ControllerListMenu::show() {

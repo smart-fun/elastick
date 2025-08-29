@@ -1,7 +1,9 @@
 #include "es_ibm_game_controller.h"
 
 IBMGameController::IBMGameController()
-    : GameController("IBM PC") {}
+    : GameController("IBM PC") {
+    Serial.println("IBMGameController created");
+}
 
 void IBMGameController::init() {
     playRules.reserve(9);

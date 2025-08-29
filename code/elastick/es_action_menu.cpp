@@ -6,6 +6,8 @@
 //#include "es_test_menu.h"
 
 ActionMenu::ActionMenu() {
+    actionItems.reserve(3);
+    Serial.println("ActionMenu created");
 }
 
 void ActionMenu::show() {
@@ -19,13 +21,13 @@ void ActionMenu::show() {
             show();
         }
     } else {
-        actionItems.reserve(3);
+        
         actionItems.clear();
-        actionItems.push_back(new ActionItem{Action::PLAY, "PLAY"});
+        actionItems.push_back({Action::PLAY, "PLAY"});
         if (selected->isAnalog()) {
-            actionItems.push_back(new ActionItem{Action::CALIBRATE, "CALIBRATE"});
+            actionItems.push_back({Action::CALIBRATE, "CALIBRATE"});
         }
-        actionItems.push_back(new ActionItem{Action::TEST, "TEST"});
+        actionItems.push_back({Action::TEST, "TEST"});
         DisplayManager::getInstance().showActions(selected->getName(), actionItems, actionIndex);
     }
 }
@@ -49,14 +51,14 @@ void ActionMenu::update() {
 
         }
         break;
-        case ActionState::Play:
-        {
-            GameController* selected = GameControllers::getInstance().getSelectedController();
-            Serial.println("**********");
-            selected->logPinValues();
-            delay(1000);
-        }
-        break;
+        // case ActionState::Play:
+        // {
+        //     GameController* selected = GameControllers::getInstance().getSelectedController();
+        //     Serial.println("**********");
+        //     selected->logPinValues();
+        //     delay(1000);
+        // }
+        // break;
         // case ActionState::Test:
         // {
         //     GameController* selected = GameControllers::getInstance().getSelectedController();
@@ -86,15 +88,15 @@ void ActionMenu::onNext() {
 }
 
 void ActionMenu::onValidate() {
-    ActionItem * item = actionItems[actionIndex];
-    Action action = item->action;
-    const char * name = item->displayName;
+    ActionItem & item = actionItems[actionIndex];
+    Action action = item.action;
+    const char * name = item.displayName;
     Serial.print(name);
     Serial.println(" selected!");
     if (action == Action::PLAY) {
-        actionState = ActionState::Play;
         GameController* selected = GameControllers::getInstance().getSelectedController();
         selected->init();
+        MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Play);
     } else if (action == Action::TEST) {
         GameController* selected = GameControllers::getInstance().getSelectedController();
         selected->init();

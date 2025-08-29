@@ -2,6 +2,8 @@
 
 class BaseMenu {
 public:
+    virtual void init() {};
+    virtual void deinit() {};
     virtual void show() = 0;
     virtual void update() = 0;
     virtual void onNext() = 0;

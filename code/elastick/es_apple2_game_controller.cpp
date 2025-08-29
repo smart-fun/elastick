@@ -8,7 +8,9 @@
 #define chargeTimeout (1900)
 
 Apple2GameController::Apple2GameController()
-    : GameController("Apple II") {}
+    : GameController("Apple II") {
+    Serial.println("Apple2GameController created");
+}
 
 void Apple2GameController::init() {
     playRules.reserve(9);

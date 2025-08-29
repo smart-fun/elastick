@@ -1,10 +1,10 @@
 #pragma once
 #include "es_base_menu.h"
-
-class WelcomeMenu;
-class ControllerListMenu;
-class ActionMenu;
-class TestMenu;
+#include "es_welcome_menu.h"
+#include "es_controller_list_menu.h"
+#include "es_action_menu.h"
+#include "es_test_menu.h"
+#include "es_play_menu.h"
 
 class MenuController {
 public:
@@ -12,7 +12,8 @@ public:
         Welcome,
         ControllerList,
         Action,
-        Test
+        Test,
+        Play
     };
 
     static MenuController& getInstance();
@@ -26,8 +27,9 @@ private:
     BaseMenu* currentMenu = nullptr;
 
     // Menu Instances
-    WelcomeMenu * welcomeMenu = nullptr;
-    ControllerListMenu * controllerListMenu = nullptr;
-    ActionMenu * actionMenu = nullptr;
-    TestMenu * testMenu = nullptr;
+    WelcomeMenu welcomeMenu;
+    ControllerListMenu controllerListMenu;
+    ActionMenu actionMenu;
+    TestMenu testMenu;
+    PlayMenu playMenu;
 };

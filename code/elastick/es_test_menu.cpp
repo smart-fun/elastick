@@ -6,6 +6,7 @@
 #include "es_game_controller.h"
 
 TestMenu::TestMenu() {
+  Serial.println("TestMenu created");
 }
 
 void TestMenu::show() {

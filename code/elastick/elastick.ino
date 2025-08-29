@@ -1,15 +1,55 @@
-#include <Arduino.h>
 #include <BleGamepad.h>
-#include "pad_mapping.h"
-#include "es_gpio.h"
+#include "es_menu_controller.h"
+#include "es_ble_gamepad_manager.h"
+
+// BleGamepad bleGamepad("IBM test", "Elastick", 100);
+// BleGamepadConfiguration config;
+
+void setup() {
+  Serial.begin(115200);
+  delay(500);
+  Serial.println("create singletons");
+  // Create singletons ASAP
+  BleGamepadManager::getInstance();
+  MenuController::getInstance();
+
+  // delay(1000);
+  // Serial.printf("Free heap: %u\n", ESP.getFreeHeap());
+  // Serial.printf("Min free heap: %u\n", ESP.getMinFreeHeap());
+  // Serial.printf("Max alloc: %u\n", ESP.getMaxAllocHeap());
+  // config.setButtonCount(2);
+  // config.setIncludeXAxis(true);
+  // config.setIncludeYAxis(true);
+  // bleGamepad.begin(&config);
+  // Serial.println("BLE Gamepad started");
+
+
+  MenuController::getInstance().init();
+  MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Welcome);
+
+}
+
+void loop() {
+  MenuController::getInstance().update();
+  delay(100);
+}
+
+
+
+/*
+
+#include <Arduino.h>
+//#include <BleGamepad.h>
+//#include "pad_mapping.h"
+//#include "es_gpio.h"
 #include "es_menu_controller.h"
 
-const uint16_t MAX_PAD_VALUE = 32767;
+//const uint16_t MAX_PAD_VALUE = 32767;
 
-BleGamepad bleGamepad("IBM test", "Elastick", 100);
+//BleGamepad bleGamepad("IBM test", "Elastick", 100);
 //PadMappings * padMappings = atari2600_joystick;
 //PadMappings * padMappings = atari2600_paddle;
-PadMappings * padMappings = ibm_pc_joystick;
+//PadMappings * padMappings = ibm_pc_joystick;
 
 void setup() {
   Serial.begin(115200);
@@ -59,7 +99,7 @@ void setup() {
       }
     }
   }
-*/
+
   MenuController::getInstance().init();
   MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Welcome);
 
@@ -167,6 +207,7 @@ void loop() {
   } else {
     delay(10);
   }
-*/
+
   delay(20);
 }
+*/

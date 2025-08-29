@@ -8,7 +8,9 @@
 #define rightPin (4)
 
 AtariJoystickController::AtariJoystickController()
-    : GameController("Amstrad Atari C=") {}
+    : GameController("Amstrad Atari C=") {
+    Serial.println("AtariJoystickController created");
+}
 
 void AtariJoystickController::init() {
     playRules.reserve(9);

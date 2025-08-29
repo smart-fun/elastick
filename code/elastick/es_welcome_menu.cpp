@@ -4,6 +4,7 @@
 #include "es_menu_controller.h"
 
 WelcomeMenu::WelcomeMenu() {
+    Serial.println("WelcomeMenu created");
 }
 
 void WelcomeMenu::show() {
