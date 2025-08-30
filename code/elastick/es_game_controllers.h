@@ -4,6 +4,7 @@
 #include "es_atari_paddle_game_controller.h"
 #include "es_ibm_game_controller.h"
 #include "es_atari_joystick_game_controller.h"
+#include "es_msx_controller.h"
 
 class GameControllers {
 public:
@@ -23,4 +24,5 @@ private:
     Apple2GameController apple2Controller;
     AtariPaddleGameController atariPaddleController;
     IBMGameController ibmController;
+    MSXGameController msxController;
 };

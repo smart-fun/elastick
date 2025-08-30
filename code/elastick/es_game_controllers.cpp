@@ -12,6 +12,7 @@ GameControllers::GameControllers() {
     controllers.push_back(&apple2Controller);
     controllers.push_back(&atariPaddleController);
     controllers.push_back(&ibmController);
+    controllers.push_back(&msxController);
 }
 
 int GameControllers::getCount() const {

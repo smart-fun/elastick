@@ -191,7 +191,7 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 7. Button 2
 
-8. -
+8. Control (GND)
 
 9. GND
 

@@ -1,8 +1,20 @@
+#include "es_gpio.h"
 #include "es_menu_controller.h"
 #include "es_ble_gamepad_manager.h"
 
+bool firmwareUpdateMode = false;
+
 void setup() {
   Serial.begin(115200);
+
+  uint8_t gpio = ES_GPIO::ES_GPIO_BUTTON_VALIDATE;
+  pinMode(gpio, INPUT_PULLUP);
+  firmwareUpdateMode = !digitalRead(gpio);
+  if (firmwareUpdateMode) {
+    Serial.println("Not starting anything");
+    return;
+  }
+
 
   // Create singletons ASAP
   Serial.println("create singletons");
@@ -26,6 +38,14 @@ void setup() {
 }
 
 void loop() {
+
+  if (firmwareUpdateMode) {
+    Serial.println("Doing nothing");
+    delay(1000);
+    return;
+  }
+
+
   unsigned long start = millis();
   MenuController::getInstance().update();
   long wait = 16 - (millis() - start);
