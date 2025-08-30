@@ -1,4 +1,4 @@
-#include "es_apple2_game_controller.h"
+#include "apple2_controller.h"
 
 #define button1Pin (4)
 #define button2Pin (3)

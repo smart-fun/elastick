@@ -1,6 +1,6 @@
-#include "es_gpio.h"
-#include "es_menu_controller.h"
-#include "es_ble_gamepad_manager.h"
+#include "gpio.h"
+#include "menu_controller.h"
+#include "ble_gamepad_manager.h"
 
 bool firmwareUpdateMode = false;
 

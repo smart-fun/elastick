@@ -1,7 +1,7 @@
 
-#include "es_menu_controller.h"
-#include "es_input_button.h"
-#include "es_display_manager.h"
+#include "menu_controller.h"
+#include "input_button.h"
+#include "display_manager.h"
 
 MenuController& MenuController::getInstance() {
     static MenuController instance;

@@ -1,5 +1,5 @@
 #pragma once
-#include "es_game_controller.h"
+#include "game_controller.h"
 
 class AtariPaddleGameController : public GameController {
 public:

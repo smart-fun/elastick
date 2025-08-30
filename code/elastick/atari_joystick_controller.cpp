@@ -1,4 +1,4 @@
-#include "es_atari_joystick_game_controller.h"
+#include "atari_joystick_controller.h"
 
 #define button1Pin (6)
 #define button2Pin (9)

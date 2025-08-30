@@ -1,15 +1,15 @@
 #pragma once
-#include "es_base_menu.h"
+#include "base_menu.h"
 
-class WelcomeMenu : public BaseMenu {
+class ControllerListMenu : public BaseMenu {
 public:
-    WelcomeMenu();
+    ControllerListMenu();
     void show() override;
     void update() override;
     void onNext() override;
     void onValidate() override;
-private:
-    unsigned long startTime;
-};
 
+private:
+    int selectedIndex = 0;
+};
 

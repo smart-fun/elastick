@@ -1,4 +1,4 @@
-#include "es_atari_paddle_game_controller.h"
+#include "atari_paddle_controller.h"
 
 #define button1Pin (4)
 #define button2Pin (3)

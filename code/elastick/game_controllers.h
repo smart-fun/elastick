@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
-#include "es_apple2_game_controller.h"
-#include "es_atari_paddle_game_controller.h"
-#include "es_ibm_game_controller.h"
-#include "es_atari_joystick_game_controller.h"
-#include "es_msx_controller.h"
+#include "apple2_controller.h"
+#include "atari_paddle_controller.h"
+#include "ibm_controller.h"
+#include "atari_joystick_controller.h"
+#include "msx_controller.h"
 
 class GameControllers {
 public:

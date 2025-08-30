@@ -1,6 +1,7 @@
 #pragma once
+#include <vector>
 #include <Arduino.h>
-#include "es_mapping.h"
+#include "mapping.h"
 
 class GameController {
 public:

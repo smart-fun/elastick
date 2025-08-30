@@ -1,9 +1,9 @@
 #pragma once
-#include "es_game_controller.h"
+#include "game_controller.h"
 
-class IBMGameController : public GameController {
+class MSXGameController : public GameController {
 public:
-    IBMGameController();
+    MSXGameController();
     void init() override;
     void update() override;
     bool isAnalog() const override { return true; };

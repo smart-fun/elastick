@@ -1,5 +1,5 @@
-#include "es_game_controllers.h"
-#include "es_game_controller.h"
+#include "game_controllers.h"
+#include "game_controller.h"
 
 GameControllers& GameControllers::getInstance() {
     static GameControllers instance;

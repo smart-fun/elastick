@@ -1,6 +1,4 @@
-#include "es_game_controller.h"
-//#include "physical_wiring.h"
-//#include "es_mapping.h"
+#include "game_controller.h"
 
 GameController::GameController(const char* controllerName)
     : name(controllerName) {}

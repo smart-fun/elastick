@@ -1,9 +1,9 @@
 #include <Arduino.h>
-#include "es_test_menu.h"
-#include "es_display_manager.h"
-#include "es_menu_controller.h"
-#include "es_game_controllers.h"
-#include "es_game_controller.h"
+#include "test_menu.h"
+#include "display_manager.h"
+#include "menu_controller.h"
+#include "game_controllers.h"
+#include "game_controller.h"
 
 TestMenu::TestMenu() {
   Serial.println("TestMenu created");

@@ -1,4 +1,4 @@
-#include "es_ibm_game_controller.h"
+#include "ibm_controller.h"
 
 #define button1Pin (4)
 #define button2Pin (3)

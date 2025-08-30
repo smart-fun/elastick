@@ -1,5 +1,5 @@
 
-#include "es_mapping.h"
+#include "mapping.h"
 
 Mapping& Mapping::getInstance() {
     static Mapping instance;

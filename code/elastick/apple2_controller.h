@@ -1,13 +1,14 @@
 #pragma once
-#include "es_game_controller.h"
+#include "game_controller.h"
 
-class MSXGameController : public GameController {
+class Apple2GameController : public GameController {
 public:
-    MSXGameController();
+    Apple2GameController();
     void init() override;
     void update() override;
     bool isAnalog() const override { return true; };
-    bool initDetection() override { return false; };
+    bool initDetection() override;
     float readAxis(uint8_t axisNumber) override;
     uint8_t readButton(uint8_t buttonNumber) override;
 };
+

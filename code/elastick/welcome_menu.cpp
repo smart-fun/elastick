@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include "es_welcome_menu.h"
-#include "es_display_manager.h"
+#include "welcome_menu.h"
+#include "display_manager.h"
 
 WelcomeMenu::WelcomeMenu() {
     Serial.println("WelcomeMenu created");
