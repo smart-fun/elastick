@@ -34,9 +34,9 @@ float AtariJoystickController::readAxis(uint8_t axisNumber) {
     uint8_t first = (axisNumber == 0) ? leftPin : upPin;
     uint8_t second = (axisNumber == 0) ? rightPin : downPin;
     if (readPinValue(first) == LOW) {
-        return -1.f;
+        return (axisNumber == 0) ? -1.f : 1.f;
     } else if (readPinValue(second) == LOW) {
-        return 1.f;
+        return (axisNumber == 0) ? 1.f : -1.f;
     }
     return 0.f;
 }
