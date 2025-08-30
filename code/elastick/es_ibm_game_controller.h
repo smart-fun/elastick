@@ -8,6 +8,6 @@ public:
     void update() override;
     bool isAnalog() const override { return true; };
     bool initDetection() override { return false; };
-    float readAxis(uint8_t axisNumber) override { return 0.f;};
-    uint8_t readButton(uint8_t buttonNumber) override {return 0;};
+    float readAxis(uint8_t axisNumber) override;
+    uint8_t readButton(uint8_t buttonNumber) override;
 };

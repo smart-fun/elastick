@@ -1,5 +1,12 @@
 #include "es_ibm_game_controller.h"
 
+#define button1Pin (4)
+#define button2Pin (3)
+#define xAxisPin (5)
+#define yAxisPin (9)
+
+#define chargeTimeout (1400)
+
 IBMGameController::IBMGameController()
     : GameController("IBM PC") {
     Serial.println("IBMGameController created");
@@ -21,4 +28,16 @@ void IBMGameController::init() {
 }
 
 void IBMGameController::update() {
+}
+
+float IBMGameController::readAxis(uint8_t axisNumber) {
+    uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
+    unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
+    float result = (duration*2/(float)chargeTimeout) - 1.f;
+    return (axisNumber == 0) ? result : -result;
+}
+
+uint8_t IBMGameController::readButton(uint8_t buttonNumber) {
+    uint8_t buttonPin = (buttonNumber == 0) ? button1Pin : button2Pin;
+    return (readPinValue(buttonPin) == LOW) ? 1 : 0;
 }

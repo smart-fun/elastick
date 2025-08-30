@@ -15,7 +15,9 @@ void setup() {
     MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Welcome);
     Serial.println("First boot → force restart after BLE init");
     BleGamepadManager::getInstance().start("Elastick");
-    delay(1000);
+    delay(500);
+    BleGamepadManager::getInstance().stop();
+    delay(500);
     ESP.restart();
     return;
   }
