@@ -107,7 +107,7 @@ unsigned long GameController::readChargingDuration(uint8_t plugPin, unsigned lon
     return 0;
 }
 
-unsigned long GameController::readDishargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
+unsigned long GameController::readDischargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
     int gpio = Mapping::getInstance().getGpioFromPlugPin(plugPin);
     if (gpio >= 0) {
         // charge capacitor
