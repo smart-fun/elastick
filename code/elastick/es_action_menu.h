@@ -6,7 +6,8 @@
 enum class Action {
     PLAY,
     CALIBRATE,
-    TEST
+    TEST,
+    BACK
 };
 
 struct ActionItem {
@@ -21,6 +22,8 @@ public:
         DisplayMenu
     };
     ActionMenu();
+    void init() override;
+    void deinit() override;
     void show() override;
     void update() override;
     void onNext() override;
@@ -29,7 +32,11 @@ public:
 private:
     int actionIndex = 0;
     ActionState actionState = ActionState::DetectController;
-    std::vector<ActionItem> actionItems;
+    std::vector<ActionItem*> actionItems;
+    ActionItem actionPlay = {Action::PLAY, "PLAY"};
+    ActionItem actionCalibrate = {Action::CALIBRATE, "CALIBRATE"};
+    ActionItem actionTest = {Action::TEST, "TEST"};
+    ActionItem actionBack = {Action::BACK, "BACK"};
 };
 
 

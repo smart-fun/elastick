@@ -5,6 +5,7 @@
 class GameController {
 public:
     virtual void init();
+    virtual void deinit();
     virtual void update() = 0;
     const char* getName() const;
     virtual bool isAnalog() const = 0;

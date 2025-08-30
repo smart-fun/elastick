@@ -14,7 +14,7 @@ public:
     void showWelcome();
     void showControllerList(int currentIndex);
     void showDetecting(GameController * controller);
-    void showActions(const char * menuName, std::vector<ActionItem> & actionItems, int actionIndex);
+    void showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex);
     void showTest(GameController * controller);
     void showPlay(bool connected);
 private:

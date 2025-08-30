@@ -59,7 +59,7 @@ void DisplayManager::showDetecting(GameController * controller) {
   lcd.sendBuffer();
 }
 
-void DisplayManager::showActions(const char * menuName, std::vector<ActionItem> & actionItems, int actionIndex) {
+void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex) {
   lcd.clearBuffer();
   lcd.setFont(u8g2_font_DigitalDisco_te);
   printCenterX(menuName, 10);
@@ -72,7 +72,7 @@ void DisplayManager::showActions(const char * menuName, std::vector<ActionItem> 
   int yMax = lcd.getDisplayHeight() + 10;
   lcd.drawStr(0, y, ">");
   do {
-    lcd.drawStr(x, y, actionItems[index].displayName);
+    lcd.drawStr(x, y, actionItems[index]->displayName);
     y += 12;
     index = (index + 1) % count;
   } while (y < yMax);

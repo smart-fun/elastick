@@ -10,6 +10,7 @@ const char* GameController::getName() const {
 }
 
 void GameController::init() {
+    Serial.println("init GameController");
     for (const PinConfig& rule : playRules) {
         int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
         if (gpio >= 0) {
@@ -17,6 +18,16 @@ void GameController::init() {
             if (rule.value != UNUSED_VALUE) {
                 digitalWrite(gpio, rule.value);
             }
+        }
+    }
+}
+
+void GameController::deinit() {
+    Serial.println("deinit GameController");
+    for (const PinConfig& rule : playRules) {
+        int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
+        if (gpio >= 0) {
+            pinMode(gpio, INPUT);
         }
     }
 }
