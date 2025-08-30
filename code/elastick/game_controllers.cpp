@@ -7,12 +7,13 @@ GameControllers& GameControllers::getInstance() {
 }
 
 GameControllers::GameControllers() {
-    controllers.reserve(16);
+    controllers.reserve(8);
     controllers.push_back(&atariJoystickController);
     controllers.push_back(&apple2Controller);
     controllers.push_back(&atariPaddleController);
     controllers.push_back(&ibmController);
     controllers.push_back(&msxController);
+    controllers.push_back(&cocoController);
 }
 
 int GameControllers::getCount() const {

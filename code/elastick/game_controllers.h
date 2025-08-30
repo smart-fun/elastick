@@ -5,6 +5,7 @@
 #include "ibm_controller.h"
 #include "atari_joystick_controller.h"
 #include "msx_controller.h"
+#include "coco_controller.h"
 
 class GameControllers {
 public:
@@ -25,4 +26,5 @@ private:
     AtariPaddleGameController atariPaddleController;
     IBMGameController ibmController;
     MSXGameController msxController;
+    CocoGameController cocoController;
 };
