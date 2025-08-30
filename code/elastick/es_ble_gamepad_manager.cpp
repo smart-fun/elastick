@@ -7,7 +7,7 @@ BleGamepadManager::BleGamepadManager()
   Serial.println("BleGamepadManager created");
 }
 
-void BleGamepadManager::start() {
+void BleGamepadManager::start(const char * deviceName) {
   config.setAutoReport(true);
   config.setControllerType(CONTROLLER_TYPE_JOYSTICK); // or CONTROLLER_TYPE_GAMEPAD
   config.setButtonCount(2);
@@ -22,6 +22,7 @@ void BleGamepadManager::start() {
   config.setHatSwitchCount(0);
   config.setAxesMin(-MAX_PAD_VALUE);
   config.setAxesMax(MAX_PAD_VALUE);
+  bleGamepad.deviceName = deviceName;
   bleGamepad.begin(&config);
 }
 
@@ -31,4 +32,19 @@ void BleGamepadManager::stop() {
 
 bool BleGamepadManager::isConnected() {
   return bleGamepad.isConnected();
+}
+
+void BleGamepadManager::sendValues(uint8_t button1, uint8_t button2, float x, float y) {
+  if (button1) {
+    bleGamepad.press(BUTTON_1);
+  } else {
+    bleGamepad.release(BUTTON_1);
+  }
+  if (button2) {
+    bleGamepad.press(BUTTON_2);
+  } else {
+    bleGamepad.release(BUTTON_2);
+  }
+  bleGamepad.setX((int16_t)(x * MAX_PAD_VALUE));
+  bleGamepad.setY((int16_t)(y * MAX_PAD_VALUE));
 }

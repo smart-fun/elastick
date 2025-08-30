@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include "es_welcome_menu.h"
 #include "es_display_manager.h"
-#include "es_menu_controller.h"
 
 WelcomeMenu::WelcomeMenu() {
     Serial.println("WelcomeMenu created");
@@ -13,14 +12,11 @@ void WelcomeMenu::show() {
 }
 
 void WelcomeMenu::update() {
-    unsigned long now = millis();
-    if (now > startTime + 2000) {
-      onNext();
-    }
+    // nothing to do
 }
 
 void WelcomeMenu::onNext() {
-    MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+    // nothing to do
 }
 
 void WelcomeMenu::onValidate() {

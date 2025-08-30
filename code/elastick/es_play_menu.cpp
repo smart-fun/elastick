@@ -12,9 +12,8 @@ PlayMenu::PlayMenu() {
 
 void PlayMenu::init() {
   Serial.println("PlayMenu::init");
-  Serial.printf("Free heap before begin: %u\n", ESP.getFreeHeap());
-  BleGamepadManager::getInstance().start();
-  Serial.println("begin done");
+  GameController * controller = GameControllers::getInstance().getSelectedController();
+  BleGamepadManager::getInstance().start(controller->getName());
 }
 
 void PlayMenu::deinit() {
@@ -22,8 +21,6 @@ void PlayMenu::deinit() {
 }
 
 void PlayMenu::show() {
-  GameController * selected = GameControllers::getInstance().getSelectedController();
-  //bleGamepad->deviceName = selected->getName();
   DisplayManager::getInstance().showPlay(isConnected);
 }
 
@@ -33,6 +30,14 @@ void PlayMenu::update() {
     isConnected = connected;
     show();
   }
+  if (connected) {
+    GameController * controller = GameControllers::getInstance().getSelectedController();
+    uint8_t b1 = controller->readButton(0);
+    uint8_t b2 = controller->readButton(1);
+    float x = controller->readAxis(0);
+    float y = controller->readAxis(1);
+    BleGamepadManager::getInstance().sendValues(b1, b2, x, -y);
+  }
 }
 
 void PlayMenu::onNext() {
@@ -40,6 +45,6 @@ void PlayMenu::onNext() {
 }
 
 void PlayMenu::onValidate() {
-  // deinit();
-  // MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Action);
+  deinit();
+  MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Action);
 }
