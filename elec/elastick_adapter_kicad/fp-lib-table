@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "elastick")(type "KiCad")(uri "${KIPRJMOD}/elastick.pretty")(options "")(descr ""))
+)
