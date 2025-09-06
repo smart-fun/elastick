@@ -18,6 +18,11 @@ DisplayManager::DisplayManager() {
 void DisplayManager::init() {
 }
 
+void DisplayManager::clear() {
+  lcd.clearBuffer();
+  lcd.sendBuffer();
+}
+
 void DisplayManager::showWelcome() {
   lcd.clearBuffer();
   lcd.setFont(u8g2_font_DigitalDisco_te);

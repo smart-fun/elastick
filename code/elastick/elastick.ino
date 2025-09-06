@@ -1,40 +1,31 @@
 #include "gpio.h"
 #include "menu_controller.h"
 #include "ble_gamepad_manager.h"
-
+#include "display_manager.h"
 bool firmwareUpdateMode = false;
 
 void setup() {
   Serial.begin(115200);
 
+  delay(200);
   uint8_t gpio = ES_GPIO::ES_GPIO_BUTTON_VALIDATE;
   pinMode(gpio, INPUT_PULLUP);
   firmwareUpdateMode = !digitalRead(gpio);
   if (firmwareUpdateMode) {
     Serial.println("Not starting anything");
+    DisplayManager::getInstance().clear();
     return;
   }
 
+  Serial.printf("Reset reason: %d\n", esp_reset_reason());  // see ESP_RST_POWERON
 
   // Create singletons ASAP
   Serial.println("create singletons");
   BleGamepadManager::getInstance();
   MenuController::getInstance();
 
-  // first boot, create all and force reboot, otherwise it will do it much more later when starting BLE
-  if (esp_reset_reason() == ESP_RST_POWERON) {
-    MenuController::getInstance().init();
-    MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Welcome);
-    Serial.println("First boot → force restart after BLE init");
-    BleGamepadManager::getInstance().start("Elastick");
-    delay(500);
-    BleGamepadManager::getInstance().stop();
-    delay(500);
-    ESP.restart();
-    return;
-  }
   MenuController::getInstance().init();
-  MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+  MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Welcome);
 }
 
 void loop() {

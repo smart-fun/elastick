@@ -12,6 +12,7 @@ class DisplayManager {
 public:
     static DisplayManager& getInstance();
     void init();
+    void clear();
     void showWelcome();
     void showControllerList(int currentIndex);
     void showDetecting(GameController * controller);

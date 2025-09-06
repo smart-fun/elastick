@@ -3,6 +3,7 @@
 
 #pragma once
 
+// Lolin D32, ESP DevKitC-v4
 enum ES_GPIO {
   // 2 pins for screen (i2c)
   ES_GPIO_SDA = 21,
