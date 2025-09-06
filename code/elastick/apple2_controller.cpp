@@ -6,6 +6,8 @@
 #define yAxisPin (9)
 
 #define chargeTimeout (1900)
+#define correctionFactor1ButtonPressed (1.15f)
+#define correctionFactor2ButtonsPressed (1.30f)
 
 Apple2GameController::Apple2GameController()
     : GameController("Apple II") {
@@ -46,8 +48,19 @@ bool Apple2GameController::initDetection() {
 }
 
 float Apple2GameController::readAxis(uint8_t axisNumber) {
+    // time compensation when button are pressed (duration is longer)
+    uint8_t nbButtonPressed = 0;
+    if (readButton(0)) {
+        ++nbButtonPressed;
+    }
+    if (readButton(1)) {
+        ++nbButtonPressed;
+    }
+    float correctionFactor = (nbButtonPressed == 0) ? 1 : ((nbButtonPressed == 1) ? correctionFactor1ButtonPressed : correctionFactor2ButtonsPressed);
+
     uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
-    unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
+    float duration = (float)readChargingDuration(plugPin, (unsigned long)(chargeTimeout * correctionFactor));
+    duration /= correctionFactor;
     float result = (duration*2/(float)chargeTimeout) - 1.f;
     return (axisNumber == 0) ? result : -result;
 }
