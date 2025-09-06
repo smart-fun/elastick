@@ -37,16 +37,16 @@ float CocoGameController::readAxis(uint8_t axisNumber) {
     unsigned long dischargeDuration = readDischargingDuration(plugPin, dischargeTimeout);
     if (chargeDuration < dischargeDuration) {
         float duration = chargeTimeout - chargeDuration;
-        if (duration < 0) {
-            duration = 0;
-        }
+        // if (duration < 0) {
+        //     duration = 0;
+        // }
         float value = (duration/(float)chargeTimeout);
         return (axisNumber == 0) ? value : -value;
     } else {
         float duration = dischargeTimeout - dischargeDuration;
-        if (duration < 0) {
-            duration = 0;
-        }
+        // if (duration < 0) {
+        //     duration = 0;
+        // }
         float value = (-duration/(float)dischargeTimeout);
         return (axisNumber == 0) ? value : -value;
     }

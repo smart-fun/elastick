@@ -100,7 +100,8 @@ unsigned long GameController::readChargingDuration(uint8_t plugPin, unsigned lon
         pinMode(gpio, INPUT);
         unsigned long start = micros();
         while (digitalRead(gpio) == LOW && micros() - start < timeoutMicros) {}
-        return micros() - start;
+        unsigned long duration = micros() - start;
+        return (duration < timeoutMicros ? duration : timeoutMicros);
     }
     return 0;
 }
@@ -116,7 +117,8 @@ unsigned long GameController::readDischargingDuration(uint8_t plugPin, unsigned 
         pinMode(gpio, INPUT);
         unsigned long start = micros();
         while (digitalRead(gpio) == HIGH && micros() - start < timeoutMicros) {}
-        return micros() - start;
+        unsigned long duration = micros() - start;
+        return (duration < timeoutMicros ? duration : timeoutMicros);
     }
     return 0;
 }
