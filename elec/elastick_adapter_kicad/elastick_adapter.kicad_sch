@@ -2254,10 +2254,16 @@
 		)
 	)
 	(junction
-		(at 130.81 16.51)
+		(at 105.41 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2ceaecbb-be67-44d7-ae32-51137f412209")
+		(uuid "0e79a277-c9a2-4173-8285-5ec047a46b9b")
+	)
+	(junction
+		(at 236.22 72.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3145914b-0cc3-4fa5-9002-5e3a590ad9a0")
 	)
 	(junction
 		(at 130.81 73.66)
@@ -2276,12 +2282,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "655abeb9-73a5-4b0b-8ff1-579bbe63c0a0")
-	)
-	(junction
-		(at 128.27 137.16)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "770afff2-b060-4c06-83f4-3b669bcd3952")
 	)
 	(junction
 		(at 97.79 114.3)
@@ -2326,20 +2326,16 @@
 		(uuid "ea0a135f-a940-4180-805e-e2e46525358d")
 	)
 	(junction
+		(at 228.6 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f463dc77-e5ef-4058-ad8f-330802d24da3")
+	)
+	(junction
 		(at 179.07 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fe869283-1cd5-433c-b3a8-7a4f70a83071")
-	)
-	(wire
-		(pts
-			(xy 119.38 43.18) (xy 119.38 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "03f42937-5ed8-4cae-b3d8-9fbc8e9ddb03")
 	)
 	(wire
 		(pts
@@ -2353,7 +2349,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 22.86) (xy 207.01 102.87)
+			(xy 207.01 22.86) (xy 207.01 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2383,33 +2379,13 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 139.7) (xy 105.41 125.73)
+			(xy 232.41 78.74) (xy 228.6 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0838bcf1-f82b-415f-97e7-67482f7335c7")
-	)
-	(wire
-		(pts
-			(xy 113.03 36.83) (xy 113.03 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08dd36b8-be29-4e37-8fc0-9597a9f150fb")
-	)
-	(wire
-		(pts
-			(xy 128.27 31.75) (xy 130.81 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "09cc6209-4966-43b1-aca9-137031dbb2b7")
+		(uuid "099737ae-73cf-4a5b-a1d8-bdfc53dc8ba8")
 	)
 	(wire
 		(pts
@@ -2423,16 +2399,6 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 105.41) (xy 209.55 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b6acfd2-ee0d-4d17-a579-dd346114d51f")
-	)
-	(wire
-		(pts
 			(xy 151.13 57.15) (xy 105.41 57.15)
 		)
 		(stroke
@@ -2440,16 +2406,6 @@
 			(type default)
 		)
 		(uuid "0b755f4d-4bc8-44c0-bef0-9da921487ebd")
-	)
-	(wire
-		(pts
-			(xy 121.92 40.64) (xy 121.92 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f0bea36-1f00-4ae1-b174-1686b85e7bc6")
 	)
 	(wire
 		(pts
@@ -2493,13 +2449,13 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 43.18) (xy 119.38 43.18)
+			(xy 232.41 110.49) (xy 163.83 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2d9113fb-66be-43e7-9521-a31d525a79be")
+		(uuid "2ab87de4-b259-451c-927c-aa63a730bef7")
 	)
 	(wire
 		(pts
@@ -2533,6 +2489,16 @@
 	)
 	(wire
 		(pts
+			(xy 111.76 139.7) (xy 105.41 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "368b322e-b736-41d3-9947-4e47bcb8cd47")
+	)
+	(wire
+		(pts
 			(xy 146.05 52.07) (xy 100.33 52.07)
 		)
 		(stroke
@@ -2543,16 +2509,6 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 16.51) (xy 100.33 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3917457c-9b6b-4d92-84ab-e1b35154703f")
-	)
-	(wire
-		(pts
 			(xy 153.67 60.96) (xy 107.95 60.96)
 		)
 		(stroke
@@ -2560,6 +2516,16 @@
 			(type default)
 		)
 		(uuid "39e42990-6a07-46a8-97a1-0dad4feeaa03")
+	)
+	(wire
+		(pts
+			(xy 124.46 125.73) (xy 140.97 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c40e411-bd1f-471c-b374-5a261faf0a4e")
 	)
 	(wire
 		(pts
@@ -2623,13 +2589,13 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 16.51) (xy 100.33 16.51)
+			(xy 105.41 139.7) (xy 105.41 149.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "56c940fd-52fc-4034-8b10-e15b0b258d80")
+		(uuid "52077f6b-f173-46ef-b35d-85a2028365b3")
 	)
 	(wire
 		(pts
@@ -2643,6 +2609,16 @@
 	)
 	(wire
 		(pts
+			(xy 228.6 81.28) (xy 229.87 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57cb56e9-2eb1-4d61-a7c9-9ccba974595b")
+	)
+	(wire
+		(pts
 			(xy 161.29 45.72) (xy 193.04 45.72)
 		)
 		(stroke
@@ -2653,23 +2629,13 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 102.87) (xy 140.97 102.87)
+			(xy 209.55 97.79) (xy 209.55 20.32)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5ffb4beb-4896-496f-a8d0-dfdd11e47ea7")
-	)
-	(wire
-		(pts
-			(xy 130.81 16.51) (xy 130.81 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e088a99-16dc-4572-bec5-c44b4f262b58")
+		(uuid "5e0ed930-a602-4753-a6c0-77ed8155a9e1")
 	)
 	(wire
 		(pts
@@ -2753,23 +2719,13 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 139.7) (xy 105.41 139.7)
+			(xy 128.27 137.16) (xy 128.27 149.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7c9ed848-2ef4-46c7-be05-c3e6066db2e3")
-	)
-	(wire
-		(pts
-			(xy 128.27 107.95) (xy 140.97 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7df5ab3f-1a3f-482f-81f5-858e0789720f")
+		(uuid "7b6fb90f-325e-4a9a-8e41-ae81538797aa")
 	)
 	(wire
 		(pts
@@ -2783,17 +2739,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 34.29) (xy 113.03 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7f29d939-13d2-4cc0-80aa-b911989f228c")
-	)
-	(wire
-		(pts
-			(xy 236.22 92.71) (xy 236.22 16.51)
+			(xy 236.22 92.71) (xy 236.22 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2813,7 +2759,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 92.71) (xy 236.22 92.71)
+			(xy 179.07 92.71) (xy 228.6 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2833,7 +2779,17 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 149.86) (xy 64.77 149.86)
+			(xy 213.36 113.03) (xy 213.36 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8614fb97-0cf7-4f5b-800a-dde4e914e74a")
+	)
+	(wire
+		(pts
+			(xy 128.27 149.86) (xy 105.41 149.86)
 		)
 		(stroke
 			(width 0)
@@ -2843,23 +2799,13 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 137.16) (xy 128.27 137.16)
+			(xy 121.92 142.24) (xy 124.46 142.24)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8e2e7594-a5ff-4868-ae85-a361bf08eab1")
-	)
-	(wire
-		(pts
-			(xy 128.27 36.83) (xy 128.27 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8f77b597-8d0e-4f53-8de0-64325dd92286")
+		(uuid "89d4bd62-d942-472d-82f9-a3a6bb4e5856")
 	)
 	(wire
 		(pts
@@ -2910,6 +2856,36 @@
 			(type default)
 		)
 		(uuid "948db125-9e90-4035-a1c4-f3c4c4538c54")
+	)
+	(wire
+		(pts
+			(xy 124.46 125.73) (xy 124.46 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9496615d-8799-4225-95f8-cacdf7acbf62")
+	)
+	(wire
+		(pts
+			(xy 236.22 72.39) (xy 236.22 16.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b658019-5593-479c-bc6c-a1e74f8574f8")
+	)
+	(wire
+		(pts
+			(xy 228.6 92.71) (xy 236.22 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b9e83b4-c618-48e3-a7a3-3a87e64b1980")
 	)
 	(wire
 		(pts
@@ -2973,23 +2949,33 @@
 	)
 	(wire
 		(pts
-			(xy 209.55 105.41) (xy 209.55 20.32)
+			(xy 229.87 81.28) (xy 229.87 107.95)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b0ab889f-cf6d-470f-b613-dbd4a60d332e")
+		(uuid "af058bce-ae1c-4aef-9d0e-efa78cfc19dc")
 	)
 	(wire
 		(pts
-			(xy 113.03 31.75) (xy 109.22 31.75)
+			(xy 228.6 83.82) (xy 228.6 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b60b246c-1f8a-47b3-a295-330dd7d169d1")
+		(uuid "b0f33c7d-5e40-46a5-8dcd-b210e3be8a37")
+	)
+	(wire
+		(pts
+			(xy 105.41 149.86) (xy 64.77 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4fefd94-facf-4337-8264-2a2770c9bd61")
 	)
 	(wire
 		(pts
@@ -3010,16 +2996,6 @@
 			(type default)
 		)
 		(uuid "b8a595cc-1355-46cf-93bc-9c1d02571d04")
-	)
-	(wire
-		(pts
-			(xy 128.27 137.16) (xy 128.27 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb4ec9ba-667d-4779-b2e8-4a0818dff27e")
 	)
 	(wire
 		(pts
@@ -3053,13 +3029,13 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 102.87) (xy 163.83 102.87)
+			(xy 163.83 105.41) (xy 207.01 105.41)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c5c2e090-f087-40ce-994b-937c9a85044e")
+		(uuid "c1ea5731-aeae-4df0-89c2-57e686447bad")
 	)
 	(wire
 		(pts
@@ -3103,23 +3079,23 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 31.75) (xy 109.22 43.18)
+			(xy 213.36 78.74) (xy 213.36 72.39)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d81bdc2b-51eb-4fe2-9f3a-f5ca7d0ab934")
+		(uuid "d42c6196-ae6d-4bfb-9992-4e05078db08d")
 	)
 	(wire
 		(pts
-			(xy 113.03 40.64) (xy 121.92 40.64)
+			(xy 232.41 78.74) (xy 232.41 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d8aca171-b9d8-48a4-a808-890d70cd0dba")
+		(uuid "d7601266-3372-47b6-b758-cf4e36d359d7")
 	)
 	(wire
 		(pts
@@ -3130,6 +3106,26 @@
 			(type default)
 		)
 		(uuid "d8bd969c-51b0-4f07-a1f8-1532e741a500")
+	)
+	(wire
+		(pts
+			(xy 130.81 16.51) (xy 130.81 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dbcb84a5-4016-4a74-87f5-dcfed1f5f318")
+	)
+	(wire
+		(pts
+			(xy 163.83 113.03) (xy 213.36 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de0d184b-dbf4-4352-8b3c-1c0371d577e7")
 	)
 	(wire
 		(pts
@@ -3180,6 +3176,16 @@
 			(type default)
 		)
 		(uuid "e6e71f46-ccf3-45a3-87db-72a4a1fad6a8")
+	)
+	(wire
+		(pts
+			(xy 163.83 107.95) (xy 229.87 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8146098-c798-421a-9150-32766c9a4bd6")
 	)
 	(wire
 		(pts
@@ -3243,6 +3249,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 97.79) (xy 209.55 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb5ff9e0-a9b5-4ed2-9cd0-bb5a940e7564")
+	)
+	(wire
+		(pts
 			(xy 148.59 45.72) (xy 148.59 54.61)
 		)
 		(stroke
@@ -3253,23 +3269,13 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 105.41) (xy 140.97 105.41)
+			(xy 213.36 72.39) (xy 236.22 72.39)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ff815ea5-8c5a-4818-ae8f-ab7d62a863b7")
-	)
-	(wire
-		(pts
-			(xy 105.41 125.73) (xy 140.97 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ffb7f18d-30e2-4a4c-954f-a1c8c317eb5c")
+		(uuid "feaefb86-6b82-40ca-899a-e0b9fd398850")
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
@@ -3649,7 +3655,7 @@
 	)
 	(symbol
 		(lib_id "Device:RotaryEncoder_Switch")
-		(at 120.65 34.29 0)
+		(at 220.98 81.28 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3657,7 +3663,7 @@
 		(dnp no)
 		(uuid "96b5dfd3-7b9d-4317-a054-92ece0f13633")
 		(property "Reference" "SW2"
-			(at 119.888 24.13 0)
+			(at 221.742 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3665,7 +3671,7 @@
 			)
 		)
 		(property "Value" "ROTARY_SWITCH"
-			(at 120.142 26.67 0)
+			(at 221.488 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3673,7 +3679,7 @@
 			)
 		)
 		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
-			(at 116.84 30.226 0)
+			(at 224.79 85.344 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3682,7 +3688,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 120.65 27.686 0)
+			(at 220.98 87.884 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3691,7 +3697,7 @@
 			)
 		)
 		(property "Description" "Rotary encoder, dual channel, incremental quadrate outputs, with switch"
-			(at 120.65 34.29 0)
+			(at 220.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3949,7 +3955,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_Slide_SPDT_Angled_CK_OS102011MA1Q"
+		(property "Footprint" "elastick:SW_90degrees_3pins"
 			(at 116.84 133.35 0)
 			(effects
 				(font
