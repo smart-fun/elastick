@@ -12,6 +12,12 @@ void setup() {
   u8g2.drawStr(0,24,"AMSTRAD CPC");
 //  u8g2.drawLine(0,13, 127, 13);
 //  u8g2.drawLine(0,14, 127, 14);
+
+  u8g2.drawLine(0,0, 127, 0);
+  u8g2.drawLine(0,63, 127, 63);
+  u8g2.drawLine(0,0, 0, 63);
+  u8g2.drawLine(127,63, 127, 63);
+
   u8g2.sendBuffer();
 }
 
