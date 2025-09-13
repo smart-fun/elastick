@@ -1,6 +1,7 @@
 
 #include "menu_controller.h"
 #include "input_button.h"
+#include "input_rotary.h"
 #include "display_manager.h"
 
 MenuController& MenuController::getInstance() {
@@ -43,7 +44,11 @@ void MenuController::setCurrentMenu(MenuID id) {
 void MenuController::update() {
     InputButtons::getInstance().update();
     currentMenu->update();
-    if (InputButtons::getInstance().wasPressed(InputButtonName::Next)) {
+    int rotation = InputRotary::getInstance().getDeltaRotation();
+    if (rotation < 0) {
+        currentMenu->onPrevious();
+        currentMenu->show();
+    } else if (rotation > 0) {
         currentMenu->onNext();
         currentMenu->show();
     }

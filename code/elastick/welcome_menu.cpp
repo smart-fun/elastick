@@ -19,6 +19,10 @@ void WelcomeMenu::update() {
     }
 }
 
+void WelcomeMenu::onPrevious() {
+    // nothing to do
+}
+
 void WelcomeMenu::onNext() {
     // nothing to do
 }

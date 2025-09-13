@@ -18,6 +18,10 @@ void TestMenu::update() {
   show();
 }
 
+void TestMenu::onPrevious() {
+    // nothing to do
+}
+
 void TestMenu::onNext() {
     // nothing to do
 }

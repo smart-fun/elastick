@@ -39,6 +39,9 @@ void PlayMenu::update() {
     BleGamepadManager::getInstance().sendValues(b1, b2, x, -y);
   }
 }
+void PlayMenu::onPrevious() {
+    // nothing to do
+}
 
 void PlayMenu::onNext() {
     // nothing to do

@@ -2,10 +2,10 @@
 
 #include <Arduino.h>
 
-// Manages physical button input, including debouncing and tracking press events for navigation and selection.
+// Manages physical button input, including debouncing and tracking press events for /*navigation and*/ selection.
 
 enum class InputButtonName {
-  Next,
+  //Next,
   Validate,
 };
 
@@ -27,6 +27,6 @@ private:
     unsigned long pressedTime;
     bool pressedState;
   };
-  ButtonInfo nextButton;
+  //ButtonInfo nextButton;
   ButtonInfo validateButton;
 };

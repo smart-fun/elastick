@@ -15,6 +15,15 @@ void ControllerListMenu::update() {
     // nothing to do so far
 }
 
+void ControllerListMenu::onPrevious() {
+    if (selectedIndex > 0) {
+        --selectedIndex;
+    } else {
+        selectedIndex = GameControllers::getInstance().getCount() - 1;
+    }
+    show();
+}
+
 void ControllerListMenu::onNext() {
     selectedIndex = (selectedIndex + 1) % GameControllers::getInstance().getCount();
     show();

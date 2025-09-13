@@ -6,6 +6,7 @@ public:
     ControllerListMenu();
     void show() override;
     void update() override;
+    void onPrevious() override;
     void onNext() override;
     void onValidate() override;
 

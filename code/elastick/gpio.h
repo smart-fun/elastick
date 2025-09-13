@@ -9,9 +9,10 @@ enum ES_GPIO {
   ES_GPIO_SDA = 21,
   ES_GPIO_SCL = 22,
   
-  // 2 pins for user buttons
-  ES_GPIO_BUTTON_NEXT = 32,
-  ES_GPIO_BUTTON_VALIDATE = 33,
+  // 3 pins for Rotary Switch
+  ES_GPIO_BUTTON_VALIDATE = 5,
+  ES_GPIO_ROTARY_ENCODER_A = 18,
+  ES_GPIO_ROTARY_ENCODER_B = 19,
   
   // 9 pins for DE-9 connector
   ES_GPIO_DE9_DIGITAL_1 = 16,

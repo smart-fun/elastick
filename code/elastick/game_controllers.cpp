@@ -26,6 +26,12 @@ GameController* GameControllers::get(int index) {
 }
 
 void GameControllers::setSelectedController(GameController * controller) {
+    if (controller == nullptr) {
+        Serial.println("clear selected Controller");
+    } else {
+        Serial.print("set selected Controller ");
+        Serial.println(controller->getName());
+    }
     selectedController = controller;
 }
 

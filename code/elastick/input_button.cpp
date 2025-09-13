@@ -9,18 +9,18 @@ InputButtons& InputButtons::getInstance() {
 }
 
 InputButtons::InputButtons()
-    : nextButton(ES_GPIO::ES_GPIO_BUTTON_NEXT),
-      validateButton(ES_GPIO::ES_GPIO_BUTTON_VALIDATE) {}
+    //: nextButton(ES_GPIO::ES_GPIO_BUTTON_NEXT),
+      : validateButton(ES_GPIO::ES_GPIO_BUTTON_VALIDATE) {}
 
 void InputButtons::update() {
-  nextButton.update();
+//  nextButton.update();
   validateButton.update();
 }
 
 bool InputButtons::wasPressed(InputButtonName buttonName) {
   switch(buttonName) {
-    case InputButtonName::Next:
-      return nextButton.wasPressed();
+    // case InputButtonName::Next:
+    //   return nextButton.wasPressed();
     case InputButtonName::Validate:
       return validateButton.wasPressed();
     default:

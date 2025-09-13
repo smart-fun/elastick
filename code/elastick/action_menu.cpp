@@ -62,6 +62,15 @@ void ActionMenu::update() {
     }
 }
 
+void ActionMenu::onPrevious() {
+    if (actionIndex > 0) {
+        --actionIndex;
+    } else {
+        actionIndex = GameControllers::getInstance().getCount() - 1;
+    }
+    show();
+}
+
 void ActionMenu::onNext() {
     actionIndex = (actionIndex + 1) % GameControllers::getInstance().getCount();
     show();
