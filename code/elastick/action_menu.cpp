@@ -30,12 +30,12 @@ void ActionMenu::show() {
         }
     } else {
         actionItems.clear();
+        actionItems.push_back(&actionBack);
         actionItems.push_back(&actionPlay);
         if (selected->isAnalog()) {
             actionItems.push_back(&actionCalibrate);
         }
         actionItems.push_back(&actionTest);
-        actionItems.push_back(&actionBack);
         DisplayManager::getInstance().showActions(selected->getName(), actionItems, actionIndex);
     }
 }
@@ -66,13 +66,13 @@ void ActionMenu::onPrevious() {
     if (actionIndex > 0) {
         --actionIndex;
     } else {
-        actionIndex = GameControllers::getInstance().getCount() - 1;
+        actionIndex = actionItems.size() - 1;
     }
     show();
 }
 
 void ActionMenu::onNext() {
-    actionIndex = (actionIndex + 1) % GameControllers::getInstance().getCount();
+    actionIndex = (actionIndex + 1) % actionItems.size();
     show();
 }
 
