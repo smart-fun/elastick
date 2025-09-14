@@ -13,7 +13,7 @@ PlayMenu::PlayMenu() {
 void PlayMenu::init() {
   Serial.println("PlayMenu::init");
   GameController * controller = GameControllers::getInstance().getSelectedController();
-  BleGamepadManager::getInstance().start(controller->getName());
+  BleGamepadManager::getInstance().start(controller->getName(), controller->getNbAxis(), controller->getNbButtons());
 }
 
 void PlayMenu::deinit() {
@@ -32,11 +32,17 @@ void PlayMenu::update() {
   }
   if (connected) {
     GameController * controller = GameControllers::getInstance().getSelectedController();
-    uint8_t b1 = controller->readButton(0);
-    uint8_t b2 = controller->readButton(1);
-    float x = controller->readAxis(0);
-    float y = controller->readAxis(1);
-    BleGamepadManager::getInstance().sendValues(b1, b2, x, -y);
+    // send Buttons
+    for(uint8_t button = 0; button < controller->getNbButtons(); ++button) {
+      uint8_t value = controller->readButton(button);
+      BleGamepadManager::getInstance().sendButtonValue(button, value);
+    }
+    // send Axis
+    for(uint8_t axis = 0; axis < controller->getNbAxis(); ++axis) {
+      float value = controller->readAxis(axis);
+      bool isVerticalAxis = (axis & 1);
+      BleGamepadManager::getInstance().sendAxisValue(axis, isVerticalAxis ? -value : value);
+    }
   }
 }
 void PlayMenu::onPrevious() {

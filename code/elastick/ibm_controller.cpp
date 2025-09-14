@@ -31,6 +31,9 @@ void IBMGameController::update() {
 }
 
 float IBMGameController::readAxis(uint8_t axisNumber) {
+    if (axisNumber >= 2) { // not handled yet
+        return 0;
+    }
     uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
     unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
     float result = (duration*2/(float)chargeTimeout) - 1.f;
@@ -38,6 +41,9 @@ float IBMGameController::readAxis(uint8_t axisNumber) {
 }
 
 uint8_t IBMGameController::readButton(uint8_t buttonNumber) {
+    if (buttonNumber >= 2) { // not handled yet
+        return 0;
+    }
     uint8_t buttonPin = (buttonNumber == 0) ? button1Pin : button2Pin;
     return (readPinValue(buttonPin) == LOW) ? 1 : 0;
 }

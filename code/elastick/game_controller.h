@@ -13,6 +13,8 @@ public:
     virtual bool initDetection();
     bool isDetected();
     void logPinValues();
+    virtual uint8_t getNbAxis() { return 2; };
+    virtual uint8_t getNbButtons() { return 2; };
     virtual float readAxis(uint8_t axisNumber) = 0;
     virtual uint8_t readButton(uint8_t buttonNumber) = 0;
 protected:

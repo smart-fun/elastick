@@ -7,15 +7,15 @@ BleGamepadManager::BleGamepadManager()
   Serial.println("BleGamepadManager created");
 }
 
-void BleGamepadManager::start(const char * deviceName) {
+void BleGamepadManager::start(const char * deviceName, uint8_t nbAxis, uint8_t nbButtons) {
   config.setAutoReport(true);
   config.setControllerType(CONTROLLER_TYPE_JOYSTICK); // or CONTROLLER_TYPE_GAMEPAD
-  config.setButtonCount(2);
-  config.setIncludeXAxis(true);
-  config.setIncludeYAxis(true);
+  config.setButtonCount(nbButtons);
+  config.setIncludeXAxis(nbAxis >= 1);
+  config.setIncludeYAxis(nbAxis >= 2);
   config.setIncludeZAxis(false);
-  config.setIncludeRxAxis(false);
-  config.setIncludeRyAxis(false);
+  config.setIncludeRxAxis(nbAxis >= 3);
+  config.setIncludeRyAxis(nbAxis >= 4);
   config.setIncludeRzAxis(false);
   config.setIncludeSlider1(false);
   config.setIncludeSlider2(false);
@@ -34,17 +34,47 @@ bool BleGamepadManager::isConnected() {
   return bleGamepad.isConnected();
 }
 
-void BleGamepadManager::sendValues(uint8_t button1, uint8_t button2, float x, float y) {
-  if (button1) {
-    bleGamepad.press(BUTTON_1);
-  } else {
-    bleGamepad.release(BUTTON_1);
+void BleGamepadManager::sendButtonValue(uint8_t button, bool pressed) {
+  uint8_t padButton;
+  switch(button) {
+    case 0:
+      padButton = BUTTON_1; // TODO: maybe use a direct mapping instead of switch/case
+      break;
+    case 1:
+      padButton = BUTTON_2;
+      break;
+    case 2:
+      padButton = BUTTON_3;
+      break;
+    case 3:
+      padButton = BUTTON_4;
+      break;
+    default:
+      return;
   }
-  if (button2) {
-    bleGamepad.press(BUTTON_2);
+  if (pressed) {
+    bleGamepad.press(padButton);
   } else {
-    bleGamepad.release(BUTTON_2);
+    bleGamepad.release(padButton);
   }
-  bleGamepad.setX((int16_t)(x * MAX_PAD_VALUE));
-  bleGamepad.setY((int16_t)(y * MAX_PAD_VALUE));
+}
+
+void BleGamepadManager::sendAxisValue(uint8_t axis, float value) {
+  int16_t axisValue = (int16_t)(value * MAX_PAD_VALUE);
+  switch(axis) {
+    case 0:
+      bleGamepad.setX(axisValue);
+      break;
+    case 1:
+      bleGamepad.setY(axisValue);
+      break;
+    case 2:
+      bleGamepad.setRX(axisValue);
+      break;
+    case 3:
+      bleGamepad.setRY(axisValue);
+      break;
+    default:
+      return;
+  }
 }
