@@ -8,6 +8,7 @@
 	(property "Reference" "REF**"
 		(at 1.4 -3.6 0)
 		(layer "F.SilkS")
+		(hide yes)
 		(uuid "2845ed75-478f-4a9d-b489-2963e6777b17")
 		(effects
 			(font
@@ -54,6 +55,16 @@
 		)
 	)
 	(attr through_hole)
+	(fp_line
+		(start 3 12.7)
+		(end 3 -7.62)
+		(stroke
+			(width 0.1)
+			(type dash)
+		)
+		(layer "F.SilkS")
+		(uuid "1094ec8c-4a63-41ca-b798-991f6e315c76")
+	)
 	(fp_line
 		(start -3.81 0)
 		(end 9.5 0)
@@ -123,17 +134,6 @@
 		)
 		(layer "F.Fab")
 		(uuid "9ff1a001-e407-4b85-af1f-5e98b37f22ce")
-	)
-	(fp_text user "${REFERENCE}"
-		(at 2.3 1.7 0)
-		(layer "F.Fab")
-		(uuid "8839c18f-fc8f-4ee3-b424-60948e139511")
-		(effects
-			(font
-				(size 0.5 0.5)
-				(thickness 0.1)
-			)
-		)
 	)
 	(pad "" thru_hole oval
 		(at -3.5 1)

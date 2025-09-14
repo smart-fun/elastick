@@ -1,4 +1,4 @@
-8786775134914
+7030892423896
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -106267,13 +106267,6 @@ switch SPDT
 5
 3
 elastick
-Sans titre
-
-
-0
-0
-0
-elastick
 oled_128_64_i2c
 
 
@@ -106285,5 +106278,5 @@ usbc
 
 
 0
-6
+8
 6

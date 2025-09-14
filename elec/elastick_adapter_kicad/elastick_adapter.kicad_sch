@@ -2272,12 +2272,6 @@
 		(uuid "5ea02962-30ca-415e-8f99-d299ab2fa800")
 	)
 	(junction
-		(at 179.07 16.51)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "63690bff-7dab-4b59-92ab-a4d2257a6c7b")
-	)
-	(junction
 		(at 64.77 123.19)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3109,16 +3103,6 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 16.51) (xy 130.81 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dbcb84a5-4016-4a74-87f5-dcfed1f5f318")
-	)
-	(wire
-		(pts
 			(xy 163.83 113.03) (xy 213.36 113.03)
 		)
 		(stroke
@@ -3126,16 +3110,6 @@
 			(type default)
 		)
 		(uuid "de0d184b-dbf4-4352-8b3c-1c0371d577e7")
-	)
-	(wire
-		(pts
-			(xy 179.07 16.51) (xy 130.81 16.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e1b1f8f6-03d4-4571-addb-0ab72b739242")
 	)
 	(wire
 		(pts
@@ -3678,7 +3652,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
+		(property "Footprint" "elastick:rotary_encoder"
 			(at 224.79 85.344 0)
 			(effects
 				(font

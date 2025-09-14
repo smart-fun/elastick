@@ -169,22 +169,20 @@
 			(justify left)
 		)
 	)
-	(pad "" np_thru_hole roundrect
+	(pad "" thru_hole circle
 		(at -8.35 10)
-		(size 2.7 1.8)
-		(drill 3)
-		(layers "F&B.Cu" "*.Mask")
-		(roundrect_rratio 0.15)
-		(thermal_bridge_angle 45)
+		(size 1.8 1.8)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
 		(uuid "1b762d7c-6166-4e85-a084-68b86f92b8a6")
 	)
-	(pad "" np_thru_hole roundrect
+	(pad "" thru_hole circle
 		(at 8.35 10)
-		(size 2.7 1.8)
-		(drill 3)
-		(layers "F&B.Cu" "*.Mask")
-		(roundrect_rratio 0.15)
-		(thermal_bridge_angle 45)
+		(size 1.8 1.8)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
 		(uuid "cfc08712-9c3e-47f5-afa5-f490f8b57d5c")
 	)
 	(pad "1" thru_hole circle
