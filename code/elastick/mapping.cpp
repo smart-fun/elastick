@@ -1,5 +1,6 @@
 
 #include "mapping.h"
+#include "gpio.h"
 
 Mapping& Mapping::getInstance() {
     static Mapping instance;
@@ -8,15 +9,15 @@ Mapping& Mapping::getInstance() {
 
 Mapping::Mapping()
     : plugPinToGpio({
-        {1, 16},
-        {2,  4},
-        {3, 13},
-        {4, 12},
-        {5, 14},
-        {6, 17},
-        {7, 25},
-        {8, 26},
-        {9, 27}
+        {1, ES_GPIO_DE9_DIGITAL_1},
+        {2, ES_GPIO_DE9_DIGITAL_2},
+        {3, ES_GPIO_DE9_DIGITAL_3},
+        {4, ES_GPIO_DE9_DIGITAL_4},
+        {5, ES_GPIO_DE9_ANALOG_5},
+        {6, ES_GPIO_DE9_DIGITAL_6},
+        {7, ES_GPIO_DE9_DIGITAL_7},
+        {8, ES_GPIO_DE9_DIGITAL_8},
+        {9, ES_GPIO_DE9_ANALOG_9}
     })
 {}
 

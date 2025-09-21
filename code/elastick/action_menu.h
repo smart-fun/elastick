@@ -34,7 +34,7 @@ private:
     int actionIndex = 0;
     ActionState actionState = ActionState::DetectController;
     std::vector<ActionItem*> actionItems;
-    ActionItem actionPlay = {Action::PLAY, "PLAY"};
+    ActionItem actionPlay = {Action::PLAY, "CONNECT TO PC"};
     ActionItem actionCalibrate = {Action::CALIBRATE, "CALIBRATE"};
     ActionItem actionTest = {Action::TEST, "TEST"};
     ActionItem actionBack = {Action::BACK, "BACK"};
