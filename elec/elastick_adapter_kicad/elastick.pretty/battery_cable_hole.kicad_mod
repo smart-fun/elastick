@@ -1,13 +1,13 @@
-(footprint "Untitled"
+(footprint "battery_cable_hole"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(property "Reference" "REF**"
-		(at 0 -0.5 0)
+	(property "Reference" "BAT_CABLE"
+		(at 0 3.81 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "2467ef59-00e1-4ab9-abc6-828c6feb85d6")
+		(uuid "a29eb5c3-4b37-49c4-8753-c50f04d152e5")
 		(effects
 			(font
 				(size 1 1)
@@ -15,11 +15,12 @@
 			)
 		)
 	)
-	(property "Value" "Untitled"
+	(property "Value" "battery_cable_hole"
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "9899d424-07bc-4c1b-be36-03149899cf0e")
+		(hide yes)
+		(uuid "24cc5c22-f66c-4d6f-96a5-46e4de04008c")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +33,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "bbbfc120-5aef-4e3c-a52e-d089ae1c8873")
+		(uuid "f9466c1b-33d9-4023-87f2-e8452b3b238e")
 		(effects
 			(font
 				(size 1 1)
@@ -45,7 +46,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "310b34f0-7e30-4f60-958d-8841c16ad003")
+		(uuid "f2e1e179-c457-44a6-ae45-152bfc4d6680")
 		(effects
 			(font
 				(size 1 1)
@@ -54,17 +55,12 @@
 		)
 	)
 	(attr smd)
-	(fp_text user "${REFERENCE}"
-		(at 0 2.5 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "451d35a4-57ac-416e-9069-243ff353efc5")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
+	(pad "" np_thru_hole circle
+		(at 0 0)
+		(size 6 6)
+		(drill 6)
+		(layers "F&B.Cu" "*.Mask")
+		(uuid "8e4cb08c-a95d-47ed-844a-de0ab5e40e2d")
 	)
 	(embedded_fonts no)
 )

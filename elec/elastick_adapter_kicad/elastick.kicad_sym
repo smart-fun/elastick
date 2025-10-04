@@ -50,7 +50,7 @@
 			)
 		)
 		(symbol "lolin_d32_1_1"
-			(pin output line
+			(pin power_out line
 				(at -3.81 33.02 180)
 				(length 2.54)
 				(name "3v"
@@ -338,7 +338,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin power_in line
 				(at 19.05 33.02 0)
 				(length 2.54)
 				(name "gnd"
@@ -356,7 +356,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 30.48 0)
 				(length 2.54)
 				(name "23"
@@ -374,7 +374,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 27.94 0)
 				(length 2.54)
 				(name "22"
@@ -392,7 +392,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 25.4 0)
 				(length 2.54)
 				(name "1"
@@ -410,7 +410,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 22.86 0)
 				(length 2.54)
 				(name "3"
@@ -428,7 +428,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 20.32 0)
 				(length 2.54)
 				(name "21"
@@ -446,7 +446,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 17.78 0)
 				(length 2.54)
 				(name "19"
@@ -464,7 +464,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 15.24 0)
 				(length 2.54)
 				(name "18"
@@ -482,7 +482,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 12.7 0)
 				(length 2.54)
 				(name "5"
@@ -500,7 +500,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 10.16 0)
 				(length 2.54)
 				(name "17"
@@ -518,7 +518,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 7.62 0)
 				(length 2.54)
 				(name "16"
@@ -536,7 +536,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 5.08 0)
 				(length 2.54)
 				(name "4"
@@ -554,7 +554,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 2.54 0)
 				(length 2.54)
 				(name "0"
@@ -572,7 +572,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 0 0)
 				(length 2.54)
 				(name "2"
@@ -590,7 +590,7 @@
 					)
 				)
 			)
-			(pin input line
+			(pin bidirectional line
 				(at 19.05 -2.54 0)
 				(length 2.54)
 				(name "15"
@@ -608,7 +608,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin power_in line
 				(at 19.05 -5.08 0)
 				(length 2.54)
 				(name "gnd"

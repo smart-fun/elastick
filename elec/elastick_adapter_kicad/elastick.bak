@@ -50,7 +50,7 @@
 			)
 		)
 		(symbol "lolin_d32_1_1"
-			(pin output line
+			(pin power_out line
 				(at -3.81 33.02 180)
 				(length 2.54)
 				(name "3v"
@@ -338,7 +338,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin power_in line
 				(at 19.05 33.02 0)
 				(length 2.54)
 				(name "gnd"
@@ -608,7 +608,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin power_in line
 				(at 19.05 -5.08 0)
 				(length 2.54)
 				(name "gnd"
