@@ -72,9 +72,9 @@
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "")
+			(outputdirectory "../export/")
 		)
 	)
 	(net 0 "")
@@ -5758,7 +5758,7 @@
 		)
 	)
 	(gr_text "Greetings to:\nAcclaim\nAccolade\nActivision\nBethesda Softworks\nBlue Byte\nBrøderbund\nCapcom\nCinemaware\nCobra Soft\nCodemasters\nDelphine Software\nElectronic Arts\nElite\nEpyx\nERE Informatique\nExxos\nHudson Soft\nImagine\nInfogrames\nIrem\nKalisto\nKonami\nLankhor\nLoriciels\nLucas Arts\nMicroïds\nMicroProse\nMidway\nMindscape\nNamco\nNovaLogic\nOcean\nPsygnosis\nRainbird\nRainbow Arts\nSCi\nSierra\nSNK\nsubLOGIC\nTeam 17\nThe Bitmap Brothers\nThe Hit Squad\nTitus\nUbi Soft\nU.S. Gold"
-		(at 142.24 119.38 180)
+		(at 142.24 113.93 180)
 		(layer "B.SilkS")
 		(uuid "8c5d85e5-a765-4a31-b0d2-850ee809a90f")
 		(effects
