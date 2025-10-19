@@ -4,7 +4,6 @@ All connector diagrams in this document show the **male plug as viewed from the 
 
 Pinout diagrams are limited to the signals supported by the Elastick adapter: primary directional inputs and 2 buttons.
 
-
 ## Amstrad CPC Joystick
 
 | DE-9 connector      | Amsoft JY-2                     |
@@ -28,7 +27,6 @@ Pinout diagrams are limited to the signals supported by the Elastick adapter: pr
 8. GND
 
 9. -
-
 
 ## Apple 2 Joystick
 
@@ -56,7 +54,6 @@ This joystick uses 150 KΩ variable resistors connected to VCC for the analog ax
 
 9. -
 
-
 ## Atari 2600 Joystick
 
 | DE-9 connector      | Atari CX-10 Joystick               |
@@ -80,7 +77,6 @@ This joystick uses 150 KΩ variable resistors connected to VCC for the analog ax
 8. GND
 
 9. -
-
 
 ## Atari 2600 Paddles
 
@@ -108,7 +104,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 9. Paddle 2 (analog)
 
-
 ## Atari ST / Commodore 64 / Amiga Joystick
 
 | DE-9 connector      | Competition Pro               |
@@ -132,7 +127,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 8. GND
 
 9. Button 2
-
 
 ## IBM PC Joystick
 
@@ -170,7 +164,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 15. -
 
-
 ## MSX Joystick
 
 | DE-9 connector      | Sanyo MJY-002               |
@@ -194,7 +187,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 8. Control (GND)
 
 9. GND
-
 
 ## Sega Master System Joystick
 
@@ -220,7 +212,6 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 9. -
 
-
 ## Tandy Color 'CoCo' Computer Joystick
 
 | DIN-6 connector      | Tandy Deluxe Joystick               |
@@ -239,13 +230,12 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 6. Button 2
 
-
 ## Thomson TO/MO 1st generation Joystick
 
 This joystick was sold with the "Contrôleur de jeu CJ 90-101" or "Extension musique et jeux CM 90-112" for Thomson TO7 and MO5 series. Even if it looks like an analog joystick, the 4 directions are digital (ON or OFF).
 
-| DIN-6 connector      | TO/MO Joystick |
-|:--------------------:|:--------------:|
+| DIN-6 connector      | TO/MO Joystick                  |
+|:--------------------:|:-------------------------------:|
 | ![](din-6-small.png) | ![](thomson_joystick_small.jpg) |
 
 1. GND
@@ -259,4 +249,3 @@ This joystick was sold with the "Contrôleur de jeu CJ 90-101" or "Extension mus
 5. Button 1
 
 6. Right
-
