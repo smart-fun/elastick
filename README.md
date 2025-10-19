@@ -10,10 +10,16 @@ Elastick is a hardware and software project using the ESP32-based Lolin D32 to i
 
 ## Folders
 
-- code: arduino code (I used arduino IDE v2)
-- 3d: resources for 3D printing
-- elec: kicad project for PCB
-- resources: various pictures
+- **code**: arduino code (I used arduino IDE v2)
+- **3d**: resources for 3D printing
+- **elec**: kicad project for PCB
+- **resources**: various pictures
+
+## Known issues
+
+- The rotary button does not work perfectly. It's unclear whether this is due to a hardware limitation or a software issue that could be resolved in code.
+
+- The Lolin board draws a significant amount of current when Bluetooth is initialized, which can cause a reboot at that exact moment if the power supply is insufficient. A capacitor has been added to reduce the risk, and while it improves stability, the issue may still occur during Bluetooth startup.
 
 ## Arduino IDE Setup
 
