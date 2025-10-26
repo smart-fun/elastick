@@ -11,7 +11,7 @@ float smoothedAxis[2] = {0.f, 0.f};
 
 // TODO: remove completely lower and higher values so that it comes to min/max much before the end of the paddle move
 AtariPaddleGameController::AtariPaddleGameController()
-    : GameController("Atari VCS Paddles") {
+    : AnalogGameController("Atari VCS Paddles") {
     Serial.println("AtariPaddleGameController created");
 }
 
@@ -36,6 +36,7 @@ void AtariPaddleGameController::update() {
 float AtariPaddleGameController::readAxis(uint8_t axisNumber) {
     uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
     unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
+    chargingDuration[axisNumber] = (duration > 65535) ? 65535 : duration;    // keep value for test/calibration
     float result = (duration*2/(float)chargeTimeout) - 1.f;
 
 

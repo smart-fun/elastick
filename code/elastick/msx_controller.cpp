@@ -8,7 +8,7 @@
 #define rightPin (4)
 
 MSXGameController::MSXGameController()
-    : GameController("MSX") {
+    : DigitalGameController("MSX") {
     Serial.println("MSXGameController created");
 }
 

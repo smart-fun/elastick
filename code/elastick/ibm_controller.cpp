@@ -8,7 +8,7 @@
 #define chargeTimeout (1400)
 
 IBMGameController::IBMGameController()
-    : GameController("IBM PC") {
+    : AnalogGameController("IBM PC") {
     Serial.println("IBMGameController created");
 }
 
@@ -36,6 +36,7 @@ float IBMGameController::readAxis(uint8_t axisNumber) {
     }
     uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
     unsigned long duration = readChargingDuration(plugPin, chargeTimeout);
+    chargingDuration[axisNumber] = (duration > 65535) ? 65535 : duration;    // keep value for test/calibration
     float result = (duration*2/(float)chargeTimeout) - 1.f;
     return (axisNumber == 0) ? result : -result;
 }

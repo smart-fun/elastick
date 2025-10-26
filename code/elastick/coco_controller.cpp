@@ -9,7 +9,7 @@
 #define chargeTimeout (1300)
 
 CocoGameController::CocoGameController()
-    : GameController("Tandy CoCo") {
+    : AnalogGameController("Tandy CoCo") {
     Serial.println("CocoGameController created");
 }
 
@@ -36,6 +36,7 @@ float CocoGameController::readAxis(uint8_t axisNumber) {
     unsigned long chargeDuration = readChargingDuration(plugPin, chargeTimeout);
     unsigned long dischargeDuration = readDischargingDuration(plugPin, dischargeTimeout);
     if (chargeDuration < dischargeDuration) {
+        chargingDuration[axisNumber] = (chargeDuration > 65535) ? 65535 : chargeDuration;    // keep value for test/calibration
         float duration = chargeTimeout - chargeDuration;
         // if (duration < 0) {
         //     duration = 0;
@@ -43,6 +44,7 @@ float CocoGameController::readAxis(uint8_t axisNumber) {
         float value = (duration/(float)chargeTimeout);
         return (axisNumber == 0) ? value : -value;
     } else {
+        chargingDuration[axisNumber] = (dischargeDuration > 65535) ? 65535 : dischargeDuration;    // keep value for test/calibration
         float duration = dischargeTimeout - dischargeDuration;
         // if (duration < 0) {
         //     duration = 0;

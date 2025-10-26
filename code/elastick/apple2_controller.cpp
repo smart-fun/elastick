@@ -10,7 +10,7 @@
 #define correctionFactor2ButtonsPressed (1.30f)
 
 Apple2GameController::Apple2GameController()
-    : GameController("Apple II") {
+    : AnalogGameController("Apple II") {
     Serial.println("Apple2GameController created");
 }
 
@@ -60,6 +60,7 @@ float Apple2GameController::readAxis(uint8_t axisNumber) {
 
     uint8_t plugPin = (axisNumber == 0) ? xAxisPin : yAxisPin;
     float duration = (float)readChargingDuration(plugPin, (unsigned long)(chargeTimeout * correctionFactor));
+    chargingDuration[axisNumber] = (duration > 65535) ? 65535 : duration;    // keep value for test/calibration
     duration /= correctionFactor;
     float result = (duration*2/(float)chargeTimeout) - 1.f;
     return (axisNumber == 0) ? result : -result;

@@ -89,7 +89,13 @@ uint8_t GameController::readPinValue(uint8_t plugPin) {
     return UNUSED_VALUE;
 }
 
-unsigned long GameController::readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
+// *** ANALOG CONTROLLERS ***
+
+AnalogGameController::AnalogGameController(const char* controllerName)
+    : GameController(controllerName)  {
+}
+
+unsigned long AnalogGameController::readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
     int gpio = Mapping::getInstance().getGpioFromPlugPin(plugPin);
     if (gpio >= 0) {
         // discharge capacitor
@@ -106,7 +112,7 @@ unsigned long GameController::readChargingDuration(uint8_t plugPin, unsigned lon
     return 0;
 }
 
-unsigned long GameController::readDischargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
+unsigned long AnalogGameController::readDischargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
     int gpio = Mapping::getInstance().getGpioFromPlugPin(plugPin);
     if (gpio >= 0) {
         // charge capacitor
@@ -121,4 +127,10 @@ unsigned long GameController::readDischargingDuration(uint8_t plugPin, unsigned 
         return (duration < timeoutMicros ? duration : timeoutMicros);
     }
     return 0;
+}
+
+// *** DIGITAL CONTROLLERS ***
+
+DigitalGameController::DigitalGameController(const char* controllerName)
+    : GameController(controllerName)  {
 }

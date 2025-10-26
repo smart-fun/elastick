@@ -121,6 +121,19 @@ void DisplayManager::showTest(GameController * controller) {
     lcd.drawCircle(x, y, radius);
   }
 
+  // charging duration
+  if (controller->isAnalog()) {
+    AnalogGameController* analogController = (AnalogGameController*)controller;
+    lcd.setFont(u8g2_font_squeezed_b7_tn); //u8g2_font_tiny5_tf);
+    char buffer[16];
+    long chargingDuration = analogController->getChargingDuration(0);
+    sprintf(buffer, "%ld", chargingDuration);
+    lcd.drawStr(0, 64 - 8, buffer); // X axis
+    chargingDuration = analogController->getChargingDuration(1);
+    sprintf(buffer, "%ld ms", chargingDuration);
+    lcd.drawStr(0, 64, buffer); // Y axis
+  }
+
   lcd.sendBuffer();
 }
 

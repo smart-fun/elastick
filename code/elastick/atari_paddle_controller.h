@@ -1,12 +1,11 @@
 #pragma once
 #include "game_controller.h"
 
-class AtariPaddleGameController : public GameController {
+class AtariPaddleGameController : public AnalogGameController {
 public:
     AtariPaddleGameController();
     void init() override;
     void update() override;
-    bool isAnalog() const override { return true; };
     bool initDetection() override { return false; };
     virtual uint8_t getNbAxis() { return 2; };
     virtual uint8_t getNbButtons() { return 2; };

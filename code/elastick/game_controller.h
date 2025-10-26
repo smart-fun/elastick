@@ -20,9 +20,26 @@ public:
 protected:
     GameController(const char* controllerName);
     uint8_t readPinValue(uint8_t plugPin);
-    unsigned long readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros);
-    unsigned long readDischargingDuration(uint8_t plugPin, unsigned long timeoutMicros);
     const char* name;
     std::vector<PinConfig> detectionRules;
     std::vector<PinConfig> playRules;
 };
+
+class AnalogGameController : public GameController {
+public:
+    bool isAnalog() const override { return true; }
+    uint16_t getChargingDuration(uint8_t axisNumber) { return chargingDuration[axisNumber]; };
+protected:
+    AnalogGameController(const char* controllerName);
+    unsigned long readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros);
+    unsigned long readDischargingDuration(uint8_t plugPin, unsigned long timeoutMicros);
+    uint16_t chargingDuration[2] = {0, 0};
+};
+
+class DigitalGameController : public GameController {
+public:
+    bool isAnalog() const override { return false; }
+protected:
+    DigitalGameController(const char* controllerName);
+};
+
