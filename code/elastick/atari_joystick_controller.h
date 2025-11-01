@@ -4,6 +4,7 @@
 class AtariJoystickController : public DigitalGameController {
 public:
     AtariJoystickController();
+    AtariJoystickController(const char * name); // for derivated controllers
     void init() override;
     void update() override;
     bool initDetection() override { return false; };

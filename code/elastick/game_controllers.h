@@ -7,6 +7,7 @@
 #include "msx_controller.h"
 #include "coco_controller.h"
 #include "master_system_controller.h"
+#include "moto_controller.h"
 
 class GameControllers {
 public:
@@ -28,5 +29,6 @@ private:
     IBMGameController ibmController;
     MSXGameController msxController;
     CocoGameController cocoController;
+    MoToController motoController;
     MasterSystemController masterSystemController;
 };

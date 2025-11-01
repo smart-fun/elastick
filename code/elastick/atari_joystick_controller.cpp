@@ -8,8 +8,13 @@
 #define rightPin (4)
 
 AtariJoystickController::AtariJoystickController()
-    : DigitalGameController("Amstrad Atari C=") {
+    : AtariJoystickController("Amstrad Atari C=") {
     Serial.println("AtariJoystickController created");
+}
+
+// for derivated controllers
+AtariJoystickController::AtariJoystickController(const char * name)
+    : DigitalGameController(name) {
 }
 
 void AtariJoystickController::init() {

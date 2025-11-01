@@ -14,6 +14,7 @@ GameControllers::GameControllers() {
     controllers.push_back(&ibmController);
     controllers.push_back(&msxController);
     controllers.push_back(&masterSystemController);
+    controllers.push_back(&motoController);
     controllers.push_back(&cocoController);
 }
 

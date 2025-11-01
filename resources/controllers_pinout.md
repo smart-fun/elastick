@@ -230,11 +230,11 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 6. Button 2
 
-## Thomson TO/MO 1st generation Joystick
+## Thomson MO/TO 1st generation Joystick
 
 This joystick was sold with the "Contrôleur de jeu CJ 90-101" or "Extension musique et jeux CM 90-112" for Thomson TO7 and MO5 series. Even if it looks like an analog joystick, the 4 directions are digital (ON or OFF).
 
-| DIN-6 connector      | TO/MO Joystick                  |
+| DIN-6 connector      | MO/TO Joystick                  |
 |:--------------------:|:-------------------------------:|
 | ![](din-6-small.png) | ![](thomson_joystick_small.jpg) |
 
