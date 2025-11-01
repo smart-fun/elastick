@@ -206,11 +206,11 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 6. Button 1
 
-7. Button 2
+7. -
 
 8. GND
 
-9. -
+9. Button 2
 
 ## Tandy Color 'CoCo' Computer Joystick
 
