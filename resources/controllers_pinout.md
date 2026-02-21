@@ -188,7 +188,7 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 9. GND
 
-## Sega Master System Joystick
+## Sega Master System Controllers
 
 | DE-9 connector      | Sega Control Stick           |
 |:-------------------:|:----------------------------:|
@@ -212,7 +212,7 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 9. Button 2
 
-## Sega Mega Drive Joystick
+## Sega Mega Drive Controllers
 
 This pad works differently than the other pads: there is a selector (pin 7) which allows to read different buttons on the same pins (for example pin 6 can return Button A state or Button B state depending on pin 7 state).
 

@@ -42,15 +42,23 @@ The rotary button does not behave consistently.
 It is still unclear whether this is caused by a hardware limitation of the original controller or by a software issue in the current implementation. Further investigation is needed to determine whether this can be fixed in code.
 
 #### ESP32 reboot during Bluetooth initialization
-The Lolin D32 draws a large current spike when Bluetooth is initialized.
 
-With an insufficient power supply, this can cause the board to reboot exactly at Bluetooth startup.
+Some ESP32 boards (including the Lolin D32) may reboot exactly when Bluetooth is initialized.
 
-A capacitor was added to mitigate the issue, which improved stability at first.
+This issue is **not** caused by power supply limitations or current spikes.
 
-**However, after updating the BLE library, the device now reboots every time Bluetooth is initialized, even with the capacitor.**
+After investigation, the root cause was a **regression in the ESP32 Arduino core (version 3.x)** affecting BLE initialization.
 
-This strongly suggests a regression or incompatibility in the library rather than a hardware power issue. The current plan is to replace the problematic library.
+With this version, the board consistently reboots as soon as Bluetooth is started, regardless of capacitors or external power.
+
+Using the **ESP32 Arduino core 2.0.17** (or any stable 2.0.x release) restores full stability:
+
+- no reboot during BLE initialization
+- stable operation on USB power or on battery
+
+**Recommendation:**
+
+Install and use **ESP32 Arduino core 2.0.17** for this project. Avoid core **3.x**, which currently causes BLE crashes and reboots.
 
 ## Arduino IDE Setup
 
