@@ -1,12 +1,31 @@
 # Elastick adapter
 
-Connect vintage joysticks (Apple 2, Atari, CoCo...) to your modern PC via Bluetooth.
+Connect vintage joysticks (Apple II, Atari, CoCo, Sega…) to a modern PC via Bluetooth.
 
 🚧 WORK IN PROGRESS – NOT READY YET 🚧
 
 ![preview.jpg](preview.jpg)
 
-Elastick is a hardware and software project using the ESP32-based Lolin D32 to interface with classic joysticks. These devices are detected as Bluetooth input peripherals and can be used with emulators like MAME or any modern game using game controllers.
+Elastick is a hardware and software project built around the ESP32‑based Lolin D32.
+
+It interfaces with classic joysticks and exposes them as standard Bluetooth game controllers, compatible with emulators like MAME or with any modern game supporting gamepads.
+
+Vintage controllers can also be tested directly on the Elastick device itself, without needing a Bluetooth connection.
+
+## Supported Controllers
+
+- Amstrad CPC
+- Apple II
+- Atari 8 bits / ST
+- Atari 2600 Paddles
+- Commodore 64/128/Amiga
+- IBM PC (DA-15 connector)
+- MSX
+- Sega Master System
+- Sega Mega Drive
+- Tandy Color Computer (CoCo)
+- Thomson MO/TO
+
 
 ## Folders
 
@@ -17,9 +36,21 @@ Elastick is a hardware and software project using the ESP32-based Lolin D32 to i
 
 ## Known issues
 
-- The rotary button does not work perfectly. It's unclear whether this is due to a hardware limitation or a software issue that could be resolved in code.
+#### Rotary button reliability
+The rotary button does not behave consistently.
 
-- The Lolin board draws a significant amount of current when Bluetooth is initialized, which can cause a reboot at that exact moment if the power supply is insufficient. A capacitor has been added to reduce the risk, and while it improves stability, the issue may still occur during Bluetooth startup.
+It is still unclear whether this is caused by a hardware limitation of the original controller or by a software issue in the current implementation. Further investigation is needed to determine whether this can be fixed in code.
+
+#### ESP32 reboot during Bluetooth initialization
+The Lolin D32 draws a large current spike when Bluetooth is initialized.
+
+With an insufficient power supply, this can cause the board to reboot exactly at Bluetooth startup.
+
+A capacitor was added to mitigate the issue, which improved stability at first.
+
+**However, after updating the BLE library, the device now reboots every time Bluetooth is initialized, even with the capacitor.**
+
+This strongly suggests a regression or incompatibility in the library rather than a hardware power issue. The current plan is to replace the problematic library.
 
 ## Arduino IDE Setup
 
