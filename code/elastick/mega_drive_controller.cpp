@@ -52,14 +52,14 @@ void MegaDriveController::init() {
 
 void MegaDriveController::update() {
     applyRules(mappingARules);
-    delay(5);
+    delay(10);
     buttonUp = (readPinValue(upPin) == LOW);
     buttonDown = (readPinValue(downPin) == LOW);
     buttonA = (readPinValue(buttonABPin) == LOW);
     buttonStart = (readPinValue(buttonStartCPin) == LOW);
 
     applyRules(mappingBRules);
-    delay(5);
+    delay(10);
     buttonLeft = (readPinValue(leftPin) == LOW);
     buttonRight = (readPinValue(rightPin) == LOW);
     buttonB = (readPinValue(buttonABPin) == LOW);
