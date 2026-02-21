@@ -4,6 +4,8 @@
 #include "game_controller.h"
 #include "action_menu.h"
 
+uint8_t buttons[10];
+
 DisplayManager& DisplayManager::getInstance() {
     static DisplayManager instance;
     return instance;
@@ -102,23 +104,29 @@ void DisplayManager::showTest(GameController * controller) {
 
   float x = controller->readAxis(0);
   float y = controller->readAxis(1);
-  uint8_t b1 = controller->readButton(0);
-  uint8_t b2 = controller->readButton(1);
   lcd.drawCircle(centerX + (x*halfSize), centerY - (y*halfSize), 3);
 
-  x = 100;
-  y = centerY - 10;
-  int radius = 5;
-  if (b1) {
-    lcd.drawDisc(x, y, radius);
-  } else {
-    lcd.drawCircle(x, y, radius);
+// Buttons
+  uint8_t numButtons = controller->getNbButtons();
+  for(uint8_t numButton = 0; numButton < numButtons; ++numButton) {
+    buttons[numButton] = controller->readButton(numButton);
   }
-  y = centerY + 10;
-  if (b2) {
-    lcd.drawDisc(x, y, radius);
-  } else {
-    lcd.drawCircle(x, y, radius);
+
+  x = 100;
+  y = 22;
+  int radius = 5;
+  int step = 10+6;
+  for(uint8_t numButton = 0; numButton < numButtons; ++numButton) {
+    if (buttons[numButton] == 1) {
+      lcd.drawDisc(x, y, radius);
+    } else {
+      lcd.drawCircle(x, y, radius);
+    }
+    y += step;
+    if (y + radius >= 64) {
+      y = 22;
+      x += step;
+    }
   }
 
   // charging duration

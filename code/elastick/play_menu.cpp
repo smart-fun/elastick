@@ -32,6 +32,7 @@ void PlayMenu::update() {
   }
   if (connected) {
     GameController * controller = GameControllers::getInstance().getSelectedController();
+    controller->update();
     // send Buttons
     for(uint8_t button = 0; button < controller->getNbButtons(); ++button) {
       uint8_t value = controller->readButton(button);

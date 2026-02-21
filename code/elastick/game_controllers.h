@@ -8,6 +8,7 @@
 #include "coco_controller.h"
 #include "master_system_controller.h"
 #include "moto_controller.h"
+#include "mega_drive_controller.h"
 
 class GameControllers {
 public:
@@ -31,4 +32,5 @@ private:
     CocoGameController cocoController;
     MoToController motoController;
     MasterSystemController masterSystemController;
+    MegaDriveController megaDriveController;
 };

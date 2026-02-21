@@ -9,15 +9,7 @@ const char* GameController::getName() const {
 
 void GameController::init() {
     Serial.println("init GameController");
-    for (const PinConfig& rule : playRules) {
-        int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
-        if (gpio >= 0) {
-            pinMode(gpio, rule.mode);
-            if (rule.value != UNUSED_VALUE) {
-                digitalWrite(gpio, rule.value);
-            }
-        }
-    }
+    applyRules(playRules);
 }
 
 void GameController::deinit() {
@@ -31,13 +23,20 @@ void GameController::deinit() {
 }
 
 bool GameController::initDetection() {
-    for (const PinConfig& rule : detectionRules) {
+    applyRules(detectionRules);
+    return true;
+}
+
+void GameController::applyRules(std::vector<PinConfig>& rules) {
+    for (const PinConfig& rule : rules) {
         int gpio = Mapping::getInstance().getGpioFromPlugPin(rule.plugPin);
         if (gpio >= 0) {
             pinMode(gpio, rule.mode);
+            if (rule.mode == OUTPUT && rule.value != UNUSED_VALUE) {
+                digitalWrite(gpio, rule.value);
+            }
         }
     }
-    return true;
 }
 
 bool GameController::isDetected() {

@@ -15,6 +15,8 @@ void TestMenu::show() {
 }
 
 void TestMenu::update() {
+  GameController * selected = GameControllers::getInstance().getSelectedController();
+  selected->update();
   show();
 }
 

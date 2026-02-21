@@ -7,13 +7,15 @@ GameControllers& GameControllers::getInstance() {
 }
 
 GameControllers::GameControllers() {
-    controllers.reserve(8);
+    controllers.reserve(10);
+    controllers.clear();
     controllers.push_back(&atariJoystickController);
     controllers.push_back(&apple2Controller);
     controllers.push_back(&atariPaddleController);
     controllers.push_back(&ibmController);
     controllers.push_back(&msxController);
     controllers.push_back(&masterSystemController);
+    controllers.push_back(&megaDriveController);
     controllers.push_back(&motoController);
     controllers.push_back(&cocoController);
 }

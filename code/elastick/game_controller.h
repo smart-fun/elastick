@@ -20,6 +20,7 @@ public:
 protected:
     GameController(const char* controllerName);
     uint8_t readPinValue(uint8_t plugPin);
+    void applyRules(std::vector<PinConfig>& rules);
     const char* name;
     std::vector<PinConfig> detectionRules;
     std::vector<PinConfig> playRules;
