@@ -45,29 +45,36 @@ It is still unclear whether this is caused by a hardware limitation of the origi
 
 Some ESP32 boards (including the Lolin D32) may reboot exactly when Bluetooth is initialized.
 
-This issue is **not** caused by power supply limitations or current spikes.
-
-After investigation, the root cause was a **regression in the ESP32 Arduino core (version 3.x)** affecting BLE initialization.
-
-With this version, the board consistently reboots as soon as Bluetooth is started, regardless of capacitors or external power.
-
-Using the **ESP32 Arduino core 2.0.17** (or any stable 2.0.x release) restores full stability:
+After investigation, the root cause was a **regression in the ESP32 Arduino core (version 3.x)** affecting BLE initialization. The board consistently reboots as soon as Bluetooth is started. Using the **ESP32 Arduino core 2.0.17** restores full stability:
 
 - no reboot during BLE initialization
 - stable operation on USB power or on battery
 
-**Recommendation:**
 
-Install and use **ESP32 Arduino core 2.0.17** for this project. Avoid core **3.x**, which currently causes BLE crashes and reboots.
+Using ESP32 Arduino core 2.0.17 fully resolves this issue.
 
-## Arduino IDE Setup
 
-This URL must be added to the "Additional Boards Manager URLs" (in Files / Preferences) : https://dl.espressif.com/dl/package_esp32_index.json
+## Preparing the Arduino environment for ESP32
 
-Some dependencies must be added:
+Add the following URL to **File → Preferences → Additional Boards Manager URLs**:
 
-- ESP32-BLE-Gamepad (with NimBLE-Arduino dependency)
-- U8g2 by Oliver (for screen)
+https://dl.espressif.com/dl/package_esp32_index.json
+
+
+Then install the following board package:
+
+- **esp32 by Espressif**
+
+  Use **ESP32 Arduino core 2.0.17** for this project.
+
+  Avoid core **3.x**, which currently causes BLE crashes and reboots.
+
+Required libraries:
+
+- **ESP32-BLE-Gamepad** (0.7.3 tested)
+- **NimBLE-Arduino** (2.3.7 tested)
+- **U8g2 by Oliver** (2.35.30 tested, for the OLED display)
+
 
 ## Hardware
 
