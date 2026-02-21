@@ -214,7 +214,7 @@ The 2 paddles use 1 MΩ variable resistors for the analog axis.
 
 ## Sega Mega Drive Joystick
 
-This pad works differently than the other pads: there is a selector (pin7) which allows to read different buttons on the same pins (for example pin 6 can return Button A state or Button B state depending on pin7 state).
+This pad works differently than the other pads: there is a selector (pin 7) which allows to read different buttons on the same pins (for example pin 6 can return Button A state or Button B state depending on pin 7 state).
 
 | DE-9 connector      | Mega Drive Control Pad       |
 |:-------------------:|:----------------------------:|
@@ -224,23 +224,23 @@ This pad works differently than the other pads: there is a selector (pin7) which
 
 2. Down
 
-3. <span style="color:#0a4bff;">GND</span> / <span style="color:#0a8f00;">Left</span>
+3. ○ GND / ● Left
 
-4. <span style="color:#0a4bff;">GND</span> / <span style="color:#0a8f00;">Right</span>
+4. ○ GND / ● Right
 
 5. VCC (+5V)
 
-6. <span style="color:#0a4bff;">Button A</span> / <span style="color:#0a8f00;">Button B</span>
+6. ○ Button A / ● Button B
 
 7. Mapping Selector
 
 8. GND
 
-9. <span style="color:#0a4bff;">Start</span> / <span style="color:#0a8f00;">Button C</span>
+9. ○ Start / ● Button C
 
-**Legend**  
-- <span style="color:#0a4bff;">Blue</span> = Mapping Selector LOW  
-- <span style="color:#0a8f00;">Green</span> = Mapping Selector HIGH
+<u>Legend</u>
+○ = Mapping Selector LOW
+● = Mapping Selector HIGH
 
 
 ## Tandy Color 'CoCo' Computer Joystick
