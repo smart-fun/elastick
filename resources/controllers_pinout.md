@@ -239,7 +239,9 @@ This pad works differently than the other pads: there is a selector (pin 7) wh
 9. ○ Start / ● Button C
 
 <u>Legend</u>
+
 ○ = Mapping Selector LOW
+
 ● = Mapping Selector HIGH
 
 
