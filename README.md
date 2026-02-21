@@ -36,11 +36,6 @@ Vintage controllers can also be tested directly on the Elastick device itself, w
 
 ## Known issues
 
-#### Rotary button reliability
-The rotary button does not behave consistently.
-
-It is still unclear whether this is caused by a hardware limitation of the original controller or by a software issue in the current implementation. Further investigation is needed to determine whether this can be fixed in code.
-
 #### ESP32 reboot during Bluetooth initialization
 
 Some ESP32 boards (including the Lolin D32) may reboot exactly when Bluetooth is initialized.

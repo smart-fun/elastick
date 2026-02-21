@@ -1,19 +1,24 @@
 #pragma once
 
-#include "esp_attr.h" 
+#include "esp_attr.h"
 
-// class which handles Rotary encoder.
+// Class which handles the rotary encoder (quadrature decoding)
 
 class InputRotary {
-  public:
+public:
     static InputRotary& getInstance();
     InputRotary();
+
     int getAbsoluteRotation();
     int getDeltaRotation();
-  private:
-    friend void encoderInterrupt(); 
+
+private:
+    friend void encoderInterrupt();
     void handleEncoder();
-    int encoderPosition;
+
+    volatile int encoderPosition;   // filtered, 1 step per detent
     int lastEncoderPosition;
-    long lastChangeTime;
+
+    uint8_t prevState;              // previous quadrature state (00,01,11,10)
+    int rawCount;                   // accumulates +1/-1 transitions until ±2
 };
