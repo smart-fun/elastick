@@ -31,11 +31,11 @@ void ActionMenu::show() {
     } else {
         actionItems.clear();
         actionItems.push_back(&actionBack);
-        actionItems.push_back(&actionPlay);
+        actionItems.push_back(&actionTest);
         if (selected->isAnalog()) {
             actionItems.push_back(&actionCalibrate);
         }
-        actionItems.push_back(&actionTest);
+        actionItems.push_back(&actionPlay);
         DisplayManager::getInstance().showActions(selected->getName(), actionItems, actionIndex);
     }
 }
@@ -65,14 +65,14 @@ void ActionMenu::update() {
 void ActionMenu::onPrevious() {
     if (actionIndex > 0) {
         --actionIndex;
-    } else {
-        actionIndex = actionItems.size() - 1;
     }
     show();
 }
 
 void ActionMenu::onNext() {
-    actionIndex = (actionIndex + 1) % actionItems.size();
+    if (actionIndex < actionItems.size() - 1) {
+        ++actionIndex;
+    }
     show();
 }
 

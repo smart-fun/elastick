@@ -51,8 +51,8 @@ void DisplayManager::showControllerList(int currentIndex) {
   do {
     lcd.drawStr(x, y, gc.get(index)->getName());
     y += 12;
-    index = (index + 1) % nbControllers;
-  } while (y < yMax);
+    ++index;
+  } while (y < yMax && index < nbControllers);
 
   lcd.sendBuffer();
 }
@@ -77,12 +77,16 @@ void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*>
   int y=24;
   int index = actionIndex % count;
   int yMax = lcd.getDisplayHeight() + 10;
-  lcd.drawStr(0, y, ">");
+  if (index == 0) {
+    lcd.drawStr(0, y, "<");
+  } else {
+    lcd.drawStr(0, y, ">");
+  }
   do {
     lcd.drawStr(x, y, actionItems[index]->displayName);
     y += 12;
-    index = (index + 1) % count;
-  } while (y < yMax);
+    ++index;
+  } while (y < yMax && index < count);
 
   lcd.sendBuffer();
 }
@@ -92,7 +96,7 @@ void DisplayManager::showTest(GameController * controller) {
   lcd.setFont(u8g2_font_DigitalDisco_te);
   printCenterX("TESTING", 10);
   lcd.setFont(u8g2_font_ncenB08_tr);
-  lcd.drawStr(0, 24, ">");
+  lcd.drawStr(0, 24, "<");
   lcd.drawStr(12, 24, "BACK");
 
   //lcd.drawBox(0, 32, 32, 32);
@@ -150,7 +154,7 @@ void DisplayManager::showPlay(bool connected) {
   lcd.setFont(u8g2_font_DigitalDisco_te);
   printCenterX("PLAYING", 10);
   lcd.setFont(u8g2_font_ncenB08_tr);
-  lcd.drawStr(0, 24, ">");
+  lcd.drawStr(0, 24, "<");
   lcd.drawStr(12, 24, "BACK");
 
   uint8_t y = 48;

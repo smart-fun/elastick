@@ -18,14 +18,17 @@ void ControllerListMenu::update() {
 void ControllerListMenu::onPrevious() {
     if (selectedIndex > 0) {
         --selectedIndex;
-    } else {
-        selectedIndex = GameControllers::getInstance().getCount() - 1;
+//    } else {
+//        selectedIndex = GameControllers::getInstance().getCount() - 1;
     }
     show();
 }
 
 void ControllerListMenu::onNext() {
-    selectedIndex = (selectedIndex + 1) % GameControllers::getInstance().getCount();
+    if (selectedIndex < GameControllers::getInstance().getCount() - 1) {
+        ++selectedIndex;
+    }
+//    selectedIndex = (selectedIndex + 1) % GameControllers::getInstance().getCount();
     show();
 }
 

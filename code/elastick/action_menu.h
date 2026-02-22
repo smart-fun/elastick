@@ -36,7 +36,7 @@ private:
     std::vector<ActionItem*> actionItems;
     ActionItem actionPlay = {Action::PLAY, "CONNECT TO PC"};
     ActionItem actionCalibrate = {Action::CALIBRATE, "CALIBRATE"};
-    ActionItem actionTest = {Action::TEST, "TEST"};
+    ActionItem actionTest = {Action::TEST, "TEST CONTROLLER"};
     ActionItem actionBack = {Action::BACK, "BACK"};
 };
 
