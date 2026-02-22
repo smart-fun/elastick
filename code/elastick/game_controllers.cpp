@@ -9,6 +9,7 @@ GameControllers& GameControllers::getInstance() {
 GameControllers::GameControllers() {
     controllers.reserve(10);
     controllers.clear();
+    controllers.push_back(&amigaMouseController);
     controllers.push_back(&atariJoystickController);
     controllers.push_back(&apple2Controller);
     controllers.push_back(&atariPaddleController);

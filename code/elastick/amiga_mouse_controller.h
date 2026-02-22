@@ -1,13 +1,15 @@
 #pragma once
 #include "game_controller.h"
 
-class MegaDriveController : public DigitalGameController {
+class AmigaMouseController : public DigitalGameController {
 public:
-    MegaDriveController();
-    uint8_t getNbButtons() override { return 4; };
+    AmigaMouseController();
+    AmigaMouseController(const char * name); // for derivated controllers
     void init() override;
+    void deinit() override;
     void update() override;
     bool initDetection() override { return false; };
+    uint8_t getNbButtons() override { return 3; };
     float readAxis(uint8_t axisNumber) override;
     uint8_t readButton(uint8_t buttonNumber) override;
 };
