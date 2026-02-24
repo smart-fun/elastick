@@ -1,15 +1,14 @@
 #pragma once
-#include "game_controller.h"
+#include "mouse_controller.h"
 
-class AmigaMouseController : public DigitalGameController {
+class AmigaMouseController : public MouseController {
 public:
     AmigaMouseController();
     AmigaMouseController(const char * name); // for derivated controllers
     void init() override;
     void deinit() override;
     void update() override;
-    bool initDetection() override { return false; };
-    uint8_t getNbButtons() override { return 3; };
-    float readAxis(uint8_t axisNumber) override;
-    uint8_t readButton(uint8_t buttonNumber) override;
+protected:
+    void getMouseDirectionPins(uint8_t &x1Pin, uint8_t &x2Pin, uint8_t &y1Pin, uint8_t &y2Pin) override;
+    void getMouseButtonPins(uint8_t &button1Pin, uint8_t &button2Pin, uint8_t &button3Pin) override;
 };
