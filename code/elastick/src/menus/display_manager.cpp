@@ -30,7 +30,7 @@ void DisplayManager::showWelcome() {
   lcd.setFont(u8g2_font_DigitalDisco_te);
   printCenterX("ELASTICK ADAPTER", 10);
   lcd.setFont(u8g2_font_ncenB08_tr);
-  printCenterXY("Version 0.2");
+  printCenterXY("Version 0.5");
   lcd.sendBuffer();
 }
 
