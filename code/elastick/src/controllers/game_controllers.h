@@ -3,6 +3,7 @@
 #include "amiga_mouse_controller.h"
 #include "apple2_controller.h"
 #include "atari_joystick_controller.h"
+#include "atari_mouse_controller.h"
 #include "atari_paddle_controller.h"
 #include "coco_controller.h"
 #include "ibm_controller.h"
@@ -35,4 +36,8 @@ private:
     MasterSystemController masterSystemController;
     MegaDriveController megaDriveController;
     AmigaMouseController amigaMouseController;
+    AtariMouseController atariMouseController;
+    AmigaJoystickController amigaJoystickController;
+    C64JoystickController c64JoystickController;
+    AmstradJoystickController amstradJoystickController;
 };

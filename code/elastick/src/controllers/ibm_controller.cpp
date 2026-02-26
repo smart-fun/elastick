@@ -8,7 +8,7 @@
 #define chargeTimeout (1400)
 
 IBMGameController::IBMGameController()
-    : AnalogGameController("IBM PC") {
+    : AnalogGameController("IBM PC Stick") {
     Serial.println("IBMGameController created");
 }
 

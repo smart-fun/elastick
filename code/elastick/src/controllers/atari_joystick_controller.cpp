@@ -8,13 +8,28 @@
 #define rightPin (4)
 
 AtariJoystickController::AtariJoystickController()
-    : AtariJoystickController("Amstrad Atari C=") {
+    : AtariJoystickController("Atari ST Stick") {
     Serial.println("AtariJoystickController created");
 }
 
 // for derivated controllers
 AtariJoystickController::AtariJoystickController(const char * name)
     : DigitalGameController(name) {
+}
+
+AmigaJoystickController::AmigaJoystickController()
+    : AtariJoystickController("Amiga Stick") {
+    Serial.println("AmigaJoystickController created");
+}
+
+C64JoystickController::C64JoystickController()
+    : AtariJoystickController("C64 C128 Stick") {
+    Serial.println("C64JoystickController created");
+}
+
+AmstradJoystickController::AmstradJoystickController()
+    : AtariJoystickController("Amstrad CPC Stick") {
+    Serial.println("AmstradJoystickController created");
 }
 
 void AtariJoystickController::init() {

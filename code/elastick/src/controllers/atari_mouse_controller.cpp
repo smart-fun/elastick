@@ -1,33 +1,33 @@
-#include "amiga_mouse_controller.h"
+#include "atari_mouse_controller.h"
 #include "mapping.h"
 
 #define PIN_BUTTON_1 (6)
 #define PIN_BUTTON_2 (9)
 #define PIN_BUTTON_3 (5)
 #define PIN_X1 (2)
-#define PIN_X2 (4)
+#define PIN_X2 (1)
 #define PIN_Y1 (3)
-#define PIN_Y2 (1)
+#define PIN_Y2 (4)
 
-AmigaMouseController::AmigaMouseController()
-    : MouseController("Amiga Mouse") {
-    Serial.println("AmigaMouseController created");
+AtariMouseController::AtariMouseController()
+    : MouseController("Atari ST Mouse") {
+    Serial.println("AtariMouseController created");
 }
 
-void AmigaMouseController::getMouseDirectionPins(uint8_t &x1Pin, uint8_t &x2Pin, uint8_t &y1Pin, uint8_t &y2Pin) {
+void AtariMouseController::getMouseDirectionPins(uint8_t &x1Pin, uint8_t &x2Pin, uint8_t &y1Pin, uint8_t &y2Pin) {
   x1Pin = PIN_X1;
   x2Pin = PIN_X2;
   y1Pin = PIN_Y1;
   y2Pin = PIN_Y2;
 }
 
-void AmigaMouseController::getMouseButtonPins(uint8_t &button1Pin, uint8_t &button2Pin, uint8_t &button3Pin) {
+void AtariMouseController::getMouseButtonPins(uint8_t &button1Pin, uint8_t &button2Pin, uint8_t &button3Pin) {
   button1Pin = PIN_BUTTON_1;
   button2Pin = PIN_BUTTON_2;
   button3Pin = PIN_BUTTON_3;
 }
 
-void AmigaMouseController::init() {
+void AtariMouseController::init() {
     playRules.reserve(9);
     playRules.clear();
     playRules.push_back({1, INPUT_PULLUP, UNUSED_VALUE});
@@ -42,9 +42,9 @@ void AmigaMouseController::init() {
     MouseController::init();
 }
 
-void AmigaMouseController::deinit() {
+void AtariMouseController::deinit() {
     MouseController::deinit();
 }
 
-void AmigaMouseController::update() {
+void AtariMouseController::update() {
 }

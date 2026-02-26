@@ -1,9 +1,9 @@
 #pragma once
 #include "mouse_controller.h"
 
-class AmigaMouseController : public MouseController {
+class AtariMouseController : public MouseController {
 public:
-    AmigaMouseController();
+    AtariMouseController();
     void init() override;
     void deinit() override;
     void update() override;

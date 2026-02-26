@@ -11,3 +11,18 @@ public:
     float readAxis(uint8_t axisNumber) override;
     uint8_t readButton(uint8_t buttonNumber) override;
 };
+
+class AmigaJoystickController : public AtariJoystickController {
+public:
+    AmigaJoystickController();
+};
+
+class C64JoystickController : public AtariJoystickController {
+public:
+    C64JoystickController();
+};
+
+class AmstradJoystickController : public AtariJoystickController {
+public:
+    AmstradJoystickController();
+};
