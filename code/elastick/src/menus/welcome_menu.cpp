@@ -15,7 +15,8 @@ void WelcomeMenu::show() {
 void WelcomeMenu::update() {
     unsigned long now = millis();
     if (now > startTime + 1000) {
-        MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+//        MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+        MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Category);
     }
 }
 

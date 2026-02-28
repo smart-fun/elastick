@@ -3,6 +3,7 @@
 #include "game_controllers.h"
 #include "game_controller.h"
 #include "action_menu.h"
+#include "list_menu.h"
 
 uint8_t buttons[10];
 
@@ -27,18 +28,40 @@ void DisplayManager::clear() {
 
 void DisplayManager::showWelcome() {
   lcd.clearBuffer();
-  lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX("ELASTICK ADAPTER", 10);
+  printTitle("ELASTICK ADAPTER");
   lcd.setFont(u8g2_font_ncenB08_tr);
   printCenterXY("Version 0.5");
   lcd.sendBuffer();
 }
 
-void DisplayManager::showControllerList(int currentIndex) {
+void DisplayManager::showList(const char * title, const std::vector<MenuItem*> &list, int currentIndex) {
   lcd.clearBuffer();
- 
-  lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX("CONTROLLERS", 10);
+  printTitle(title);
+
+  lcd.setFont(u8g2_font_ncenB08_tr);
+  int size = list.size();
+  int offset = (currentIndex < 4) ? 0 : currentIndex - 3;
+  int x=12;
+  int y=24;
+  for(int i=0; i<4; ++i) {
+    if (offset >= size) {
+      break;
+    }
+    MenuItem * item = list[offset];
+    if (offset == currentIndex) {
+      lcd.drawStr(0, y, ">");
+    }
+    lcd.drawStr(x, y, item->displayText);
+    y += 12;
+    ++offset;
+  }
+  lcd.sendBuffer();
+}
+
+void DisplayManager::showControllerList(int currentIndex) {
+  lcd.clearBuffer(); 
+  printTitle("CONTROLLERS");
+
   lcd.setFont(u8g2_font_ncenB08_tr);
 
   GameControllers & gc = GameControllers::getInstance();
@@ -68,8 +91,8 @@ void DisplayManager::showDetecting(GameController * controller) {
 
 void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex) {
   lcd.clearBuffer();
-  lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX(menuName, 10);
+  printTitle(menuName);
+
   lcd.setFont(u8g2_font_ncenB08_tr);
 
   int count = actionItems.size();
@@ -93,8 +116,8 @@ void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*>
 
 void DisplayManager::showTest(GameController * controller) {
   lcd.clearBuffer();
-  lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX("TESTING", 10);
+  printTitle("TESTING");
+
   lcd.setFont(u8g2_font_ncenB08_tr);
   lcd.drawStr(0, 24, "<");
   lcd.drawStr(12, 24, "BACK");
@@ -151,8 +174,7 @@ void DisplayManager::showTest(GameController * controller) {
 
 void DisplayManager::showPlay(bool connected) {
   lcd.clearBuffer();
-  lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX("PLAYING", 10);
+  printTitle("PLAYING");
   lcd.setFont(u8g2_font_ncenB08_tr);
   lcd.drawStr(0, 24, "<");
   lcd.drawStr(12, 24, "BACK");
@@ -165,6 +187,13 @@ void DisplayManager::showPlay(bool connected) {
   }
 
   lcd.sendBuffer();
+}
+
+void DisplayManager::printTitle(const char * title) {
+//  lcd.setFont(u8g2_font_DigitalDisco_te);
+  //lcd.setFont(u8g2_font_6x13_tf);
+  lcd.setFont(u8g2_font_ncenB08_tr);
+  printCenterX(title, 9);
 }
 
 void DisplayManager::printCenterX(const char * text, int y) {

@@ -5,15 +5,17 @@
 #include "action_menu.h"
 #include "test_menu.h"
 #include "play_menu.h"
+#include "list_menu.h"
 
 class MenuController {
 public:
     enum class MenuID {
         Welcome,
+        Category,
         ControllerList,
         Action,
         Test,
-        Play
+        Play        
     };
 
     static MenuController& getInstance();
@@ -28,6 +30,7 @@ private:
 
     // Menu Instances
     WelcomeMenu welcomeMenu;
+    CategoryMenu categoryMenu;
     ControllerListMenu controllerListMenu;
     ActionMenu actionMenu;
     TestMenu testMenu;

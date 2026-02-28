@@ -34,6 +34,9 @@ void MenuController::setCurrentMenu(MenuID id) {
         case MenuID::Play:
             currentMenu = &playMenu;
             break;
+        case MenuID::Category:
+            currentMenu = &categoryMenu;
+            break;
     }
     if (currentMenu) {
         currentMenu->init();
