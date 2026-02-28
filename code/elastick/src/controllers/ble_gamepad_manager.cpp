@@ -78,3 +78,7 @@ void BleGamepadManager::sendAxisValue(uint8_t axis, float value) {
       return;
   }
 }
+
+void BleGamepadManager::sendBatteryPercent(uint8_t percent) {
+  bleGamepad.setBatteryLevel(percent);
+}

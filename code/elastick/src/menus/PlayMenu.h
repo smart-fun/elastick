@@ -12,6 +12,7 @@ public:
     void onNext() override;
     void onValidate() override;
 private:
+    void sendBatteryPercent();
     bool isConnected = false;
 };
 
