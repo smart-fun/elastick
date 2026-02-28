@@ -40,6 +40,12 @@ void MenuController::setCurrentMenu(MenuID id) {
         case MenuID::JoystickList:
             currentMenu = &joystickMenu;
             break;
+        case MenuID::MouseList:
+            currentMenu = &mouseMenu;
+            break;
+        case MenuID::PaddleList:
+            currentMenu = &paddleMenu;
+            break;
     }
     if (currentMenu) {
         currentMenu->init();

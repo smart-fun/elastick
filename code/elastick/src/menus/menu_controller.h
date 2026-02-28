@@ -7,6 +7,8 @@
 #include "play_menu.h"
 #include "ListMenu.h"
 #include "JoystickMenu.h"
+#include "MouseMenu.h"
+#include "PaddleMenu.h"
 
 class MenuController {
 public:
@@ -15,6 +17,8 @@ public:
         Category,
         ControllerList,
         JoystickList,
+        MouseList,
+        PaddleList,
         Action,
         Test,
         Play        
@@ -38,4 +42,6 @@ private:
     TestMenu testMenu;
     PlayMenu playMenu;
     JoystickMenu joystickMenu;
+    MouseMenu mouseMenu;
+    PaddleMenu paddleMenu;
 };

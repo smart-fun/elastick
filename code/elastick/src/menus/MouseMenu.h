@@ -2,9 +2,9 @@
 
 #include "ControllersMenu.h"
 
-class JoystickMenu : public ControllersMenu {
+class MouseMenu : public ControllersMenu {
 public:
-    JoystickMenu();
+    MouseMenu();
 protected:
     const char * getTitle() override;
 };

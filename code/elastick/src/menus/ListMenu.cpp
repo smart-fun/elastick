@@ -76,8 +76,10 @@ void ListMenu::onValidate() {
             ControllerCategory controllerCategory = menuItem->data.controllerCategory;
             if (controllerCategory == ControllerCategory::JOY) {
                 MenuController::getInstance().setCurrentMenu(MenuController::MenuID::JoystickList);
-            } else {
-                MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+            } else if (controllerCategory == ControllerCategory::MOUSE) {
+                MenuController::getInstance().setCurrentMenu(MenuController::MenuID::MouseList);
+            } else if (controllerCategory == ControllerCategory::PADDLE) {
+                MenuController::getInstance().setCurrentMenu(MenuController::MenuID::MouseList);
             }
             break;
         }
