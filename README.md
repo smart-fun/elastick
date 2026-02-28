@@ -14,27 +14,45 @@ Vintage controllers can also be tested directly on the Elastick device itself, w
 
 ## Supported Controllers
 
+**Josticks / Game Pads**
+
 - Amstrad CPC
-- Apple II
+- Apple II - with a cable adapter
 - Atari 8 bits / ST
-- Atari 2600 Paddles
 - Commodore 64/128/Amiga
-- IBM PC (DA-15 connector)
+- IBM PC (DA-15 connector) - with a cable adapter
 - MSX
 - Sega Master System
 - Sega Mega Drive
-- Tandy Color Computer (CoCo)
-- Thomson MO/TO
+- Tandy Color Computer (CoCo) - with a cable adapter
+- Thomson MO/TO - with a cable adapter
 
+**Mouses**
 
-## Folders
+- Amiga Mouse (test only)
+- Atari ST Mouse (test only)
 
-- **code**: arduino code (I used arduino IDE v2)
-- **3d**: resources for 3D printing
+**Paddles**
+
+- Atari 2600 Paddles
+
+## Installation
+
+The main code is located in the code/elastick folder. The project now works with **VSCode IDE + PlatformIO** extension. Simply open this folder from the PlatformIO extension, build and upload on the Elastick board!
+
+The main folders:
+
+- **code**: arduino code
+- **3d**: resources for 3D printing (not ready yet)
 - **elec**: kicad project for PCB
 - **resources**: various pictures
 
 ## Known issues
+
+#### Devices requiring 5V power
+
+Most devices work without using the VCC pin at all, but a few peripherals need a full 5‑volt supply to operate correctly. Since the Arduino only provides 3.3 V, these devices may fail to initialize or behave unpredictably.
+So far, only one mouse has shown this limitation; all other tested devices function normally.
 
 #### ESP32 reboot during Bluetooth initialization
 
@@ -47,28 +65,6 @@ After investigation, the root cause was a **regression in the ESP32 Arduino core
 
 
 Using ESP32 Arduino core 2.0.17 fully resolves this issue.
-
-
-## Preparing the Arduino environment for ESP32
-
-Add the following URL to **File → Preferences → Additional Boards Manager URLs**:
-
-https://dl.espressif.com/dl/package_esp32_index.json
-
-
-Then install the following board package:
-
-- **esp32 by Espressif**
-
-  Use **ESP32 Arduino core 2.0.17** for this project.
-
-  Avoid core **3.x**, which currently causes BLE crashes and reboots.
-
-Required libraries:
-
-- **ESP32-BLE-Gamepad** (0.7.3 tested)
-- **NimBLE-Arduino** (2.3.7 tested)
-- **U8g2 by Oliver** (2.35.30 tested, for the OLED display)
 
 
 ## Hardware
