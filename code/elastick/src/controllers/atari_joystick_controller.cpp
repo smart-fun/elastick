@@ -14,7 +14,7 @@ AtariJoystickController::AtariJoystickController()
 
 // for derivated controllers
 AtariJoystickController::AtariJoystickController(const char * name)
-    : DigitalGameController(name) {
+    : DigitalGameController(ControllerCategory::JOY, name) {
 }
 
 AmigaJoystickController::AmigaJoystickController()

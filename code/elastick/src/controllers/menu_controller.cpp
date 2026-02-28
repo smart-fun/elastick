@@ -37,6 +37,9 @@ void MenuController::setCurrentMenu(MenuID id) {
         case MenuID::Category:
             currentMenu = &categoryMenu;
             break;
+        case MenuID::JoystickList:
+            currentMenu = &joystickMenu;
+            break;
     }
     if (currentMenu) {
         currentMenu->init();

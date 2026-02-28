@@ -75,7 +75,7 @@ void IRAM_ATTR interruptMouseY() {
 }
 
 MouseController::MouseController(const char* controllerName)
-    : DigitalGameController(controllerName) {
+    : DigitalGameController(ControllerCategory::MOUSE, controllerName) {
 }
 
 void MouseController::init() {

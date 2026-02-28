@@ -10,7 +10,7 @@
 #define correctionFactor2ButtonsPressed (1.30f)
 
 Apple2GameController::Apple2GameController()
-    : AnalogGameController("Apple II Stick") {
+    : AnalogGameController(ControllerCategory::JOY, "Apple II Stick") {
     Serial.println("Apple2GameController created");
 }
 

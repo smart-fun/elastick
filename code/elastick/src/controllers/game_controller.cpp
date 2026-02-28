@@ -1,7 +1,9 @@
 #include "game_controller.h"
 
-GameController::GameController(const char* controllerName)
-    : name(controllerName) {}
+GameController::GameController(ControllerCategory controllerCategory, const char* controllerName)
+    : name(controllerName),
+    controllerCategory(controllerCategory) {
+}
 
 const char* GameController::getName() const {
     return name;
@@ -90,8 +92,8 @@ uint8_t GameController::readPinValue(uint8_t plugPin) {
 
 // *** ANALOG CONTROLLERS ***
 
-AnalogGameController::AnalogGameController(const char* controllerName)
-    : GameController(controllerName)  {
+AnalogGameController::AnalogGameController(ControllerCategory controllerCategory, const char* controllerName)
+    : GameController(controllerCategory, controllerName)  {
 }
 
 unsigned long AnalogGameController::readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros) {
@@ -130,6 +132,6 @@ unsigned long AnalogGameController::readDischargingDuration(uint8_t plugPin, uns
 
 // *** DIGITAL CONTROLLERS ***
 
-DigitalGameController::DigitalGameController(const char* controllerName)
-    : GameController(controllerName)  {
+DigitalGameController::DigitalGameController(ControllerCategory controllerCategory, const char* controllerName)
+    : GameController(controllerCategory, controllerName)  {
 }

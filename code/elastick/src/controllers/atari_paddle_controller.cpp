@@ -11,7 +11,7 @@ float smoothedAxis[2] = {0.f, 0.f};
 
 // TODO: remove completely lower and higher values so that it comes to min/max much before the end of the paddle move
 AtariPaddleGameController::AtariPaddleGameController()
-    : AnalogGameController("Atari VCS Paddles") {
+    : AnalogGameController(ControllerCategory::PADDLE, "Atari VCS Paddles") {
     Serial.println("AtariPaddleGameController created");
 }
 

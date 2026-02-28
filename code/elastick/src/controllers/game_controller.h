@@ -2,6 +2,7 @@
 #include <vector>
 #include <Arduino.h>
 #include "mapping.h"
+#include "ControllerCategory.h"
 
 class GameController {
 public:
@@ -17,10 +18,12 @@ public:
     virtual uint8_t getNbButtons() { return 2; };
     virtual float readAxis(uint8_t axisNumber) = 0;
     virtual uint8_t readButton(uint8_t buttonNumber) = 0;
+    ControllerCategory getCategory() { return controllerCategory; }
 protected:
-    GameController(const char* controllerName);
+    GameController(ControllerCategory controllerCategory, const char* controllerName);
     uint8_t readPinValue(uint8_t plugPin);
     void applyRules(std::vector<PinConfig>& rules);
+    ControllerCategory controllerCategory;
     const char* name;
     std::vector<PinConfig> detectionRules;
     std::vector<PinConfig> playRules;
@@ -31,7 +34,7 @@ public:
     bool isAnalog() const override { return true; }
     uint16_t getChargingDuration(uint8_t axisNumber) { return chargingDuration[axisNumber]; };
 protected:
-    AnalogGameController(const char* controllerName);
+    AnalogGameController(ControllerCategory controllerCategory, const char* controllerName);
     unsigned long readChargingDuration(uint8_t plugPin, unsigned long timeoutMicros);
     unsigned long readDischargingDuration(uint8_t plugPin, unsigned long timeoutMicros);
     uint16_t chargingDuration[2] = {0, 0};
@@ -41,6 +44,6 @@ class DigitalGameController : public GameController {
 public:
     bool isAnalog() const override { return false; }
 protected:
-    DigitalGameController(const char* controllerName);
+    DigitalGameController(ControllerCategory controllerCategory, const char* controllerName);
 };
 
