@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "base_menu.h"
+#include "BaseMenu.h"
 #include "MenuAction.h"
 #include "ControllerCategory.h"
 
@@ -20,7 +20,7 @@ public:
     const char * displayText;
     MenuItemType type;
     union {
-        MenuAction menuAction;
+        MenuAction menuAction;                  // type == Action
         ControllerCategory controllerCategory;  // type == Category
         GameController* controller;             // type == Controller
         } data;
@@ -43,11 +43,4 @@ protected:
     std::vector<MenuItem *> list;
 private:
     void startControllersMenu(ControllerCategory category);
-};
-
-class CategoryMenu : public ListMenu {
-public:
-    CategoryMenu();
-protected:
-    const char * getTitle() override;
 };

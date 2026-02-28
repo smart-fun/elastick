@@ -20,7 +20,7 @@ std::vector<PinConfig> mappingARules;
 std::vector<PinConfig> mappingBRules;
 
 MegaDriveController::MegaDriveController()
-    : DigitalGameController(ControllerCategory::JOY, "Sega Mega Drive Pad") {
+    : DigitalGameController(ControllerCategory::JOY, "Sega Mega Drive") {
     Serial.println("MegaDriveController created");
 }
 

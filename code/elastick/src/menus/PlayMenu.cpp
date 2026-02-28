@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "play_menu.h"
-#include "display_manager.h"
-#include "menu_controller.h"
+#include "PlayMenu.h"
+#include "DisplayManager.h"
+#include "MenuController.h"
 #include "game_controllers.h"
 #include "game_controller.h"
 #include "ble_gamepad_manager.h"
@@ -21,7 +21,7 @@ void PlayMenu::deinit() {
 }
 
 void PlayMenu::show() {
-  DisplayManager::getInstance().showPlay(isConnected);
+  DisplayManager::getInstance().showPlay(GameControllers::getInstance().getSelectedController(), isConnected);
 }
 
 void PlayMenu::update() {

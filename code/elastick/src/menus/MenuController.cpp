@@ -1,8 +1,8 @@
 
-#include "menu_controller.h"
+#include "MenuController.h"
 #include "input_button.h"
 #include "input_rotary.h"
-#include "display_manager.h"
+#include "DisplayManager.h"
 
 MenuController& MenuController::getInstance() {
     static MenuController instance;

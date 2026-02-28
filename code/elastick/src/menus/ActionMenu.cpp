@@ -1,8 +1,7 @@
-#include "action_menu.h"
-//#include "display_manager.h"
+#include "ActionMenu.h"
 #include "game_controllers.h"
 #include "game_controller.h"
-//#include "menu_controller.h"
+#include "const.h"
 
 ActionMenu::ActionMenu()
     :ListMenu() {
@@ -10,7 +9,7 @@ ActionMenu::ActionMenu()
     list.clear();
     list.reserve(3);
 
-    list.push_back(new MenuItem(MenuAction::BACK_TO_CONTROLLERS_MENU, "<Back>"));
+    list.push_back(new MenuItem(MenuAction::BACK_TO_CONTROLLERS_MENU, BACK_TEXT));
     list.push_back(new MenuItem(MenuAction::TEST, "Test Controller"));
     list.push_back(new MenuItem(MenuAction::PLAY, "Bluetooth to PC"));
 }

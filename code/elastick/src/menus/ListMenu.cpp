@@ -1,7 +1,7 @@
 #include "ListMenu.h"
-#include "display_manager.h"
+#include "DisplayManager.h"
 #include "game_controllers.h"
-#include "menu_controller.h"
+#include "MenuController.h"
 
 MenuItem::MenuItem(MenuItemType type, const char *displayText)
 {
@@ -25,22 +25,6 @@ MenuItem::MenuItem(GameController *controller, const char *displayText)
     : MenuItem(MenuItemType::Controller, displayText)
 {
     data.controller = controller;
-}
-
-CategoryMenu::CategoryMenu()
-    : ListMenu()
-{
-    Serial.println("CategoryMenu created");
-    list.clear();
-    list.reserve(3);
-    list.push_back(new MenuItem(ControllerCategory::JOY, "Joysticks / Pads"));
-    list.push_back(new MenuItem(ControllerCategory::MOUSE, "Mouses"));
-    list.push_back(new MenuItem(ControllerCategory::PADDLE, "Paddles"));
-}
-
-const char *CategoryMenu::getTitle()
-{
-    return "CONTROLLER";
 }
 
 ListMenu::ListMenu()

@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "test_menu.h"
-#include "display_manager.h"
-#include "menu_controller.h"
+#include "TestMenu.h"
+#include "DisplayManager.h"
+#include "MenuController.h"
 #include "game_controllers.h"
 #include "game_controller.h"
 

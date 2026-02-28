@@ -8,7 +8,7 @@
 #define rightPin (4)
 
 MSXGameController::MSXGameController()
-    : DigitalGameController(ControllerCategory::JOY, "MSX Stick") {
+    : DigitalGameController(ControllerCategory::JOY, "MSX") {
     Serial.println("MSXGameController created");
 }
 

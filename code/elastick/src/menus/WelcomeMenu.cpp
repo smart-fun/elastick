@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "welcome_menu.h"
-#include "display_manager.h"
-#include "menu_controller.h"
+#include "WelcomeMenu.h"
+#include "DisplayManager.h"
+#include "MenuController.h"
 
 WelcomeMenu::WelcomeMenu() {
     Serial.println("WelcomeMenu created");
@@ -14,8 +14,7 @@ void WelcomeMenu::show() {
 
 void WelcomeMenu::update() {
     unsigned long now = millis();
-    if (now > startTime + 1000) {
-//        MenuController::getInstance().setCurrentMenu(MenuController::MenuID::ControllerList);
+    if (now > startTime + 2000) {
         MenuController::getInstance().setCurrentMenu(MenuController::MenuID::Category);
     }
 }

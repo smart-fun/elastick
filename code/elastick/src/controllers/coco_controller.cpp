@@ -9,7 +9,7 @@
 #define chargeTimeout (1300)
 
 CocoGameController::CocoGameController()
-    : AnalogGameController(ControllerCategory::JOY, "Tandy CoCo Stick") {
+    : AnalogGameController(ControllerCategory::JOY, "Tandy CoCo") {
     Serial.println("CocoGameController created");
 }
 

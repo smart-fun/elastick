@@ -8,7 +8,7 @@
 #define rightPin (4)
 
 MasterSystemController::MasterSystemController()
-    : DigitalGameController(ControllerCategory::JOY, "Sega Master System Pad") {
+    : DigitalGameController(ControllerCategory::JOY, "Sega Master System") {
     Serial.println("MasterSystemController created");
 }
 

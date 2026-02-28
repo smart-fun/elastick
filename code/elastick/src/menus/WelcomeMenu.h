@@ -1,18 +1,16 @@
 #pragma once
-#include "base_menu.h"
+#include "BaseMenu.h"
 
-class PlayMenu : public BaseMenu {
+class WelcomeMenu : public BaseMenu {
 public:
-    PlayMenu();
-    void init() override;
-    void deinit() override;
+    WelcomeMenu();
     void show() override;
     void update() override;
     void onPrevious() override;
     void onNext() override;
     void onValidate() override;
 private:
-    bool isConnected = false;
+    unsigned long startTime;
 };
 
 
