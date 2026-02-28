@@ -1,8 +1,8 @@
 #pragma once
 
 enum class MenuAction {
-    START_CATEGORY_MENU,
+    BACK_TO_CATEGORY_MENU,
+    BACK_TO_CONTROLLERS_MENU,
     PLAY,
-    CALIBRATE,
     TEST
 };

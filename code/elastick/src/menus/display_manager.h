@@ -16,9 +16,8 @@ public:
     void clear();
     void showWelcome();
     void showList(const char * title, const std::vector<MenuItem*> &list, int currentIndex);
-    void showControllerList(int currentIndex);
-    void showDetecting(GameController * controller);
-    void showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex);
+    //void showDetecting(GameController * controller);
+    // void showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex);
     void showTest(GameController * controller);
     void showPlay(bool connected);
 private:

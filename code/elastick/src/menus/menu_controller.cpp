@@ -14,16 +14,14 @@ MenuController::MenuController(){
 }
 
 void MenuController::init() {
-    setCurrentMenu(MenuID::ControllerList);
+    setCurrentMenu(MenuID::Welcome);
 }
 
 void MenuController::setCurrentMenu(MenuID id) {
+    currentMenu = nullptr;
     switch (id) {
         case MenuID::Welcome:
             currentMenu = &welcomeMenu;
-            break;
-        case MenuID::ControllerList:
-            currentMenu = &controllerListMenu;
             break;
         case MenuID::Action:
             currentMenu = &actionMenu;
@@ -50,6 +48,8 @@ void MenuController::setCurrentMenu(MenuID id) {
     if (currentMenu) {
         currentMenu->init();
         currentMenu->show();
+    } else {
+        Serial.println("Err MenuController::setCurrentMenu is null");
     }
 }
 

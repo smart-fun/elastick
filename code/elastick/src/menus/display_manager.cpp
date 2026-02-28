@@ -58,61 +58,39 @@ void DisplayManager::showList(const char * title, const std::vector<MenuItem*> &
   lcd.sendBuffer();
 }
 
-void DisplayManager::showControllerList(int currentIndex) {
-  lcd.clearBuffer(); 
-  printTitle("CONTROLLERS");
+// void DisplayManager::showDetecting(GameController * controller) {
+//   lcd.clearBuffer();
+//   lcd.setFont(u8g2_font_DigitalDisco_te);
+//   printCenterX(controller->getName(), 10);
+//   lcd.setFont(u8g2_font_ncenB08_tr);
+//   printCenterXY("detecting...");
+//   lcd.sendBuffer();
+// }
 
-  lcd.setFont(u8g2_font_ncenB08_tr);
+// void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex) {
+//   lcd.clearBuffer();
+//   printTitle(menuName);
 
-  GameControllers & gc = GameControllers::getInstance();
-  int nbControllers = gc.getCount();
-  int x=12;
-  int y=24;
-  int index = currentIndex % nbControllers;
-  int yMax = lcd.getDisplayHeight() + 10;
-  lcd.drawStr(0, y, ">");
-  do {
-    lcd.drawStr(x, y, gc.get(index)->getName());
-    y += 12;
-    ++index;
-  } while (y < yMax && index < nbControllers);
+//   lcd.setFont(u8g2_font_ncenB08_tr);
 
-  lcd.sendBuffer();
-}
+//   int count = actionItems.size();
+//   int x=12;
+//   int y=24;
+//   int index = actionIndex % count;
+//   int yMax = lcd.getDisplayHeight() + 10;
+//   if (index == 0) {
+//     lcd.drawStr(0, y, "<");
+//   } else {
+//     lcd.drawStr(0, y, ">");
+//   }
+//   do {
+//     lcd.drawStr(x, y, actionItems[index]->displayName);
+//     y += 12;
+//     ++index;
+//   } while (y < yMax && index < count);
 
-void DisplayManager::showDetecting(GameController * controller) {
-  lcd.clearBuffer();
-  lcd.setFont(u8g2_font_DigitalDisco_te);
-  printCenterX(controller->getName(), 10);
-  lcd.setFont(u8g2_font_ncenB08_tr);
-  printCenterXY("detecting...");
-  lcd.sendBuffer();
-}
-
-void DisplayManager::showActions(const char * menuName, std::vector<ActionItem*> & actionItems, int actionIndex) {
-  lcd.clearBuffer();
-  printTitle(menuName);
-
-  lcd.setFont(u8g2_font_ncenB08_tr);
-
-  int count = actionItems.size();
-  int x=12;
-  int y=24;
-  int index = actionIndex % count;
-  int yMax = lcd.getDisplayHeight() + 10;
-  if (index == 0) {
-    lcd.drawStr(0, y, "<");
-  } else {
-    lcd.drawStr(0, y, ">");
-  }
-  do {
-    lcd.drawStr(x, y, actionItems[index]->displayName);
-    y += 12;
-    ++index;
-  } while (y < yMax && index < count);
-
-  lcd.sendBuffer();
-}
+//   lcd.sendBuffer();
+// }
 
 void DisplayManager::showTest(GameController * controller) {
   lcd.clearBuffer();

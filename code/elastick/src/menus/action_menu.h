@@ -1,21 +1,8 @@
 #pragma once
 
-#include <vector>
-#include "base_menu.h"
+#include "ListMenu.h"
 
-enum class Action {
-    PLAY,
-    CALIBRATE,
-    TEST,
-    BACK
-};
-
-struct ActionItem {
-    Action action;
-    const char * displayName;
-};
-
-class ActionMenu : public BaseMenu {
+class ActionMenu : public ListMenu {
 public:
     enum class ActionState {
         DetectController,
@@ -24,20 +11,8 @@ public:
     ActionMenu();
     void init() override;
     void deinit() override;
-    void show() override;
-    void update() override;
-    void onPrevious() override;
-    void onNext() override;
-    void onValidate() override;
-
-private:
-    int actionIndex = 0;
-    ActionState actionState = ActionState::DetectController;
-    std::vector<ActionItem*> actionItems;
-    ActionItem actionPlay = {Action::PLAY, "CONNECT TO PC"};
-    ActionItem actionCalibrate = {Action::CALIBRATE, "CALIBRATE"};
-    ActionItem actionTest = {Action::TEST, "TEST CONTROLLER"};
-    ActionItem actionBack = {Action::BACK, "BACK"};
+protected:
+    const char * getTitle() override;
 };
 
 

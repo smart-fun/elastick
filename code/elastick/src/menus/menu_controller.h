@@ -1,7 +1,6 @@
 #pragma once
 #include "base_menu.h"
 #include "welcome_menu.h"
-#include "controller_list_menu.h"
 #include "action_menu.h"
 #include "test_menu.h"
 #include "play_menu.h"
@@ -15,7 +14,7 @@ public:
     enum class MenuID {
         Welcome,
         Category,
-        ControllerList,
+//        ControllerList,
         JoystickList,
         MouseList,
         PaddleList,
@@ -37,7 +36,6 @@ private:
     // Menu Instances
     WelcomeMenu welcomeMenu;
     CategoryMenu categoryMenu;
-    ControllerListMenu controllerListMenu;
     ActionMenu actionMenu;
     TestMenu testMenu;
     PlayMenu playMenu;

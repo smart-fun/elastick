@@ -10,7 +10,7 @@ ControllersMenu::ControllersMenu(ControllerCategory controllerCategory)
     list.clear();
     list.reserve(16);
 
-    list.push_back(new MenuItem(MenuAction::START_CATEGORY_MENU, "<BACK>")); // Back
+    list.push_back(new MenuItem(MenuAction::BACK_TO_CATEGORY_MENU, "<Back>"));
 
     GameControllers &gc = GameControllers::getInstance();
     int nbControllers = gc.getCount();

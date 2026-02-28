@@ -41,6 +41,8 @@ protected:
     int selectedIndex = 0;
     virtual const char * getTitle() = 0;
     std::vector<MenuItem *> list;
+private:
+    void startControllersMenu(ControllerCategory category);
 };
 
 class CategoryMenu : public ListMenu {
