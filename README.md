@@ -63,9 +63,7 @@ After investigation, the root cause was a **regression in the ESP32 Arduino core
 - no reboot during BLE initialization
 - stable operation on USB power or on battery
 
-
 Using ESP32 Arduino core 2.0.17 fully resolves this issue.
-
 
 ## Hardware
 
@@ -73,7 +71,6 @@ Using ESP32 Arduino core 2.0.17 fully resolves this issue.
 - [OLED 0,96" SSD1306 I2C 128X64 pixels](https://fr.aliexpress.com/item/1005004355547926.html)
 - [DE-9 female connector](https://fr.aliexpress.com/item/1005006997365476.html) aka DB9
 - [Rotary Button EC11](https://fr.aliexpress.com/item/1005007737001031.html)
-- [USB-C connector](https://fr.aliexpress.com/item/1005008400775423.html) (not mandatory)
 
 ## Additional documentation
 
