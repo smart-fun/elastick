@@ -1,26 +1,9 @@
 #include "mouse_controller.h"
 #include "mapping.h"
 
-
 #define LIMIT (100)
 
-uint8_t x1Gpio = 0;
-uint8_t x2Gpio = 0;
-uint8_t y1Gpio = 0;
-uint8_t y2Gpio = 0;
-
-volatile uint8_t prevX = 0;
-volatile uint8_t prevY = 0;
-
-volatile int rawX = 0;
-volatile int rawY = 0;
-
-volatile int mouseX = 0;
-volatile int mouseY = 0;
-
-/* --------------------------------------------------------------------------
-   Quadrature table
-   -------------------------------------------------------------------------- */
+// Quadrature table
 static const int8_t quadTable[16] = {
     0,  -1, +1,  0,
    +1,   0,  0, -1,
@@ -32,46 +15,65 @@ static inline uint8_t fastRead(uint8_t pin) {
   return (GPIO.in >> pin) & 1;
 }
 
+// Initialize static instance pointer
+MouseController* MouseController::instance = nullptr;
+
 void IRAM_ATTR interruptMouseX() {
-  uint8_t A = fastRead(x1Gpio);
-  uint8_t B = fastRead(x2Gpio);
+  if (MouseController::instance == nullptr) return;
+  
+  uint8_t A = fastRead(MouseController::instance->x1Gpio);
+  uint8_t B = fastRead(MouseController::instance->x2Gpio);
   uint8_t s = (A << 1) | B;
 
-  uint8_t index = (prevX << 2) | s;
+  uint8_t index = (MouseController::instance->prevX << 2) | s;
   int8_t mv = quadTable[index];
-  rawX += mv;
+  MouseController::instance->rawX += mv;
 
-  if (rawX >= 2) { mouseX++; rawX -= 2; }
-  else if (rawX <= -2) { mouseX--; rawX += 2; }
-
-  if (mouseX > LIMIT) {
-    mouseX = LIMIT;
-  } else if (mouseX < -LIMIT) {
-    mouseX = -LIMIT;
+  if (MouseController::instance->rawX >= 2) { 
+    MouseController::instance->mouseX++; 
+    MouseController::instance->rawX -= 2; 
+  }
+  else if (MouseController::instance->rawX <= -2) { 
+    MouseController::instance->mouseX--; 
+    MouseController::instance->rawX += 2; 
   }
 
-  prevX = s;
+  if (MouseController::instance->mouseX > LIMIT) {
+    MouseController::instance->mouseX = LIMIT;
+  } else if (MouseController::instance->mouseX < -LIMIT) {
+    MouseController::instance->mouseX = -LIMIT;
+  }
+
+  MouseController::instance->prevX = s;
 }
 
 void IRAM_ATTR interruptMouseY() {
-  uint8_t A = fastRead(y1Gpio);
-  uint8_t B = fastRead(y2Gpio);
+  if (MouseController::instance == nullptr) return;
+  
+  uint8_t A = fastRead(MouseController::instance->y1Gpio);
+  uint8_t B = fastRead(MouseController::instance->y2Gpio);
   uint8_t s = (A << 1) | B;
 
-  uint8_t index = (prevY << 2) | s;
+  uint8_t index = (MouseController::instance->prevY << 2) | s;
   int8_t mv = quadTable[index];
-  rawY += mv;
+  MouseController::instance->rawY += mv;
 
-  if (rawY >= 2) { mouseY++; rawY -= 2; }
-  else if (rawY <= -2) { mouseY--; rawY += 2; }
-
-  if (mouseY > LIMIT) {
-    mouseY = LIMIT;
-  } else if (mouseY < -LIMIT) {
-    mouseY = -LIMIT;
+  if (MouseController::instance->rawY >= 2) { 
+    MouseController::instance->mouseY++; 
+    MouseController::instance->rawY -= 2; 
+  }
+  else if (MouseController::instance->rawY <= -2) { 
+    MouseController::instance->mouseY--; 
+    MouseController::instance->rawY += 2; 
   }
 
-  prevY = s;
+  if (MouseController::instance->mouseY > LIMIT) {
+    MouseController::instance->mouseY = LIMIT;
+  } else if (MouseController::instance->mouseY < -LIMIT) {
+    MouseController::instance->mouseY = -LIMIT;
+  }
+
+  MouseController::instance->prevY = s;
 }
 
 MouseController::MouseController(const char* controllerName)
@@ -92,6 +94,10 @@ void MouseController::init() {
 
   mouseX = 0;
   mouseY = 0;
+  
+  // Register this instance for interrupt handlers
+  MouseController::instance = this;
+  
   attachInterrupt(x1Gpio, interruptMouseX, CHANGE);
   attachInterrupt(x2Gpio, interruptMouseX, CHANGE);
   attachInterrupt(y1Gpio, interruptMouseY, CHANGE);
@@ -99,12 +105,15 @@ void MouseController::init() {
 }
 
 void MouseController::deinit() {
-  DigitalGameController::deinit();
-
   detachInterrupt(x1Gpio);
   detachInterrupt(x2Gpio);
   detachInterrupt(y1Gpio);
   detachInterrupt(y2Gpio);
+  
+  // Clear instance pointer
+  MouseController::instance = nullptr;
+  
+  DigitalGameController::deinit();
 }
 
 float MouseController::readAxis(uint8_t axisNumber) {

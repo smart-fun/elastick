@@ -7,18 +7,6 @@
 #define buttonABPin (6)
 #define buttonStartCPin (9)
 
-bool buttonUp = false;
-bool buttonDown = false;
-bool buttonLeft = false;
-bool buttonRight = false;
-bool buttonA = false;
-bool buttonB = false;
-bool buttonC = false;
-bool buttonStart = false;
-
-std::vector<PinConfig> mappingARules;
-std::vector<PinConfig> mappingBRules;
-
 MegaDriveController::MegaDriveController()
     : DigitalGameController(ControllerCategory::JOY, "Sega Mega Drive") {
     Serial.println("MegaDriveController created");

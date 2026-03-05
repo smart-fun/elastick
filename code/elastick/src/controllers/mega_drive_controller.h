@@ -10,4 +10,15 @@ public:
     bool initDetection() override { return false; };
     float readAxis(uint8_t axisNumber) override;
     uint8_t readButton(uint8_t buttonNumber) override;
+private:
+    std::vector<PinConfig> mappingARules;
+    std::vector<PinConfig> mappingBRules;
+    bool buttonUp = false;
+    bool buttonDown = false;
+    bool buttonLeft = false;
+    bool buttonRight = false;
+    bool buttonA = false;
+    bool buttonB = false;
+    bool buttonC = false;
+    bool buttonStart = false;
 };
