@@ -5341,6 +5341,58 @@
 		(layer "Edge.Cuts")
 		(uuid "e40c1685-148e-4f28-81ea-30cc3e6b8772")
 	)
+	(gr_text "5"
+		(at 132.8 85.725 180)
+		(layer "B.SilkS")
+		(uuid "0f836593-79a1-4478-88e2-aa4c74c8fdee")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "9"
+		(at 134.2 77.9 180)
+		(layer "B.SilkS")
+		(uuid "270e7150-f1d1-4e4a-b8e8-9cc112de7251")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "8"
+		(at 137 77.9 180)
+		(layer "B.SilkS")
+		(uuid "30150bee-ccb9-4153-8bd9-ec4bc967e801")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "4\n"
+		(at 135.6 85.725 180)
+		(layer "B.SilkS")
+		(uuid "36f1f49e-2d6b-42b9-a295-b2355cbc3cae")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
 	(gr_text "design by"
 		(at 156.845 78.105 180)
 		(layer "B.SilkS")
@@ -5349,6 +5401,58 @@
 			(font
 				(size 1.5 1.5)
 				(thickness 0.1)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "2"
+		(at 141.2 85.725 180)
+		(layer "B.SilkS")
+		(uuid "560c8530-4098-4085-af8d-6c8ab9c45080")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "6"
+		(at 142.6 77.9 180)
+		(layer "B.SilkS")
+		(uuid "73e354f1-6be1-4845-ad23-54895000b22b")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "7"
+		(at 139.8 77.9 180)
+		(layer "B.SilkS")
+		(uuid "790423da-5b56-4fd3-b36d-730dca5d5379")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
+		)
+	)
+	(gr_text "3"
+		(at 138.4 85.725 180)
+		(layer "B.SilkS")
+		(uuid "abbd6c0b-8d42-46a4-a814-bbdf6639ca77")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
 			)
 			(justify bottom mirror)
 		)
@@ -5451,6 +5555,19 @@
 				(thickness 0.1)
 			)
 			(justify mirror)
+		)
+	)
+	(gr_text "1"
+		(at 144 85.725 180)
+		(layer "B.SilkS")
+		(uuid "ca73e680-0c0d-4ad7-8232-7f05cc38c6c2")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify bottom mirror)
 		)
 	)
 	(segment
