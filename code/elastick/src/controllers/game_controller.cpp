@@ -106,7 +106,9 @@ unsigned long AnalogGameController::readChargingDuration(uint8_t plugPin, unsign
         // measure capacitor charge duration
         pinMode(gpio, INPUT);
         unsigned long start = micros();
-        while (digitalRead(gpio) == LOW && micros() - start < timeoutMicros) {}
+        while (digitalRead(gpio) == LOW && micros() - start < timeoutMicros) {
+            delayMicroseconds(1);  // Yield CPU to prevent 100% busy-wait
+        }
         unsigned long duration = micros() - start;
         return (duration < timeoutMicros ? duration : timeoutMicros);
     }
@@ -123,7 +125,9 @@ unsigned long AnalogGameController::readDischargingDuration(uint8_t plugPin, uns
         // measure capacitor discharge duration
         pinMode(gpio, INPUT);
         unsigned long start = micros();
-        while (digitalRead(gpio) == HIGH && micros() - start < timeoutMicros) {}
+        while (digitalRead(gpio) == HIGH && micros() - start < timeoutMicros) {
+            delayMicroseconds(1);  // Yield CPU to prevent 100% busy-wait
+        }
         unsigned long duration = micros() - start;
         return (duration < timeoutMicros ? duration : timeoutMicros);
     }

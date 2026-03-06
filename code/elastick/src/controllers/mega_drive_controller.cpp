@@ -40,14 +40,14 @@ void MegaDriveController::init() {
 
 void MegaDriveController::update() {
     applyRules(mappingARules);
-    delay(10);
+    delayMicroseconds(100);  // Wait for 6-button pad microcontroller to respond (20-70µs typical, 100µs safe margin)
     buttonUp = (readPinValue(upPin) == LOW);
     buttonDown = (readPinValue(downPin) == LOW);
     buttonA = (readPinValue(buttonABPin) == LOW);
     buttonStart = (readPinValue(buttonStartCPin) == LOW);
 
     applyRules(mappingBRules);
-    delay(10);
+    delayMicroseconds(100);  // Same for second phase
     buttonLeft = (readPinValue(leftPin) == LOW);
     buttonRight = (readPinValue(rightPin) == LOW);
     buttonB = (readPinValue(buttonABPin) == LOW);

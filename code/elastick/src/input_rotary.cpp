@@ -62,12 +62,12 @@ void InputRotary::handleEncoder() {
 }
 
 int InputRotary::getAbsoluteRotation() {
-    lastEncoderPosition = encoderPosition;
-    return encoderPosition;
+    lastEncoderPosition = encoderPosition;  // access encoderPosition just once
+    return lastEncoderPosition;
 }
 
 int InputRotary::getDeltaRotation() {
-    int diff = encoderPosition - lastEncoderPosition;
-    lastEncoderPosition = encoderPosition;
+    int diff = encoderPosition - lastEncoderPosition;     // access encoderPosition just once (no mux required)
+    lastEncoderPosition += diff;
     return diff;
 }
