@@ -12,6 +12,9 @@ It interfaces with classic joysticks and exposes them as standard Bluetooth game
 
 Vintage controllers can also be tested directly on the Elastick device itself, without needing a Bluetooth connection.
 
+[![Regarder la vidéo](video.jpg)](https://www.youtube.com/watch?v=4QVfJmzQaa0)
+
+
 ## Supported Controllers
 
 **Josticks / Game Pads**
